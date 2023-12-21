@@ -219,7 +219,7 @@
 
     #### File Utility:
     fzf
-    git
+    gitFull
     cinnamon.nemo
     gnome.gnome-terminal
     nnn
