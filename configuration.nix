@@ -11,6 +11,8 @@
 
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Include home-manager
+      inputs.home-manager.nixosModules.default
     ];
   
   #### Enable Flakes
@@ -165,6 +167,14 @@
     # thunderbird
     ];
     shell = pkgs.fish;
+  };
+
+  home-manager = {
+    # also pass inputs to home-manager modules
+   extraSpecialArgs = { inherit inputs; };
+    users = {
+      "_2b" = import ./home.nix;
+    };
   };
 
   # Allow unfree packages
