@@ -2,12 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
-      # Include Framework settings.
-      <nixos-hardware/framework/13-inch/7040-amd>
 
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -172,7 +170,7 @@
   home-manager = {
     # also pass inputs to home-manager modules
    extraSpecialArgs = { inherit inputs; };
-    users = {
+   users = {
       "_2b" = import ./home.nix;
     };
   };
