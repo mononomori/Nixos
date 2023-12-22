@@ -12,6 +12,9 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+  
+  #### Enable Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes"];   
 
   # Bootloader.
   boot = {
@@ -92,10 +95,6 @@
   # Enable hyprland window manager
   programs.hyprland = {
     enable = true;
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
   };
   
   #### XDG:
@@ -173,7 +172,7 @@
   
   # Allow insecure packages
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-24.8.6"
+    "electron-25.9.0"
   ];
 
 
@@ -261,7 +260,7 @@
   };
 
   # Fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
