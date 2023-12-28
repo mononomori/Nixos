@@ -6,7 +6,6 @@
 
 {
   imports = [
-
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include home-manager
@@ -178,16 +177,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   
-  # Allow insecure packages
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
-
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   
     #### Audio:
     bluez
     bluez-tools
@@ -197,6 +189,7 @@
 
     #### Browser:
     google-chrome
+    chromium
 
     #### Communication:
     caprine-bin
@@ -256,7 +249,7 @@
     helix
     nano
     neovim
-    obsidian
+    stable.obsidian
     vim
   ];
 
