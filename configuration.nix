@@ -260,6 +260,8 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
+  programs.nm-applet.enable = true;
+
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
