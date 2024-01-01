@@ -46,6 +46,7 @@
     networkmanager.wifi.powersave = false;
     wireless.iwd.enable = true;
     networkmanager.wifi.backend = "iwd";
+    nameservers = ["1.1.1.1" "9.9.9.9"];
   };
 
   # Enable the OpenSSH daemon.
