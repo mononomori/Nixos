@@ -43,6 +43,7 @@
             nixos-hardware.nixosModules.framework-13-7040-amd
             ./configuration.nix
             inputs.home-manager.nixosModules.default
+            ./display-manager.nix
           ];
         };
 
