@@ -100,11 +100,14 @@
       ];
     };
   };
+
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_CURRENT_SESSION = "Hyprland";
+    DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
   };
+
 
   #### Graphics Drivers:
    hardware.opengl = {
