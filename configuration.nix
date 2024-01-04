@@ -215,6 +215,7 @@
 
     #### File Utility:
     fzf
+    git-credential-manager
     gitFull
     gh
     cinnamon.nemo
