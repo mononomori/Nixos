@@ -213,6 +213,7 @@
     #### File Utility:
     fzf
     gitFull
+    gh
     cinnamon.nemo
     gnome.gnome-terminal
     nnn
@@ -255,6 +256,7 @@
 
   programs.nm-applet.enable = true;
 
+ 
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
