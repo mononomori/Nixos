@@ -105,7 +105,6 @@
     NIXOS_OZONE_WL = "1";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_CURRENT_SESSION = "Hyprland";
-    DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
   };
 
 
@@ -193,6 +192,12 @@
 
     #### Compilation:
     clang
+    dotnet-sdk
+    dotnet-sdk_7
+    dotnet-sdk_8
+    dotnet-runtime
+    dotnet-runtime_7
+    dotnet-runtime_8
     gcc
     glib
     glibc
@@ -215,7 +220,6 @@
 
     #### File Utility:
     fzf
-    git-credential-manager
     gitFull
     gh
     cinnamon.nemo
@@ -260,7 +264,7 @@
 
   programs.nm-applet.enable = true;
 
- 
+  
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
