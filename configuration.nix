@@ -220,7 +220,6 @@
 
     #### File Utility:
     fzf
-    gitFull
     gh
     cinnamon.nemo
     gnome.gnome-terminal
