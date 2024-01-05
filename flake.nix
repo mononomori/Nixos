@@ -17,9 +17,13 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, ... }@inputs:
     let
+      # ---- System Settings ---- #
       system = "x86_64-linux";
+      hostname = "YoRNix";
+      # configure lib
+      lib = nixpkgs.lib; 
       overlay-stable = final: prev: {
         stable = import nixpkgs-stable {
           inherit system;
@@ -33,17 +37,19 @@
       }; 
     in
     {
-      nixosConfigurations.YoRNix = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.YoRNix = lib.nixosSystem {
+          inherit system;
           specialArgs = {
+            inherit hostname;
             inherit inputs;
           };
-          inherit system;
           modules = [ 
             ({ config, pkgs, ...}: { nixpkgs.overlays = [ overlay-stable ]; })
             nixos-hardware.nixosModules.framework-13-7040-amd
             ./configuration.nix
             inputs.home-manager.nixosModules.default
             ./display-manager.nix
+            ./git.nix
           ];
         };
 
