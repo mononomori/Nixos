@@ -118,9 +118,9 @@
 
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -183,7 +183,12 @@
     wireplumber
 
     #### Browser:
-    google-chrome
+    (google-chrome.override {
+       commandLineArgs = [
+          "--enable-features-UseOzonePlatform"
+          "--ozone-platform=wayland"
+	];
+    })
     chromium
 
     #### Communication:
@@ -218,6 +223,10 @@
     xdg-desktop-portal
     xdg-utils
 
+    #### Developer Tools:
+    vscode
+    vscode.fhs
+
     #### File Utility:
     fzf
     gh
@@ -230,7 +239,10 @@
 
     #### Gaming:
     gamescope
+    freesweep
     steam
+    ttyper
+    vitetris
     
     #### Network:
     networkmanager
@@ -250,7 +262,7 @@
     helix
     nano
     neovim
-    stable.obsidian
+    obsidian
     vim
   ];
 
