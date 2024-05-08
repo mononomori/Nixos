@@ -209,7 +209,7 @@
 
     #### Desktop:
     brightnessctl
-    cliphist
+    clipse
     dunst
     libnotify
     rofi-wayland
