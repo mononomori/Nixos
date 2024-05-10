@@ -206,6 +206,7 @@
     gcc
     glib
     glibc
+    jdk
 
     #### Desktop:
     brightnessctl
