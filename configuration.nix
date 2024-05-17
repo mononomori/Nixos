@@ -12,25 +12,42 @@
       inputs.home-manager.nixosModules.default
     ];
   
-  #### Enable Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes"];   
+  #### Extra Options and Flakes
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekkly";
+      options = "--delete-older-than-30d";
+    };
+    settings = {
+      experimental-features = [ "nix-command" "flakes"];
+      warn-dirty = false;
+      auto-optimise-store = true;
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+    };
+  };   
 
   # Bootloader.
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot = {
+      enable = true;
+      memtest86.enable = true;
     };
   };
+  boot.kernelModules = [ "iwlwifi" ];
 
   # Firmware updates.
+  hardware.firmware = [ pkgs.linux-firmware ];
   services.fwupd.enable = true;
 
   # Power Management.
   powerManagement = {
     enable = true;
     powertop.enable = true;
-
   };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -42,11 +59,28 @@
   # Enable networking and setup hostname
   networking = {
     hostName = "YoRNix";
-    networkmanager.enable = true;
-    networkmanager.wifi.powersave = false;
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+      wifi.backend = "iwd";
+    };
     wireless.iwd.enable = true;
-    networkmanager.wifi.backend = "iwd";
-    nameservers = ["1.1.1.1" "9.9.9.9"];
+    wireless.iwd.settings = {
+      Network = {
+        EnableIPv6 = true;
+        RoutePriorityOffset = 300;
+      };
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+    nameservers = [
+      "1.1.1.1"
+      "9.9.9.9"
+      "4.4.4.4"
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
   };
 
   # Enable the OpenSSH daemon.
@@ -55,7 +89,7 @@
   # Enable firewall and open TCP/UDP ports.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [ 22 80 443 ];
     allowedUDPPortRanges = [
       { from = 4000; to = 4007; }
       { from = 8000; to = 8010; }
