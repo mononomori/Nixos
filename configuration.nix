@@ -135,12 +135,12 @@
     };
   };
 
+  #### Environment Session Variables:
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_CURRENT_SESSION = "Hyprland";
   };
-
 
   #### Graphics Drivers:
    hardware.opengl = {
@@ -182,7 +182,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define user’.
   users.users._2b = {
     isNormalUser = true;
     description = "_2b";
@@ -194,6 +194,8 @@
     ];
     shell = pkgs.fish;
   };
+  # Grant user sudo permissions
+  security.sudo.wheelNeedsPassword = false;
 
   home-manager = {
     # also pass inputs to home-manager modules
@@ -240,8 +242,8 @@
     gcc
     glib
     glibc
-    jdk
-
+    openjdk
+    
     #### Desktop:
     brightnessctl
     clipse
@@ -301,7 +303,7 @@
     vim
   ];
 
-  # Steam
+  # Steam:
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -311,7 +313,7 @@
   programs.nm-applet.enable = true;
 
   
-  # Fonts
+  # Fonts:
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
