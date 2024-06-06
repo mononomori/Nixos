@@ -17,7 +17,7 @@
     gc = {
       automatic = true;
       dates = "weekkly";
-      options = "--delete-older-than-30d";
+      options = "--delete-older-than +7";
     };
     settings = {
       experimental-features = [ "nix-command" "flakes"];
@@ -36,6 +36,7 @@
     systemd-boot = {
       enable = true;
       memtest86.enable = true;
+      configurationLimit = 7;
     };
   };
   boot.kernelModules = [ "iwlwifi" ];
@@ -230,6 +231,8 @@
     #### Communication:
     caprine-bin
     discord
+    webcord
+    zoom-us    
 
     #### Compilation:
     clang
@@ -248,6 +251,7 @@
     brightnessctl
     clipse
     dunst
+    hyprshot
     libnotify
     rofi-wayland
     swww
