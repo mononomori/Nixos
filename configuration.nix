@@ -84,6 +84,7 @@
     ];
   };
 
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -108,6 +109,8 @@
   # List services that you want to enable:
 
   # Set your time zone.
+
+  # services.automatic-timezoned.enable = true;
   time.timeZone = "America/Vancouver";
 
   # Select internationalisation properties.
@@ -251,9 +254,11 @@
     brightnessctl
     clipse
     dunst
+    grim
     hyprshot
     libnotify
     rofi-wayland
+    slurp
     swww
     waybar
     (waybar.overrideAttrs (oldAttrs: {
@@ -289,6 +294,9 @@
     networkmanager
     networkmanagerapplet
 
+    #### System Utility:
+    automatic-timezoned
+
     #### Terminal:
     fish
     kitty
@@ -315,6 +323,7 @@
   };
 
   programs.nm-applet.enable = true;
+
 
   
   # Fonts:
