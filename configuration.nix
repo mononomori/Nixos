@@ -30,16 +30,20 @@
     };
   };   
 
-  # Bootloader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot = {
-      enable = true;
-      memtest86.enable = true;
-      configurationLimit = 7;
+  # Bootloader
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [ "iwlwifi" ];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        memtest86.enable = true;
+        configurationLimit = 7;
+      };
     };
   };
-  boot.kernelModules = [ "iwlwifi" ];
+  
 
   # Firmware updates.
   hardware.firmware = [ pkgs.linux-firmware ];
@@ -110,7 +114,6 @@
 
   # Set your time zone.
 
-  # services.automatic-timezoned.enable = true;
   time.timeZone = "America/Vancouver";
 
   # Select internationalisation properties.
@@ -124,7 +127,9 @@
 
   # Enable hyprland window manager
   programs.hyprland = {
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
+    xwayland.enable = true;
   };
   
   #### XDG:
@@ -203,8 +208,9 @@
 
   home-manager = {
     # also pass inputs to home-manager modules
-   extraSpecialArgs = { inherit inputs; };
-   users = {
+    extraSpecialArgs = { inherit inputs; };
+    backupFileExtension = "hm-backup";
+    users = {
       "_2b" = import ./home.nix;
     };
   };
@@ -252,10 +258,15 @@
     
     #### Desktop:
     brightnessctl
+    catppuccin-cursors.latteLight
     clipse
     dunst
     grim
+    gtk2
+    gtk3
+    gtk4
     hyprshot
+    hyprcursor
     libnotify
     rofi-wayland
     slurp
@@ -274,9 +285,10 @@
     vscode.fhs
 
     #### File Utility:
+    cinnamon.nemo
+    flatpak
     fzf
     gh
-    cinnamon.nemo
     gnome.gnome-terminal
     nnn
     unzip
@@ -289,13 +301,12 @@
     steam
     ttyper
     vitetris
+
+    #### home-manager
     
     #### Network:
     networkmanager
     networkmanagerapplet
-
-    #### System Utility:
-    automatic-timezoned
 
     #### Terminal:
     fish
@@ -324,7 +335,7 @@
 
   programs.nm-applet.enable = true;
 
-
+  services.flatpak.enable = true;
   
   # Fonts:
   fonts.packages = with pkgs; [
