@@ -51,22 +51,9 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-      gtk = {
-        enable = true;
-        theme = {
-          package = pkgs.flat-remix-gtk;
-          name = "Flat-Remix-GTK-Grey-Darkest";
-        };
-        iconTheme = {
-          package = pkgs.libsForQt5.breeze-icons;
-          name = "breeze-dark";
-        };
-        font = {
-          name = "Sans";
-          size = 11;
-        };
-      };
 
+ #### Colors:
+ # {"Smoky black":"0B0405","Blush":"CA6E85","China rose":"B56577","China rose 2":"9E5668","Quinacridone magenta":"864958","Wine":"6A3945","Rosy brown":"C69A8E","Rosy brown 2":"C9928D","Khaki":"C1B291","Khaki 2":"ACA082"}
 
 
   #### Hyprland:
@@ -83,7 +70,7 @@
       # # # # # # #
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      monitor=,2256x1504@60,auto,1.175000
+      monitor=,2880x1920@120,auto,2.0
 
 
       env = XCURSOR_THEME,Catppuccin-Latte-Light

@@ -241,7 +241,8 @@
     caprine-bin
     discord
     webcord
-    zoom-us    
+    zoom-us 
+
 
     #### Compilation:
     clang
@@ -255,6 +256,7 @@
     glib
     glibc
     openjdk
+    postgresql
     
     #### Desktop:
     brightnessctl
@@ -268,6 +270,7 @@
     hyprshot
     hyprcursor
     libnotify
+    power-profiles-daemon
     rofi-wayland
     slurp
     swww
@@ -281,8 +284,9 @@
     xdg-utils
 
     #### Developer Tools:
-    vscode
-    vscode.fhs
+    vscode-fhs    
+    staruml
+    unityhub    
 
     #### File Utility:
     cinnamon.nemo
@@ -317,6 +321,7 @@
     htop
     neofetch
     powertop
+    wev
 
     #### Text Utility:
     helix
@@ -332,6 +337,9 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
+
+  # Power Profiles:
+  services.power-profiles-daemon.enable = true;
 
   programs.nm-applet.enable = true;
 
