@@ -284,10 +284,11 @@
     xdg-utils
 
     #### Developer Tools:
+    figma-linux
     vscode-fhs    
     staruml
     unityhub    
-
+    
     #### File Utility:
     cinnamon.nemo
     flatpak
