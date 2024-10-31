@@ -143,6 +143,7 @@
       ];
     };
   };
+ 
 
   #### Environment Session Variables:
   environment.sessionVariables = {
@@ -152,10 +153,9 @@
   };
 
   #### Graphics Drivers:
-   hardware.opengl = {
+   hardware.graphics = {
      enable = true;
-     driSupport = true;
-     driSupport32Bit = true;
+     enable32Bit = true;
 
   };
 
@@ -170,7 +170,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -255,12 +254,13 @@
     gcc
     glib
     glibc
+    inklecate
     openjdk
     postgresql
     
     #### Desktop:
     brightnessctl
-    catppuccin-cursors.latteLight
+    catppuccin-cursors
     clipse
     dunst
     grim
@@ -269,6 +269,7 @@
     gtk4
     hyprshot
     hyprcursor
+    hyprpaper
     libnotify
     power-profiles-daemon
     rofi-wayland
@@ -290,11 +291,11 @@
     unityhub    
     
     #### File Utility:
-    cinnamon.nemo
+    nemo
     flatpak
     fzf
     gh
-    gnome.gnome-terminal
+    gnome-terminal
     nnn
     unzip
     wget
@@ -330,6 +331,7 @@
     neovim
     obsidian
     vim
+    emacs
   ];
 
   # Steam:
@@ -349,7 +351,7 @@
   # Fonts:
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     fira-code
@@ -359,6 +361,12 @@
     proggyfonts
     nerdfonts
   ];
+
+
+
+
+
+
 
 
 

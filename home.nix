@@ -56,6 +56,51 @@
  # {"Smoky black":"0B0405","Blush":"CA6E85","China rose":"B56577","China rose 2":"9E5668","Quinacridone magenta":"864958","Wine":"6A3945","Rosy brown":"C69A8E","Rosy brown 2":"C9928D","Khaki":"C1B291","Khaki 2":"ACA082"}
 
 
+home.pointerCursor = {
+  gtk.enable = true;
+  x11.enable = true;
+  package = pkgs.bibata-cursors;
+  name = "Bibata-Modern-Classic";
+  size = 16;
+};
+
+
+  #Gtk
+    gtk = {
+      enable = true;
+      font.name = "TeX Gyre Adventor";
+      font.size = 10;
+      theme = {
+        name = "Juno-mirage";
+        package = pkgs.juno-theme;
+      };
+
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+
+      cursorTheme = {
+          name = "Bibata-Modern-Classic";
+          package = pkgs.bibata-cursors;
+        };
+
+      gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+        gtk-cursor-theme-name=Bibata-Modern-Classic
+      '';
+      };
+
+      gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+        gtk-cursor-theme-name=Bibata-Modern-Classic
+      '';
+      };
+
+   };
+
   #### Hyprland:
   wayland.windowManager.hyprland = {
     enable = true;
@@ -72,15 +117,13 @@
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor=,2880x1920@120,auto,2.0
 
-
-      env = XCURSOR_THEME,Catppuccin-Latte-Light
-      env = XCURSOR_SIZE,24
-      #env = GDK_SCALE,2
+    exec-once = hyprctl setcursor Bibata-Modern-Classic 16
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
       exec-once = waybar
+      exec-once = hyprpaper
       exec-once = nm-applet
       exec-once = blueman-applet
 
@@ -168,7 +211,7 @@
 
       master {
           # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-          new_is_master = true
+          new_status = slave
       }
 
       gestures {
@@ -292,79 +335,83 @@
       bold_font auto
       italic_font auto
       bold_italic_font auto
+
+      bold_text  #CDD6F4
+      italic_text #CDD6F4
+      bold_italic_text #CDD6F4
      
       background_opacity 0.7
 
       # The basic colors
-      foreground              #CDD6F4
-      background              #1E1E2E
-      selection_foreground    #1E1E2E
-      selection_background    #F5E0DC
+      foreground              #CED6F6
+      background              #1C1C28
+      selection_foreground    #1C1C28
+      selection_background    #E9E1D7
 
       # Cursor colors
-      cursor                  #F5E0DC
-      cursor_text_color       #1E1E2E
+      cursor                  #FFB8B8
+      cursor_text_color       #1C1C28
 
       # URL underline color when hovering with mouse
-      url_color               #F5E0DC
+      url_color               #F5B6DC
 
       # Kitty window border colors
-      active_border_color     #B4BEFE
-      inactive_border_color   #6C7086
-      bell_border_color       #F9E2AF
+      active_border_color     #A8B9F9
+      inactive_border_color   #5C606C
+      bell_border_color       #FFD1A8
 
       # OS Window titlebar colors
-      wayland_titlebar_color  #1E1E2E
-      macos_titlebar_color    #1E1E2E
+      wayland_titlebar_color  #1C1C28
+      macos_titlebar_color    #1C1C28
 
       # Tab bar colors
-      active_tab_foreground   #11111B
-      active_tab_background   #CBA6F7
-      inactive_tab_foreground #CDD6F4
-      inactive_tab_background #181825
-      tab_bar_background      #11111B
+      active_tab_foreground   #0F0F1B
+      active_tab_background   #D7A6F3
+      inactive_tab_foreground #CED6F6
+      inactive_tab_background #171723
+      tab_bar_background      #0F0F1B
 
       # Colors for marks (marked text in the terminal)
-      mark1_foreground #1E1E2E
-      mark1_background #B4BEFE
-      mark2_foreground #1E1E2E
-      mark2_background #CBA6F7
-      mark3_foreground #1E1E2E
-      mark3_background #74C7EC
+      mark1_foreground #1C1C28
+      mark1_background #A8B9F9
+      mark2_foreground #1C1C28
+      mark2_background #D7A6F3
+      mark3_foreground #1C1C28
+      mark3_background #71D7EA
 
       # The 16 terminal colors
 
       # black
-      color0 #45475A
-      color8 #585B70
+      color0 #3B3D50
+      color8 #4C5063
 
       # red
-      color1 #F38BA8
-      color9 #F38BA8
+      color1 #F287A3
+      color9 #F287A3
 
       # green
-      color2  #A6E3A1
-      color10 #A6E3A1
+      color2  #9ED3A3
+      color10 #9ED3A3
 
       # yellow
-      color3  #F9E2AF
-      color11 #F9E2AF
+      color3  #F2D6AF
+      color11 #F2D6AF
 
       # blue
-      color4  #89B4FA
-      color12 #89B4FA
+      color4  #81A3F9
+      color12 #81A3F9
 
       # magenta
-      color5  #F5C2E7
-      color13 #F5C2E7
+      color5  #F1B9E3
+      color13 #F1B9E3
 
       # cyan
-      color6  #94E2D5
-      color14 #94E2D5
+      color6  #8BD4C5
+      color14 #8BD4C5
 
       # white
-      color7  #BAC2DE
-      color15 #A6ADC8
+      color7  #A8AEC4
+      color15 #99A4B8
       
     '';
   };

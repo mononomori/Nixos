@@ -19,6 +19,8 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+
+
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, hyprland, ... }@inputs:
