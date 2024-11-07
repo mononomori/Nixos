@@ -269,7 +269,6 @@
     gtk4
     hyprshot
     hyprcursor
-    hyprpaper
     libnotify
     power-profiles-daemon
     rofi-wayland
@@ -357,6 +356,7 @@
     fira-code
     fira-code-symbols
     mplus-outline-fonts.githubRelease
+    monaspace
     dina-font
     proggyfonts
     nerdfonts
