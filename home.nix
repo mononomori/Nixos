@@ -56,50 +56,50 @@
  # {"Smoky black":"0B0405","Blush":"CA6E85","China rose":"B56577","China rose 2":"9E5668","Quinacridone magenta":"864958","Wine":"6A3945","Rosy brown":"C69A8E","Rosy brown 2":"C9928D","Khaki":"C1B291","Khaki 2":"ACA082"}
 
 
-home.pointerCursor = {
-  gtk.enable = true;
-  x11.enable = true;
-  package = pkgs.bibata-cursors;
-  name = "Bibata-Modern-Classic";
-  size = 16;
-};
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
 
 
   #Gtk
-    gtk = {
-      enable = true;
-      font.name = "TeX Gyre Adventor";
-      font.size = 10;
-      theme = {
-        name = "Juno-mirage";
-        package = pkgs.juno-theme;
-      };
+  gtk = {
+    enable = true;
+    font.name = "TeX Gyre Adventor";
+    font.size = 10;
+    theme = {
+      name = "Juno-mirage";
+      package = pkgs.juno-theme;
+    };
 
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
-      };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
 
-      cursorTheme = {
-          name = "Bibata-Modern-Classic";
-          package = pkgs.bibata-cursors;
-        };
+    cursorTheme = {
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+    };
 
-      gtk3.extraConfig = {
+    gtk3.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
         gtk-cursor-theme-name=Bibata-Modern-Classic
       '';
-      };
+    };
 
-      gtk4.extraConfig = {
+    gtk4.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
         gtk-cursor-theme-name=Bibata-Modern-Classic
       '';
-      };
+    };
 
-   };
+  };
 
   #### Hyprland:
   wayland.windowManager.hyprland = {
@@ -117,7 +117,7 @@ home.pointerCursor = {
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor=,2880x1920@120,auto,2.0
 
-    exec-once = hyprctl setcursor Bibata-Modern-Classic 16
+      exec-once = hyprctl setcursor Bibata-Modern-Classic 16
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
