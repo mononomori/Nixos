@@ -416,6 +416,29 @@
     '';
   };
 
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = [
+        {
+          grace = 10;
+        }
+      ];
+      
+      background = [
+        {
+          path = "screenshot";
+          blur_passes = 2;
+          contras = 1;
+          birghtness = 0.5;
+          vibrancy = 0.2;
+          vibrancy_darkness = 0.2;
+        }
+      ];
+    };
+  };
+
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
   # Manager then you have to manually source 'hm-session-vars.sh' located at

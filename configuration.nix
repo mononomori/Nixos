@@ -169,6 +169,8 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  
+
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -267,6 +269,7 @@
     gtk2
     gtk3
     gtk4
+    hyprlock
     hyprshot
     hyprcursor
     libnotify
@@ -289,15 +292,18 @@
     unityhub    
     
     #### File Utility:
-    nemo
+    fd
     flatpak
     fzf
     gh
     gnome-terminal
+    nemo
     nnn
     unzip
     wget
+    yazi
     zip
+    zoxide
 
     #### Gaming:
     gamescope
