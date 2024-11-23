@@ -23,10 +23,6 @@
       experimental-features = [ "nix-command" "flakes"];
       warn-dirty = false;
       auto-optimise-store = true;
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
     };
   };   
 
@@ -204,8 +200,7 @@
     ];
     shell = pkgs.fish;
   };
-  # Grant user sudo permissions
-  security.sudo.wheelNeedsPassword = false;
+
 
   home-manager = {
     # also pass inputs to home-manager modules
@@ -234,7 +229,7 @@
        commandLineArgs = [
           "--enable-features-UseOzonePlatform"
           "--ozone-platform=wayland"
-	];
+	      ];
     })
     chromium
 
@@ -305,6 +300,7 @@
     zip
     zoxide
 
+
     #### Gaming:
     gamescope
     freesweep
@@ -351,6 +347,8 @@
   programs.nm-applet.enable = true;
 
   services.flatpak.enable = true;
+
+
   
   # Fonts:
   fonts.packages = with pkgs; [

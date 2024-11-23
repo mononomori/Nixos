@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 # Enable tuigreet display manager
 

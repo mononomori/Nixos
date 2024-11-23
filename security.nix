@@ -1,10 +1,14 @@
-{ pkgs, ...};
+{ config, pkgs, lib, inputs, ...}:
 {
-    security = {
-        polkit = {
-            enable = true;
-            debug = true;
-        }
-        pam.services.hyprlock = [];
-    };
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
+  security = {
+    sudo.wheelNeedsPassword = false;
+    polkit = {
+      enable = true;
+      debug = true;
+    };    
+  };
 }

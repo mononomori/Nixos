@@ -28,6 +28,8 @@
       # ---- System Settings ---- #
       system = "x86_64-linux";
       hostname = "YoRNix";
+      username = "_2b";
+      diskusers = [ "_2b" ];
       # configure lib
       pkgs = import nixpkgs {
         inherit system;
@@ -45,6 +47,8 @@
           inherit hostname;
           inherit inputs;
           inherit system;
+          inherit username;
+          inherit diskusers;
         };
         modules = [ 
           nixos-hardware.nixosModules.framework-13-7040-amd
@@ -53,6 +57,8 @@
           inputs.hyprland.nixosModules.default
           ./display-manager.nix
           ./git.nix
+          ./security.nix
+          ./disk-utils.nix
         ];
       };
       homeConfigurations = {
