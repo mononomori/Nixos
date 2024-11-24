@@ -18,9 +18,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
-
-
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, hyprland, ... }@inputs:
@@ -31,7 +28,10 @@
       username = "_2b";
       diskusers = [ "_2b" ];
       gitusers = [
-        { name = "monomori"; email = "miguel.a.cannuli@gmail.com"; }
+        { 
+          name = "monomori"; 
+          email = "miguel.a.cannuli@gmail.com";
+        }
       ];
 
       # configure lib
