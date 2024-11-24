@@ -68,9 +68,10 @@
           inherit system;
           inherit inputs;
           modules = [
-            ./home.nix
-            ./hyprlock.nix
-            ./kitty.nix
+            .home/home.nix
+            .home/hyprlock.nix
+            .home/kitty.nix
+            .home/hyprland.nix
           ];
         };
       };
