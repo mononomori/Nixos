@@ -307,16 +307,13 @@
     ttyper
     vitetris
 
-    #### home-manager
-    
     #### Network:
     networkmanager
     networkmanagerapplet
 
     #### Terminal:
     fish
-    kitty
-   
+  
     #### Terminal Utilities:
     cbonsai
     htop

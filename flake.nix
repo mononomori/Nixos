@@ -70,6 +70,7 @@
           modules = [
             ./home.nix
             ./hyprlock.nix
+            ./kitty.nix
           ];
         };
       };
