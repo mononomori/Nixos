@@ -55,7 +55,7 @@
           ./configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.hyprland.nixosModules.default
-          ./display-manager.nix
+          ./login-manager.nix
           ./git.nix
           ./security.nix
           ./disk-utils.nix
