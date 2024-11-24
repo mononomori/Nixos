@@ -69,6 +69,7 @@
           inherit inputs;
           modules = [
             ./home.nix
+            ./hyprlock.nix
           ];
         };
       };

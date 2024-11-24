@@ -264,7 +264,6 @@
     gtk2
     gtk3
     gtk4
-    hyprlock
     hyprshot
     hyprcursor
     libnotify
