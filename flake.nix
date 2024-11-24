@@ -30,6 +30,10 @@
       hostname = "YoRNix";
       username = "_2b";
       diskusers = [ "_2b" ];
+      gitusers = [
+        { name = "monomori"; email = "miguel.a.cannuli@gmail.com"; }
+      ];
+
       # configure lib
       pkgs = import nixpkgs {
         inherit system;
@@ -49,6 +53,7 @@
           inherit system;
           inherit username;
           inherit diskusers;
+          inherit gitusers;
         };
         modules = [ 
           nixos-hardware.nixosModules.framework-13-7040-amd

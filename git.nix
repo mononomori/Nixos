@@ -1,9 +1,20 @@
-{config, lib, pkgs, inputs, ...}:
+{config, lib, pkgs, inputs, gitusers, ...}:
 
 {
+  programs.git = {
+    enable = true;
+    config = lib.foldl' (acc: user: acc // {
+      "${user.name}" = {
+        user = {
+          name = user.name;
+          email = user.email;
+        };
+      };
+    }) {} gitusers;
+  };
+
+
   environment.systemPackages = [pkgs.gitFull];
-  programs.git.enable = true;
-  programs.git.config.user.name = "mononomori";
-  programs.git.config.user.email = "miguel.a.cannuli@gmail.com";
+
 }
   
