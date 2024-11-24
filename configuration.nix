@@ -207,7 +207,7 @@
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "hm-backup";
     users = {
-      "_2b" = import ./home/home.nix;
+      "_2b" = import ./user/home.nix;
     };
   };
 
