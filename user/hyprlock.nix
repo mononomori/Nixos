@@ -1,9 +1,13 @@
 { config, pkgs, lib, inputs, ... }:
 
+
+
 {
   home.packages = with pkgs; [
     hyprlock
   ];
+
+
 
   programs.hyprlock = {
     enable = true;
