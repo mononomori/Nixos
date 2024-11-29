@@ -77,6 +77,7 @@
             .user/hyprlock.nix
             .user/kitty.nix
             .user/hyprland.nix
+            .user/hypridle.nix
           ];
         };
       };

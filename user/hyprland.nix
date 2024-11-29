@@ -22,6 +22,9 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
+      exec-once = hypridle
+      exec-once = sway-audio-idle-inhibit
+      windowrulev2 = idleinhibit fullscreen, class:.*
       exec-once = waybar
       exec-once = hyprpaper
       exec-once = nm-applet
