@@ -22,9 +22,14 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
+
+      #### hypridle
       exec-once = hypridle
       exec-once = sway-audio-idle-inhibit
       windowrulev2 = idleinhibit fullscreen, class:.*
+
+
+
       exec-once = waybar
       exec-once = hyprpaper
       exec-once = nm-applet
@@ -129,16 +134,9 @@
           sensitivity = -0.5
       }
 
-      # Example windowrule v1
-      # windowrule = float, ^(kitty)$
-      # Example windowrule v2
-      #  windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-      # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-      # windowrulev2=opacity 0.1 override 0.1 override,class:^(kitty)$
-      # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       $mainMod = SUPER
 
-      # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+
       bind = $mainMod, T, exec, kitty
       bind = $mainMod, C, killactive, 
       bind = $mainMod, M, exit, 
@@ -147,6 +145,7 @@
       bind = $mainMod, R, exec, rofi -show drun -show-icons
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
+      bind = $mainMod, L, exec, hyprlock
 
       # Change focused window
       bind = $mainMod, left, movefocus, l
