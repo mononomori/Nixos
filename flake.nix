@@ -64,20 +64,21 @@
           ./git.nix
           ./security.nix
           ./disk-utils.nix
+          ./swap.nix
         ];
       };
       homeConfigurations = {
         "_2b@YoRNix" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = nixpkgs.legacyPackages.${system};
           inherit hostname;
           inherit system;
           inherit inputs;
           modules = [
-            .user/home.nix
-            .user/hyprlock.nix
-            .user/kitty.nix
-            .user/hyprland.nix
-            .user/hypridle.nix
+            ./user/home.nix
+            ./user/hyprlock.nix
+            ./user/kitty.nix
+            ./user/hyprland.nix
+            ./user/hypridle.nix
           ];
         };
       };
