@@ -299,6 +299,7 @@
     yazi
     zip
     zoxide
+    xdragon
 
 
     #### Gaming:
