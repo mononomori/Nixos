@@ -16,11 +16,11 @@ cache_file="/tmp/flicker_random_cache"
 cache_duration=2  # Duration in seconds to retain random values
 default_color="#d2738a"  # Default color for "Become visible"
 inverse_color="#e4c9af"  # Default color for "You are invisible"
-flicker_chance=2  # Chance to trigger alpha channel flickering (1 in N)
+flicker_chance=10  # Chance to trigger alpha channel flickering (1 in N)
 flip_chance=20  # Chance to flip (1 in X)
 flip_min=3  # Minimum frames for flip
 flip_max=5  # Maximum frames for flip
-pulse_duration=10  # Total frames for one breathing cycle
+pulse_duration=20  # Total frames for one breathing cycle
 
 # Current time
 current_time=$(date +%s)
