@@ -242,6 +242,8 @@
 
 
     #### Compilation:
+    bash
+    bc
     clang
     dotnet-sdk
     dotnet-sdk_7
@@ -253,6 +255,7 @@
     glib
     glibc
     inklecate
+    killall
     openjdk
     postgresql
     
