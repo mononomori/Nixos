@@ -16,18 +16,16 @@ cache_file="/tmp/flicker_random_cache"
 cache_duration=2  # Duration in seconds to retain random values
 default_color="#d2738a"  # Default color for "Become visible"
 inverse_color="#e4c9af"  # Default color for "You are invisible"
-flicker_chance=10  # Chance to trigger alpha channel flickering (1 in N)
-flicker_speed_max=20
-flicker_speed_min=10
-flip_chance=15  # Chance to flip (1 in X)
-flip_min=5  # Minimum frames for flip
-flip_max=10  # Maximum frames for flip
+flicker_chance=2  # Chance to trigger alpha channel flickering (1 in N)
+flip_chance=20  # Chance to flip (1 in X)
+flip_min=3  # Minimum frames for flip
+flip_max=5  # Maximum frames for flip
 pulse_duration=10  # Total frames for one breathing cycle
 
 # Current time
 current_time=$(date +%s)
 
-# Retrieve or generate cached random values for each text
+# Retrieve or generate cached random values
 if [[ -f "$cache_file" ]]; then
     read last_time random_value_become random_value_you_are < "$cache_file"
     if (( current_time - last_time >= cache_duration )); then
@@ -41,27 +39,21 @@ else
     echo "$current_time $random_value_become $random_value_you_are" > "$cache_file"
 fi
 
-# Calculate frame index with slow-fast flickering
-flicker_speed=$(( RANDOM % $flicker_speed_max + $flicker_speed_min ))  # Random flicker speed multiplier
-frame=$(( ($(date +%s%3N) / (50 * flicker_speed)) % 80 ))
+# Calculate frame index
+frame=$(( ($(date +%s%3N) / 50) % 80 ))
 
-# Breathing effect using a sine wave
+# Breathing effect using sine wave
 pulse_alpha() {
     local frame="$1"
     local duration="$2"
-    # Normalize frame to [0, 2π] range for sine wave
     local angle=$(echo "scale=10; 2 * 3.14159 * $frame / $duration" | bc -l)
-    # Calculate sine value in [0, 1] range
     local sine=$(echo "scale=10; (s($angle) + 1) / 2" | bc -l)
-    # Map sine value to [0, ff] range
     local alpha=$(printf "%02x" $(echo "$sine * 255" | bc -l | awk '{print int($1)}'))
     echo "$alpha"
 }
 
 # Modulated alpha channel for breathing effect
 modulated_alpha=$(pulse_alpha "$frame" "$pulse_duration")
-
-# Combine alpha with flickering
 alpha="${alphas[frame]}"
 combined_alpha=$(printf "%02x" $(( 0x$modulated_alpha * 0x$alpha / 255 )))
 
@@ -78,18 +70,16 @@ you_are_flip_counter=0
 # Flickering logic for "Become visible"
 become_output=""
 if (( random_value_become == 0 )); then
-    # Set bias for visible vs invisible
-    if (( frame >= 60 )); then
+    if (( frame >= 40 )); then
         become_color="$inverse_color$combined_alpha"
         become_text="invisible"
     fi
 
     # Introduce random flips during flickering
     if (( RANDOM % flip_chance == 0 )); then
-        become_flip_counter=$(( RANDOM % (flip_max - flip_min + 1) + flip_min ))  # Generates 1–5
+        become_flip_counter=$(( RANDOM % (flip_max - flip_min + 1) + flip_min ))
     fi
 
-    # Apply flips if active
     if (( become_flip_counter > 0 )); then
         become_flip_counter=$(( become_flip_counter - 1 ))
         if [[ $become_text == "&#160;&#160;visible" ]]; then
@@ -109,18 +99,16 @@ fi
 # Flickering logic for "You are invisible"
 you_are_output=""
 if (( random_value_you_are == 0 )); then
-    # Set bias for visible vs invisible
-    if (( frame >= 60 )); then
+    if (( frame <= 40 )); then
         inverse_color_flicker="$default_color$combined_alpha"
         you_are_text="visible"
     fi
 
     # Introduce random flips during flickering
     if (( RANDOM % flip_chance == 0 )); then
-        you_are_flip_counter=$(( RANDOM % (flip_max - flip_min + 1) + flip_min ))  # Generates 1–5
+        you_are_flip_counter=$(( RANDOM % (flip_max - flip_min + 1) + flip_min ))
     fi
 
-    # Apply flips if active
     if (( you_are_flip_counter > 0 )); then
         you_are_flip_counter=$(( you_are_flip_counter - 1 ))
         if [[ $you_are_text == "invisible" ]]; then
