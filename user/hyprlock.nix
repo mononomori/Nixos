@@ -14,6 +14,7 @@
     settings = {
       general = [
         {
+
           disable_loading_bar = true;
           hide_cursor = true;
           grace = 1;
@@ -34,7 +35,6 @@
 
       label = [
         {
-          #text = ''<span font-family="Fira Code" foreground="##e4c9af">$TIME</span>'';
           text = ''cmd[update:100] echo "<span font-family='Fira Code' foreground='##e4c9af'>$(date +'%H, %M %S')</span>"'';
           color = "rgba(242, 243, 244, 0.75)";
           font_size = 95;
@@ -53,7 +53,7 @@
           valign = "center";
         }
         {
-          text = ''<span allow_breaks="true" font-family="Fira Code" foreground="##e4c9af">You are invisible.</span><span allow_breaks="true"><br/></span><span allow_breaks="true" font-family="Fira Code" foreground="##d2738a">[Become<br/>          Visible]</span>'';
+          text = ''cmd[update:50] echo "$(/etc/nixos/user/hyprlock_flickering_text.sh)"'';
           color = "rgba(242, 243, 244, 0.75)";
           font_size = 44;
           font_family = "Iosevka Term";
@@ -78,7 +78,7 @@
           fade_on_empty = false;
           rounding = -1;
           check_color = "rgb(30, 107, 204)";
-          placeholder_text = ''<span font-family="Fira Code" foreground="##d2738a">Let's all love $USER!</span>'';
+          placeholder_text = ''<span font-family="Fira Code" foreground="##d2738a">Let's all love</span><span font-family="Fira Code" foreground="##e4c9af"> $USER!</span>'';
           
           hide_input = false;
           position = "0, -200";
