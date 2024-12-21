@@ -12,13 +12,12 @@ alphas=(
     "80" "4d" "99" "cc" "b3" "e6" "ff" "d9" "4d" "00"
 )
 
-# Constants
 cache_file="/tmp/flicker_random_cache"
 cache_duration=2  # Duration in seconds to retain random values
 visible_color="#d2738a"
 invisible_color="#e4c9af"
 flicker_chance=14  # Chance to trigger alpha channel flickering (1 in N)
-flip_chance=20  # Chance to flip text for min-max frames (1 in X)
+flip_chance=20  # Chance to flip text for min-max frames (1 in N)
 flip_min=3 
 flip_max=5 
 pulse_duration=60  # Total frames for one alpha breathing cycle
