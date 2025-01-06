@@ -260,6 +260,7 @@
     postgresql
     
     #### Desktop:
+    asciiquarium-transparent
     brightnessctl
     catppuccin-cursors
     clipse
@@ -271,7 +272,9 @@
     hyprshot
     hyprcursor
     libnotify
+    neo
     power-profiles-daemon
+    fuzzel
     rofi-wayland
     slurp
     swww

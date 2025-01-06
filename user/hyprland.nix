@@ -68,32 +68,35 @@
           gaps_in = 5
           gaps_out = 5
           border_size = 2
-          col.active_border = rgba(e5b9c6ff) rgba(c293a3ff) 45deg
-          col.inactive_border = 0xff382D2E
+          col.active_border = rgba(d2738aff)
+          col.inactive_border = rgba(d2738a99)
           no_border_on_floating = false
           layout = dwindle
+          resize_on_border = true
       }
 
       decoration {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-          rounding = 4
+          rounding = 6
           active_opacity = 1.0
-          inactive_opacity = 0.50
+          inactive_opacity = 0.9
+          fullscreen_opacity = 1.0
           blur:enabled = true
-          blur:size = 6
-          blur:passes = 3
+          blur:size = 10
+          blur:passes = 2
           blur:new_optimizations = true
-          blur:xray = true
-          blur:ignore_opacity = true
+          blur:xray = false
           drop_shadow = false
           shadow_ignore_window = true
           shadow_offset = 1 2
           shadow_render_power = 5
           shadow_range = 10
           col.shadow = 0x66404040
-          blurls = waybar
-          blurls = lockscreen
+          layerrule = blur, waybar
+          layerrule = blur, rofi
+          layerrule = blur, launcher
+
       }
 
       animations {
@@ -101,7 +104,7 @@
 
           # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+          bezier = myBezier, 0.05, 0.9, 0.1, 1.1
 
           animation = windows, 1, 7, myBezier
           animation = windowsOut, 1, 7, default, popin 80%
@@ -109,6 +112,7 @@
           animation = borderangle, 1, 8, default
           animation = fade, 1, 7, default
           animation = workspaces, 1, 6, default
+          animation = layers, 1, 3, default, popin 80%
       }
 
       dwindle {
@@ -142,7 +146,9 @@
       bind = $mainMod, M, exit, 
       bind = $mainMod, E, exec, dolphin
       bind = $mainMod, F, togglefloating, 
-      bind = $mainMod, R, exec, rofi -show drun -show-icons
+      # bind = $mainMod, R, exec, rofi -show drun -show-icons
+      bind = $mainMod, R, exec, fuzzel
+
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, L, exec, hyprlock
@@ -212,6 +218,8 @@
       windowrulev2 = move 20 70,class:(clipse)
       windowrulev2 = xray 0,class:(clipse)
       bind = $mainMod, V, exec, kitty --class clipse -e fish -c 'clipse'
+      layerrule = animation popin, launcher
+
 
       # Screenshots
       bind = , print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
@@ -222,8 +230,8 @@
       bind = SHIFT CTRL, print, exec, hyprshot -m region --clipboard-only
 
 
-      # Kitty
-      windowrulev2 = opacity 0.9 0.8, class:(kitty)
+
+      
 
     '';
   };
