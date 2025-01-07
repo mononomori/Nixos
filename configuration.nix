@@ -274,7 +274,6 @@
     libnotify
     neo
     power-profiles-daemon
-    fuzzel
     rofi-wayland
     slurp
     swww
