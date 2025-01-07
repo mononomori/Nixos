@@ -6,21 +6,30 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Hardware pkgs
-    nixos-hardware.url = "github:NixOs/nixos-hardware/master";
+    nixos-hardware = {
+      url = "github:NixOs/nixos-hardware/master";
+    };
     # Enable home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Latest version of Hyprland
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    swww = {
+      url = "github:LGFae/swww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, hyprland, swww, ... }@inputs:
     let
       # ---- System Settings ---- #
       system = "x86_64-linux";
@@ -79,6 +88,7 @@
             ./user/kitty.nix
             ./user/hyprland.nix
             ./user/hypridle.nix
+            ./user/fuzzel.nix
           ];
         };
       };

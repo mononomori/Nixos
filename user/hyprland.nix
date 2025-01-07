@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, swww, ... }:
 
 
 {
@@ -28,12 +28,14 @@
       exec-once = sway-audio-idle-inhibit
       windowrulev2 = idleinhibit fullscreen, class:.*
 
-
-
       exec-once = waybar
       exec-once = hyprpaper
       exec-once = nm-applet
       exec-once = blueman-applet
+
+      #### wallpaper
+      exec-once = swww-daemon 
+      exec-once = sleep 4 && swww img /etc/nixos/user/lainwallpaper1.jpg
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -68,7 +70,7 @@
           gaps_in = 5
           gaps_out = 5
           border_size = 2
-          col.active_border = rgba(d2738aff)
+          col.active_border = rgba(d2738aff) rgba(ba667aff) 45deg
           col.inactive_border = rgba(d2738a99)
           no_border_on_floating = false
           layout = dwindle
@@ -83,7 +85,7 @@
           inactive_opacity = 0.9
           fullscreen_opacity = 1.0
           blur:enabled = true
-          blur:size = 10
+          blur:size = 7
           blur:passes = 2
           blur:new_optimizations = true
           blur:xray = false
@@ -104,7 +106,7 @@
 
           # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.1
+          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
 
           animation = windows, 1, 7, myBezier
           animation = windowsOut, 1, 7, default, popin 80%
