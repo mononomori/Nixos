@@ -35,7 +35,7 @@
 
       #### wallpaper
       exec-once = swww-daemon 
-      exec-once = sleep 4 && swww img /etc/nixos/user/lainwallpaper1.jpg
+      exec-once = sleep 1 && swww img /etc/nixos/user/lainwallpaper1.jpg
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf

@@ -274,7 +274,6 @@
     libnotify
     neo
     power-profiles-daemon
-    rofi-wayland
     slurp
     swww
     waybar
