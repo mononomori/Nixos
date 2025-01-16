@@ -35,7 +35,7 @@
 
       #### wallpaper
       exec-once = swww-daemon 
-      exec-once = sleep 1 && swww img /etc/nixos/user/lainwallpaper1.jpg
+      exec-once = sleep 2 && swww img /etc/nixos/user/lainwallpaper1.jpg
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -148,8 +148,8 @@
       bind = $mainMod, M, exit, 
       bind = $mainMod, E, exec, dolphin
       bind = $mainMod, F, togglefloating, 
-      # bind = $mainMod, R, exec, rofi -show drun -show-icons
       bind = $mainMod, R, exec, fuzzel
+      bind = $mainMod, B, exec, pkill waybar || waybar
 
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
@@ -221,7 +221,7 @@
       windowrulev2 = xray 0,class:(clipse)
       bind = $mainMod, V, exec, kitty --class clipse -e fish -c 'clipse'
       layerrule = animation popin, launcher
-
+      layerrule = animation slide top, waybar
 
       # Screenshots
       bind = , print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
@@ -232,8 +232,6 @@
       bind = SHIFT CTRL, print, exec, hyprshot -m region --clipboard-only
 
 
-
-      
 
     '';
   };
