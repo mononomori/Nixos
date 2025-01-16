@@ -13,7 +13,7 @@
         width = 4;
       };
       colors = {
-        background = "00000020";
+        background = "00000080";
         text = "e4c9afff";
         prompt = "d2738aff";
         placeholder = "838ba7ff";
