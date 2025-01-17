@@ -254,10 +254,12 @@
     gcc
     glib
     glibc
+    gnumake
     inklecate
     killall
     openjdk
     postgresql
+    zig
     
     #### Desktop:
     asciiquarium-transparent
@@ -316,6 +318,7 @@
     #### Network:
     networkmanager
     networkmanagerapplet
+    networkmanager_dmenu
 
     #### Terminal:
     fish
