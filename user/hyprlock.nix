@@ -59,7 +59,7 @@
           valign = "center";
         }
         {
-          text = ''cmd[update:50] echo "$(/etc/nixos/user/hyprlock_flickering_text.sh)"'';
+          text = ''cmd[update:50] echo "$(/etc/nixos/user/scripts/hyprlock-flickering-text.sh)"'';
           color = "rgba(242, 243, 244, 0.75)";
           font_size = 44;
           font_family = "Iosevka Term";

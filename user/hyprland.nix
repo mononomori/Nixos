@@ -223,6 +223,7 @@
       layerrule = animation popin, launcher
       layerrule = animation slide top, waybar
 
+
       # Screenshots
       bind = , print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
       bind = SHIFT, print, exec, hyprshot -m output --clipboard-only

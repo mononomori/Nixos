@@ -13,6 +13,9 @@
   # manage.
   home.username = "_2b";
   home.homeDirectory = "/home/_2b";
+  home.sessionPath = [
+  ];
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -47,6 +50,9 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+
+    ".local/bin/power-menu".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/user/scripts/fuzzel-power-menu.sh";
+
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -126,6 +132,7 @@
   #  /etc/profiles/per-user/_2b/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+
     # EDITOR = "emacs";
   };
   # Let Home Manager install and manage itself.
