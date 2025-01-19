@@ -27,4 +27,14 @@
       };
     };
   };
+
+  xdg.desktopEntries = {
+    power-menu = {
+      name = "Power Menu";
+      exec = ".local/bin/power-menu";
+      icon = "system-shutdown";
+      terminal = false;
+      type = "Application";
+    };
+  };
 }
