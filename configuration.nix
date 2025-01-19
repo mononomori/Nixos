@@ -148,6 +148,8 @@
     XDG_CURRENT_SESSION = "Hyprland";
   };
 
+  environment.localBinInPath = true;
+
   #### Graphics Drivers:
    hardware.graphics = {
      enable = true;
