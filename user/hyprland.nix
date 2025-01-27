@@ -225,14 +225,15 @@
 
 
       # Screenshots
-      bind = , print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT, print, exec, hyprshot -m output --clipboard-only
-      bind = $mainMod, print, exec, hyprshot -m window -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT $mainMod, print, exec, hyprshot -m window --clipboard-only
-      bind = CTRL, print, exec, hyprshot -m region -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT CTRL, print, exec, hyprshot -m region --clipboard-only
+      bind = , print, exec, hyprshot --freeze -m output -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT, print, exec, hyprshot --freeze -m output  --clipboard-only
+      bind = $mainMod, print, exec, hyprshot --freeze -m window -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT $mainMod, print, exec, hyprshot --freeze  -m window --clipboard-only
+      bind = CTRL, print, exec, hyprshot --freeze -m region -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT CTRL, print, exec, hyprshot --freeze -m region --clipboard-only
 
-
+      layerrule = noanim, hyprpicker
+      layerrule = noanim, selection
 
     '';
   };
