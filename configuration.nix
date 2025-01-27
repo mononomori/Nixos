@@ -16,8 +16,11 @@
   nix = {
     gc = {
       automatic = true;
-      dates = "weekkly";
+      dates = "weekly";
       options = "--delete-older-than +7";
+    };
+    optimise = {
+      automatic = true;
     };
     settings = {
       experimental-features = [ "nix-command" "flakes"];
@@ -216,6 +219,8 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "adobe-reader-9.5.5"
+    "dotnet-sdk_7"
+    "dotnet-runtime_7"
   ];
 
   # Allow unfree packages
@@ -253,10 +258,8 @@
     bc
     clang
     dotnet-sdk
-    dotnet-sdk_7
     dotnet-sdk_8
     dotnet-runtime
-    dotnet-runtime_7
     dotnet-runtime_8
     gcc
     glib
@@ -279,6 +282,7 @@
     gtk3
     gtk4
     hyprshot
+    hyprpicker
     hyprcursor
     libnotify
     neo
@@ -375,8 +379,7 @@
     monaspace
     dina-font
     proggyfonts
-    nerdfonts
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
