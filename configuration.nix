@@ -214,6 +214,10 @@
     };
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "adobe-reader-9.5.5"
+  ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   
@@ -235,6 +239,7 @@
 	      ];
     })
     chromium
+    adobe-reader
 
     #### Communication:
     caprine-bin
