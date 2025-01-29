@@ -6,9 +6,11 @@
     hyprshot
     hyprpicker
     hyprcursor
+    waybar
   ];
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = false;
 
 
     extraConfig = ''
