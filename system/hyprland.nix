@@ -8,6 +8,7 @@
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
   # Required for xdg-open, xdg-mime, etc.
