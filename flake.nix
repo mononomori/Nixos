@@ -48,9 +48,6 @@
         inherit system;
         config = {
           allowUnfree = true;
-          permittedInsecurePackages = [
-            "electron-28.2.10"
-          ];
         };
       };
     in
@@ -65,15 +62,20 @@
           inherit gitusers;
         };
         modules = [ 
+          ./system/audio/blueman.nix
+          ./system/audio/pipewire.nix
+          ./system/fonts.nix
+          ./system/hyprland.nix
           nixos-hardware.nixosModules.framework-13-7040-amd
           ./configuration.nix
-          inputs.home-manager.nixosModules.default
-          inputs.hyprland.nixosModules.default
-          ./login-manager.nix
-          ./git.nix
-          ./security.nix
-          ./disk-utils.nix
-          ./swap.nix
+          home-manager.nixosModules.default
+          hyprland.nixosModules.default
+          ./system/login-manager.nix
+          ./system/git.nix
+
+          ./system/security.nix
+          ./system/disk-utils.nix
+          ./system/swap.nix
         ];
       };
       homeConfigurations = {
@@ -84,11 +86,6 @@
           inherit inputs;
           modules = [
             ./user/home.nix
-            ./user/hyprlock.nix
-            ./user/kitty.nix
-            ./user/hyprland.nix
-            ./user/hypridle.nix
-            ./user/fuzzel.nix
           ];
         };
       };

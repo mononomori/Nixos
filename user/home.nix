@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./hyprlock.nix
+    ./desktop/hyprlock.nix
     ./kitty.nix
-    ./hyprland.nix
-    ./hypridle.nix
+    ./desktop/hyprland.nix
+    ./desktop/hypridle.nix
     ./fuzzel.nix
   ];
   

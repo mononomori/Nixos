@@ -8,8 +8,6 @@
   imports = [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Include home-manager
-      inputs.home-manager.nixosModules.default
     ];
   
   #### Extra Options and Flakes
@@ -124,32 +122,13 @@
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.desktopManager.plasma5.enable = true;
 
-  # Enable hyprland window manager
-  programs.hyprland = {
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    enable = true;
-    xwayland.enable = true;
-  };
-  
-  #### XDG:
-  xdg = {
-    autostart.enable = true;
-    portal = {
-      enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal
-        pkgs.xdg-desktop-portal-gtk
-      ];
-    };
-  };
+
+
+
+
  
 
-  #### Environment Session Variables:
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_CURRENT_SESSION = "Hyprland";
-  };
+
 
   environment.localBinInPath = true;
 
@@ -169,27 +148,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  
-
-  # Enable sound with pipewire.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-  };
-
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
-
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -211,16 +169,17 @@
   home-manager = {
     # also pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
-    backupFileExtension = "hm-backup";
+    backupFileExtension = "backup";
     users = {
       "_2b" = import ./user/home.nix;
     };
   };
 
   nixpkgs.config.permittedInsecurePackages = [
+    "electron-28.2.10"
     "adobe-reader-9.5.5"
-    "dotnet-sdk_7"
-    "dotnet-runtime_7"
+    "dotnet-sdk-7.0.410"
+    "dotnet-runtime-7.0.20"
   ];
 
   # Allow unfree packages
@@ -229,13 +188,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #### Audio:
-    bluez
-    bluez-tools
-    pavucontrol
-    pipewire
-    wireplumber
-
     #### Browser:
     (google-chrome.override {
        commandLineArgs = [
@@ -256,10 +208,13 @@
     #### Compilation:
     bash
     bc
+    cachix
     clang
+    dotnet-sdk_7
     dotnet-sdk
     dotnet-sdk_8
     dotnet-runtime
+    dotnet-runtime_7
     dotnet-runtime_8
     gcc
     glib
@@ -277,26 +232,18 @@
     catppuccin-cursors
     clipse
     dunst
-    grim
     gtk2
     gtk3
     gtk4
-    hyprshot
-    hyprpicker
-    hyprcursor
+
     libnotify
     neo
     power-profiles-daemon
-    slurp
     swww
-    waybar
-    (waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-    )
+
     wl-clipboard
-    xdg-desktop-portal
-    xdg-utils
+
+
 
     #### Developer Tools:
     vscode-fhs    
@@ -320,6 +267,7 @@
 
 
     #### Gaming:
+    bolt-launcher
     gamescope
     freesweep
     steam
@@ -367,19 +315,7 @@
 
   
   # Fonts:
-  fonts.packages = with pkgs; [
-    iosevka
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    monaspace
-    dina-font
-    proggyfonts
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

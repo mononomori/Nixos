@@ -1,9 +1,15 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  programs.waybar.enable = true;
+  home.packages = with pkgs; [
+    waybar
+    (waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      })
+    )
+  ];
 
-  
+  programs.waybar.enable = true;
 
   programs.waybar.settings = {
     layer = "top"; # Waybar at top layer

@@ -2,6 +2,11 @@
 
 
 {
+  home.packages = with pkgs; [
+    hyprshot
+    hyprpicker
+    hyprcursor
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
 

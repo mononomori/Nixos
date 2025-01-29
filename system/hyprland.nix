@@ -1,6 +1,7 @@
 { config, pkgs, lib, inputs, ...}:
 {
 
+
   # Enable hyprland window manager
   programs.hyprland = {
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -8,6 +9,11 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  # Required for xdg-open, xdg-mime, etc.
+  environment.systemPackages = with pkgs; [
+    xdg-utils
+  ];
 
   # Enable hyprland cache for faster builds
   nix.settings = {
@@ -38,7 +44,6 @@
       ];
     };
   };
-
 
 
 }
