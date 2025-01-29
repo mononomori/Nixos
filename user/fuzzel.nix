@@ -36,5 +36,13 @@
       terminal = false;
       type = "Application";
     };
+    # Fix to get bolt-launcher to work with fuzzel
+    bolt-launcher = {
+      name = "Bolt Launcher";
+      exec = "/run/current-system/sw/bin/bolt-launcher";
+      icon = "/etc/nixos/user/bolt-launcher-icon-256.png";
+      terminal = false;
+      type = "Application";
+    };
   };
 }
