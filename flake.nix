@@ -73,7 +73,7 @@
           ./system/login-manager.nix
           ./system/git.nix
           ./system/power-management.nix
-
+          ./system/networking.nix
           ./system/security.nix
           ./system/disk-utils.nix
           ./system/swap.nix
