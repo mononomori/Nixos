@@ -30,7 +30,6 @@
   # Bootloader
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "iwlwifi" ];
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
@@ -46,66 +45,6 @@
   hardware.firmware = [ pkgs.linux-firmware ];
   services.fwupd.enable = true;
 
-  # Power Management.
-
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking and setup hostname
-  networking = {
-    hostName = "YoRNix";
-    networkmanager = {
-      enable = true;
-      wifi.powersave = false;
-      wifi.backend = "iwd";
-    };
-    wireless.iwd.enable = true;
-    wireless.iwd.settings = {
-      Network = {
-        EnableIPv6 = true;
-        RoutePriorityOffset = 300;
-      };
-      Settings = {
-        AutoConnect = true;
-      };
-    };
-    nameservers = [
-      "1.1.1.1"
-      "9.9.9.9"
-      "4.4.4.4"
-      "8.8.8.8"
-      "8.8.4.4"
-    ];
-  };
-
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Enable firewall and open TCP/UDP ports.
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 80 443 ];
-    allowedUDPPortRanges = [
-      { from = 4000; to = 4007; }
-      { from = 8000; to = 8010; }
-    ];
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
   # Set your time zone.
 
   time.timeZone = "America/Vancouver";
@@ -118,13 +57,6 @@
 
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.desktopManager.plasma5.enable = true;
-
-
-
-
-
- 
-
 
 
   environment.localBinInPath = true;
@@ -266,11 +198,6 @@
     ttyper
     vitetris
 
-    #### Network:
-    networkmanager
-    networkmanagerapplet
-    networkmanager_dmenu
-
     #### Terminal:
     fish
   
@@ -296,7 +223,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  programs.nm-applet.enable = true;
+
 
   services.flatpak.enable = true;
 
