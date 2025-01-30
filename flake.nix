@@ -75,8 +75,8 @@
           ./system/power-management.nix
           ./system/networking.nix
           ./system/security.nix
-          ./system/disk-utils.nix
-          ./system/swap.nix
+          ./system/disk/disk-utils.nix
+          ./system/disk/swap.nix
         ];
       };
       homeConfigurations = {
