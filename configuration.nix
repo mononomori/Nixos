@@ -47,10 +47,7 @@
   services.fwupd.enable = true;
 
   # Power Management.
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
-  };
+
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -235,15 +232,10 @@
     gtk2
     gtk3
     gtk4
-
     libnotify
     neo
-    power-profiles-daemon
     swww
-
     wl-clipboard
-
-
 
     #### Developer Tools:
     vscode-fhs    
@@ -286,7 +278,6 @@
     cbonsai
     htop
     neofetch
-    powertop
     wev
 
     #### Text Utility:
@@ -305,17 +296,9 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  # Power Profiles:
-  services.power-profiles-daemon.enable = true;
-
   programs.nm-applet.enable = true;
 
   services.flatpak.enable = true;
-
-
-  
-  # Fonts:
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
