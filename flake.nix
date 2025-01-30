@@ -72,6 +72,7 @@
           hyprland.nixosModules.default
           ./system/login-manager.nix
           ./system/git.nix
+          ./system/power-management.nix
 
           ./system/security.nix
           ./system/disk-utils.nix
