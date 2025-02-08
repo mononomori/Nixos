@@ -21,7 +21,7 @@
       listener = [ 
         {
           timeout = 150;                                
-          on-timeout = "brightnessctl -s set 10";       
+          on-timeout = "brightnessctl -s set 50%-";       
           on-resume = "brightnessctl -r";               
         }
         # keyboard backlight when timout has passed, screen on when activity detected.
