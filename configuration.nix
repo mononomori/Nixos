@@ -206,6 +206,7 @@
     htop
     neofetch
     wev
+    fastfetch
 
     #### Text Utility:
     helix
