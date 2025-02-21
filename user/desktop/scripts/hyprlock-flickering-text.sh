@@ -16,7 +16,7 @@ cache_file="/tmp/flicker_random_cache"
 cache_duration=2  # Duration in seconds to retain random values
 visible_color="#d2738a"
 invisible_color="#e4c9af"
-flicker_chance=14  # Chance to trigger alpha channel flickering (1 in N)
+flicker_chance=1  # Chance to trigger alpha channel flickering (1 in N)
 flip_chance=20  # Chance to flip text for min-max frames (1 in N)
 flip_min=3 
 flip_max=7 
@@ -25,17 +25,16 @@ pulse_duration=60  # Total frames for one alpha breathing cycle
 current_time=$(date +%s)
 
 # Retrieve or generate cached random values
-if [[ -f "$cache_file" ]]; then
-    read last_time visible_random_value invisible_random_value < "$cache_file"
-    if (( current_time - last_time >= cache_duration )); then
-        visible_random_value=$(( (RANDOM + current_time) % flicker_chance ))
-        invisible_random_value=$(( (RANDOM + current_time + 17) % flicker_chance ))
-        echo "$current_time $visible_random_value $invisible_random_value" > "$cache_file"
-    fi
-else
+update_cache() {
     visible_random_value=$(( (RANDOM + current_time) % flicker_chance ))
     invisible_random_value=$(( (RANDOM + current_time + 17) % flicker_chance ))
     echo "$current_time $visible_random_value $invisible_random_value" > "$cache_file"
+}
+
+if [[ ! -f "$cache_file" ]] || (( current_time - $(awk '{print $1}' "$cache_file") >= cache_duration )); then
+    update_cache
+else
+    read last_time visible_random_value invisible_random_value < "$cache_file"
 fi
 
 # Calculate frame index
@@ -69,7 +68,7 @@ invisible_flip_counter=0
 # Flickering logic for "Become visible"
 visible_output=""
 if (( visible_random_value == 0 )); then
-    if (( frame >= 60 )); then
+    if (( frame >= 50 && frame <= 70 )); then
         visible_color_flicker="$invisible_color$combined_alpha"
         visible_text="invisible"
     fi
@@ -98,7 +97,7 @@ fi
 # Flickering logic for "You are invisible"
 invisible_output=""
 if (( invisible_random_value == 0 )); then
-    if (( frame <= 60 )); then
+    if (( frame >= 50 && frame <= 70 )); then
         invisible_color_flicker="$visible_color$combined_alpha"
         invisible_text="visible"
     fi

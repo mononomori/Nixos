@@ -158,6 +158,7 @@
       bind = $mainMod, M, exit, 
       bind = $mainMod, E, exec, dolphin
       bind = $mainMod, F, togglefloating, 
+      bind = $mainMod ALT, F, fullscreen 
       bind = $mainMod, R, exec, fuzzel
       bind = $mainMod, B, exec, pkill waybar || waybar
 

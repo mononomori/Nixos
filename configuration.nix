@@ -126,6 +126,9 @@
     })
     chromium
     adobe-reader
+    inputs.zen-browser.packages."${system}".default # beta
+    inputs.zen-browser.packages."${system}".beta
+    inputs.zen-browser.packages."${system}".twilight
 
     #### Communication:
     caprine-bin
@@ -185,9 +188,12 @@
     unzip
     wget
     yazi
+    xdragon
+    zathura
     zip
     zoxide
-    xdragon
+
+
 
 
     #### Gaming:
