@@ -8,6 +8,8 @@
   programs.kitty = {
     enable = true;
     extraConfig = ''
+      confirm_os_window_close 0
+      shell_integration enabled
       font_family Iosevka Term
       font_size 14.0
       bold_font auto

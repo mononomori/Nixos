@@ -31,17 +31,17 @@
       # Execute your favorite apps at launch
 
       #### hypridle
-      exec-once = hypridle
-      exec-once = sway-audio-idle-inhibit
+      exec-once = systemctl --user enable --now hypridle.service
+      exec-once = uwsm app -- sway-audio-idle-inhibit
       windowrulev2 = idleinhibit fullscreen, class:.*
 
-      exec-once = waybar
-      exec-once = hyprpaper
-      exec-once = nm-applet
-      exec-once = blueman-applet
+      exec-once = systemctl --user enable --now waybar.service
+
+      exec-once = systemctl --user enable --now hyprpaper.service
+      exec-once = uwsm app -- blueman-applet
 
       #### wallpaper
-      exec-once = swww-daemon 
+      exec-once = uwsm app -- swww-daemon 
       exec-once = sleep 2 && swww img /etc/nixos/user/lainwallpaper1.jpg
 
       # Source a file (multi-file configs)
@@ -153,18 +153,21 @@
       $mainMod = SUPER
 
 
-      bind = $mainMod, T, exec, kitty
+      bind = $mainMod, T, exec, uwsm app -- kitty
       bind = $mainMod, C, killactive, 
       bind = $mainMod, M, exit, 
-      bind = $mainMod, E, exec, dolphin
+      bind = $mainMod, E, exec, uwsm app -- kitty --class yazi -e fish -c 'yazi'
+      windowrulev2 = float,class:(yazi)
+      windowrulev2 = size 900 600,class:(yazi)
+
       bind = $mainMod, F, togglefloating, 
       bind = $mainMod ALT, F, fullscreen 
-      bind = $mainMod, R, exec, fuzzel
-      bind = $mainMod, B, exec, pkill waybar || waybar
+      bind = $mainMod, R, exec, uwsm app -- fuzzel --launch-prefix="uwsm app -- "
+      bind = $mainMod, B, exec, uwsm app -- pkill waybar || uwsm app -- waybar
 
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-      bind = $mainMod, L, exec, hyprlock
+      bind = $mainMod, L, exec, uwsm app -- hyprlock
 
       # Change focused window
       bind = $mainMod, left, movefocus, l
@@ -225,23 +228,23 @@
       binde =, xf86monbrightnessdown, exec, brightnessctl set 10%-
 
       # Clipboard
-      exec-once = clipse -listen
+      exec-once = uwsm app -- clipse -listen
       windowrulev2 = float,class:(clipse)
       windowrulev2 = size 700 800,class:(clipse)
       windowrulev2 = move 20 70,class:(clipse)
       windowrulev2 = xray 0,class:(clipse)
-      bind = $mainMod, V, exec, kitty --class clipse -e fish -c 'clipse'
+      bind = $mainMod, V, exec, uwsm app -- kitty --class clipse -e fish -c 'clipse'
       layerrule = animation popin, launcher
       layerrule = animation slide top, waybar
 
 
       # Screenshots
-      bind = , print, exec, hyprshot --freeze -m output -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT, print, exec, hyprshot --freeze -m output  --clipboard-only
-      bind = $mainMod, print, exec, hyprshot --freeze -m window -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT $mainMod, print, exec, hyprshot --freeze  -m window --clipboard-only
-      bind = CTRL, print, exec, hyprshot --freeze -m region -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT CTRL, print, exec, hyprshot --freeze -m region --clipboard-only
+      bind = , print, exec, uwsm app -- hyprshot --freeze -m output -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT, print, exec, uwsm app -- hyprshot --freeze -m output  --clipboard-only
+      bind = $mainMod, print, exec, uwsm app -- hyprshot --freeze -m window -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT $mainMod, print, exec, uwsm app -- hyprshot --freeze  -m window --clipboard-only
+      bind = CTRL, print, exec,uwsm app -- hyprshot --freeze -m region -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT CTRL, print, exec, uwsm app -- hyprshot --freeze -m region --clipboard-only
 
       layerrule = noanim, hyprpicker
       layerrule = noanim, selection

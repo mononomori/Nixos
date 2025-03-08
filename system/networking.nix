@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     networkmanager
-    networkmanagerapplet
     networkmanager_dmenu
   ];
 
@@ -51,6 +50,4 @@
     ];
   };
 
-  # Enable networkmanager applet.
-  programs.nm-applet.enable = true;
 }

@@ -76,7 +76,20 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [
+      pkgs.gutenprint
+      pkgs.hplip
+      pkgs.hplipWithPlugin
+    ];
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -221,6 +234,9 @@
     obsidian
     vim
     emacs
+
+    #### Printing:
+    gutenprint
   ];
 
   # Steam:

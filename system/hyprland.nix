@@ -28,6 +28,8 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_CURRENT_SESSION = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
+    GDK_SCALE = "1";
+    GDP_DPI_SCALE = "1";
 
   };
 
@@ -38,13 +40,22 @@
     autostart.enable = true;
     portal = {
       enable = true;
+      config = {
+        common = {
+          default = [ "hyprland" ];
+        };
+        hyprland = {
+          default = [
+            "gtk"
+            "hyprland"
+          ];
+        };
+      };
       extraPortals = [
-        pkgs.xdg-desktop-portal
         pkgs.xdg-desktop-portal-gtk
         inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       ];
+      xdgOpenUsePortal = true;
     };
   };
-
-
 }
