@@ -119,6 +119,7 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-28.2.10"
+    "electron-27.3.11"
     "adobe-reader-9.5.5"
     "dotnet-sdk-7.0.410"
     "dotnet-runtime-7.0.20"
@@ -161,6 +162,7 @@
     dotnet-runtime
     dotnet-runtime_7
     dotnet-runtime_8
+    python3
     gcc
     glib
     glibc
@@ -232,6 +234,7 @@
     nano
     neovim
     obsidian
+    logseq
     vim
     emacs
 

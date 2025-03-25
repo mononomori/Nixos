@@ -10,7 +10,7 @@
     extraConfig = ''
       confirm_os_window_close 0
       shell_integration enabled
-      font_family Iosevka Term
+      font_family Iosevka Aile Iaso
       font_size 14.0
       bold_font auto
       italic_font auto

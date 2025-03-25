@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, iosevka-iaso, ... }:
 
 {
   imports = [
@@ -29,6 +29,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -81,8 +83,13 @@
   #Gtk
   gtk = {
     enable = true;
-    font.name = "TeX Gyre Adventor";
-    font.size = 10;
+    font = {
+      # package = pkgs.nerd-fonts.mononoki;
+      # name = "Mononoki Nerd Font Regular";
+      # size = 10;
+      name = "OCR-B Normal";
+      size = 10;
+    };
     theme = {
       name = "Juno-mirage";
       package = pkgs.juno-theme;

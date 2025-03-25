@@ -30,6 +30,7 @@
     zen-browser = {
         url = "github:0xc000022070/zen-browser-flake";
     };
+
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, hyprland, swww, ... }@inputs:

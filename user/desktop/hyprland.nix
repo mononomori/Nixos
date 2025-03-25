@@ -42,7 +42,7 @@
 
       #### wallpaper
       exec-once = uwsm app -- swww-daemon 
-      exec-once = sleep 2 && swww img /etc/nixos/user/lainwallpaper1.jpg
+      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/user/lainwallpaper1.jpg
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -118,13 +118,24 @@
 
           bezier = myBezier, 0.05, 0.9, 0.1, 1.05
 
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-          animation = border, 1, 10, default
-          animation = borderangle, 1, 8, default
-          animation = fade, 1, 7, default
-          animation = workspaces, 1, 6, default
-          animation = layers, 1, 3, default, popin 80%
+          enabled = true
+          bezier = wind, 0.05, 0.9, 0.1, 1.05
+          bezier = winIn, 0.1, 1.1, 0.1, 1.1
+          bezier = winOut, 0.1, 1.1, 0.1, 1.1
+          bezier = liner, 1, 1, 1, 1
+          bezier = decel, 0.05, 0.7, 0.1, 1
+          bezier = accel, 0.1, 0, 0.8, 0.15
+          animation = windows, 1, 6, wind, slide
+          animation = windowsIn, 1, 6, winIn, slide
+          animation = windowsOut, 1, 3, accel, popin 60%
+          # animation = windowsOut, 1, 5, winOut, slide
+          animation = windowsMove, 1, 5, wind, slide
+          animation = border, 1, 1, liner
+          # animation = borderangle, 1, 30, liner, loop
+          animation = fade, 1, 10, default
+          animation = workspaces, 1, 5, wind
+          animation = layersIn, 1, 3, decel, popin 60%
+          animation = layersOut, 1, 3, accel, popin 60%
       }
 
       dwindle {
@@ -154,11 +165,14 @@
 
 
       bind = $mainMod, T, exec, uwsm app -- kitty
+      bind = $mainMod ALT, T, exec, [float; move 700 850; size 700 100] uwsm app -- kitty
       bind = $mainMod, C, killactive, 
       bind = $mainMod, M, exit, 
       bind = $mainMod, E, exec, uwsm app -- kitty --class yazi -e fish -c 'yazi'
       windowrulev2 = float,class:(yazi)
       windowrulev2 = size 900 600,class:(yazi)
+      windowrulev2 = move 20 70,class:(yazi)
+      windowrulev2 = xray 0,class:(yazi)
 
       bind = $mainMod, F, togglefloating, 
       bind = $mainMod ALT, F, fullscreen 
