@@ -68,7 +68,7 @@
         modules = [ 
           ./system/audio/blueman.nix
           ./system/audio/pipewire.nix
-          ./system/fonts.nix
+          ./system/fonts/fonts.nix
           ./system/hyprland.nix
           nixos-hardware.nixosModules.framework-13-7040-amd
           ./configuration.nix

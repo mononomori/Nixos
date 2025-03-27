@@ -67,10 +67,7 @@
     # '';
   };
 
- #### Colors:
- # {"Smoky black":"0B0405","Blush":"CA6E85","China rose":"B56577","China rose 2":"9E5668","Quinacridone magenta":"864958","Wine":"6A3945","Rosy brown":"C69A8E","Rosy brown 2":"C9928D","Khaki":"C1B291","Khaki 2":"ACA082"}
-
-
+ 
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -87,7 +84,7 @@
       # package = pkgs.nerd-fonts.mononoki;
       # name = "Mononoki Nerd Font Regular";
       # size = 10;
-      name = "OCR-B Normal";
+      name = "OCRF Light";
       size = 10;
     };
     theme = {

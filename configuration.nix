@@ -188,6 +188,8 @@
     wl-clipboard
 
     #### Developer Tools:
+    fontforge
+    inkscape
     vscode-fhs    
     staruml
     unityhub    
