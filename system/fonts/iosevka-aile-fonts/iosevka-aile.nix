@@ -1,9 +1,9 @@
 { pkgs }:
 
 pkgs.stdenv.mkDerivation {
-  pname = "iosevkaetoile-font";
+  pname = "iosevkaaile-font";
   version = "1.0";
-  src = ./IosevkaEtoile-Fonts;
+  src = ./.;
   dontUnpack = true;
 
   installPhase = ''

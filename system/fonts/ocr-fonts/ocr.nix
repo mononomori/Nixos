@@ -1,9 +1,9 @@
 { pkgs }:
-# Custom Iosevka font that uses some similar elements to OCR-B Font
+#OCR-F fonts, which are a modernized version of OCR-B fonts.
 pkgs.stdenv.mkDerivation {
-  pname = "iosevkab-font";
+  pname = "ocr-font";
   version = "1.0";
-  src = ./IosevkaB-Fonts;
+  src = ./.;
   dontUnpack = true;
 
   installPhase = ''
