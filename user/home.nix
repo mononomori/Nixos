@@ -84,8 +84,8 @@
       # package = pkgs.nerd-fonts.mononoki;
       # name = "Mononoki Nerd Font Regular";
       # size = 10;
-      name = "OCRF Light";
-      size = 10;
+      name = "IosevkaB Extended Medium";
+      size = 12;
     };
     theme = {
       name = "Juno-mirage";

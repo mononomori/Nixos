@@ -1,21 +1,17 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  ocrFonts = pkgs.stdenv.mkDerivation {
-    pname = "ocr-font";
-    version = "1.0";
-    src = ./OCR-Fonts;
-    dontunpack = true;
-
-    installPhase = ''
-      mkdir -p $out/share/fonts/truetype
-      cp $src/*.ttf $out/share/fonts/truetype/
-    '';
-  };
+  iosevka-aile = pkgs.callPackage ./iosevka-aile.nix { };
+  iosevka-etoile = pkgs.callPackage ./iosevka-etoile.nix { };
+  iosevka-b = pkgs.callPackage ./iosevka-b.nix { };
+  ocr = pkgs.callPackage ./ocr.nix { };
 in
 {
   fonts.packages = with pkgs; [
     iosevka
+    iosevka-aile
+    iosevka-b
+    iosevka-etoile
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
@@ -24,7 +20,7 @@ in
     fira-code-symbols
     mplus-outline-fonts.githubRelease
     monaspace
-    ocrFonts
+    ocr
     dina-font
     proggyfonts
 
