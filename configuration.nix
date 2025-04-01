@@ -204,7 +204,6 @@
     nnn
     unzip
     wget
-    yazi
     xdragon
     zathura
     zip
