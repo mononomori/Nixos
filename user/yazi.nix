@@ -1,15 +1,18 @@
 { config, pkgs, lib, inputs, ... }:
+
 let
 	yazi-plugins = pkgs.fetchFromGitHub {
 		owner = "yazi-rs";
 		repo = "plugins";
-		rev = "...";
-		hash = "sha256-...";
+		rev = "273019910c1111a388dd20e057606016f4bd0d17";
+		hash = "sha256-80mR86UWgD11XuzpVNn56fmGRkvj0af2cFaZkU8M31I=";
 	};
 in {
 	programs.yazi = {
+    package = inputs.yazi.packages.${pkgs.system}.default;
+
 		enable = true;
-		enableZshIntegration = true;
+		enableFishIntegration = true;
 		shellWrapperName = "y";
 
 		settings = {
@@ -18,6 +21,7 @@ in {
           1
           4
           3
+          
         ];
         sort_by = "natural";
         sort_sensitive = true;
@@ -31,10 +35,10 @@ in {
         image_filter = "lanczos3";
         image_quality = 90;
         tab_size = 1;
-        max_width = 600;
-        max_height = 900;
+        max_width = 1000;
+        max_height = 1000;
         cache_dir = "";
-        ueberzug_scale = 1;
+        ueberzug_scale = 0;
         ueberzug_offset = [
           0
           0
@@ -49,21 +53,28 @@ in {
     };
 		};
 		plugins = {
-			chmod = "${yazi-plugins}/chmod.yazi";
-			full-border = "${yazi-plugins}/full-border.yazi";
-			toggle-pane = "${yazi-plugins}/toggle-pane.yazi";
+      chmod = pkgs.runCommandLocal "chmod.yazi" { } ''
+        mkdir -p $out
+        cp -r ${inputs.yazi-plugins}/chmod.yazi/* $out/
+        cp $out/main.lua $out/init.lua
+      '';
+      toggle-pane = pkgs.runCommandLocal "toggle-pane.yazi" { } ''
+        mkdir -p $out
+        cp -r ${inputs.yazi-plugins}/toggle-pane.yazi/* $out/
+        cp $out/main.lua $out/init.lua
+      '';
+
 			starship = pkgs.fetchFromGitHub {
 				owner = "Rolv-Apneseth";
 				repo = "starship.yazi";
-				rev = "...";
-				sha256 = "sha256-...";
-			};
+				rev = "6c639b474aabb17f5fecce18a4c97bf90b016512";
+        sha256 = "sha256-bhLUziCDnF4QDCyysRn7Az35RAy8ibZIVUzoPgyEO1A=";
+		  };
 		};
 		initLua = ''
-			require("full-border"):setup()
 			require("starship"):setup()
 		'';
-		keymap = {
+    keymap = {
 			manager.prepend_keymap = [
 				{
 					on = "T";
