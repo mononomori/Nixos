@@ -3,7 +3,11 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, inputs, ... }:
-
+let
+  patchedlogseq = pkgs.stable.logseq.override {
+    electron_27 = pkgs.electron_34;
+  };
+in
 {
   imports = [
       # Include the results of the hardware scan.
@@ -38,7 +42,10 @@
         configurationLimit = 7;
       };
     };
+    initrd.supportedFilesystems = [ "btrfs" ];
   };
+
+
   
 
   # Firmware updates.
@@ -101,8 +108,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      kate
-    # thunderbird
     ];
     shell = pkgs.fish;
   };
@@ -116,20 +121,8 @@
       "_2b" = import ./user/home.nix;
     };
   };
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-28.2.10"
-    "electron-27.3.11"
-    "adobe-reader-9.5.5"
-    "dotnet-sdk-7.0.410"
-    "dotnet-runtime-7.0.20"
-  ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+ 
   
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     #### Browser:
     (google-chrome.override {
@@ -172,6 +165,7 @@
     openjdk
     postgresql
     zig
+    fwupd
     
     #### Desktop:
     asciiquarium-transparent
@@ -213,6 +207,7 @@
 
 
     #### Gaming:
+    rebels-in-the-sky
     bolt-launcher
     gamescope
     freesweep
@@ -229,13 +224,15 @@
     neofetch
     wev
     fastfetch
+    nix-prefetch
+    starship
 
     #### Text Utility:
     helix
     nano
     neovim
     obsidian
-    logseq
+    patchedlogseq
     vim
     emacs
 
