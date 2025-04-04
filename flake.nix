@@ -4,6 +4,9 @@
   inputs = {
     # Default to the nixos-unstable branch
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Used in overlays where you are defaulting to stable
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+
 
     # Hardware pkgs
     nixos-hardware = {
@@ -31,9 +34,18 @@
         url = "github:0xc000022070/zen-browser-flake";
     };
 
+    yazi-plugins = {
+        url = "github:yazi-rs/plugins";
+        flake = false; # This repo doesn't contain a flake.nix
+    };
+
+    yazi.url = "github:sxyazi/yazi";
+
+
+
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, hyprland, swww, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, hyprland, swww, ... }@inputs:
     let
       # ---- System Settings ---- #
       system = "x86_64-linux";
@@ -47,13 +59,26 @@
         }
       ];
 
-      # configure lib
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
+      permittedInsecure = [
+        "electron-27.3.11"
+        "electron-28.2.10"
+        "adobe-reader-9.5.5"
+        "dotnet-sdk-7.0.410"
+        "dotnet-runtime-7.0.20"
+      ];
+
+      overlays = {
+        stable-packages = final: _prev: {
+          stable = import inputs.nixpkgs-stable {
+            system = final.system;
+            config = {
+              allowUnfree = true;
+              permittedInsecurePackages = permittedInsecure;
+            };
+          };
         };
       };
+
     in
     {
       nixosConfigurations.YoRNix = nixpkgs.lib.nixosSystem {
@@ -64,8 +89,18 @@
           inherit username;
           inherit diskusers;
           inherit gitusers;
+
         };
         modules = [ 
+          {
+            nixpkgs = {
+              config = {
+                allowUnfree = true;
+                permittedInsecurePackages = permittedInsecure;
+              };
+              overlays = [ overlays.stable-packages ];
+            };
+          }
           ./system/audio/blueman.nix
           ./system/audio/pipewire.nix
           ./system/fonts/fonts.nix
@@ -81,11 +116,12 @@
           ./system/security.nix
           ./system/disk/disk-utils.nix
           ./system/disk/swap.nix
+          ./system/disk/file-systems.nix
+          ./system/disk/snapper.nix
         ];
       };
       homeConfigurations = {
         "_2b@YoRNix" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
           inherit hostname;
           inherit system;
           inherit inputs;
