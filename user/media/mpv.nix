@@ -3,7 +3,6 @@
 {
 
   home.packages = with pkgs; [ 
-    mpv 
     yt-dlp # for youtube/streaming support
 
   ];

@@ -33,7 +33,7 @@
       #### hypridle
       exec-once = systemctl --user enable --now hypridle.service
       exec-once = uwsm app -- sway-audio-idle-inhibit
-      windowrulev2 = idleinhibit fullscreen, class:.*
+      windowrule = idleinhibit fullscreen, class:.*
 
       exec-once = systemctl --user enable --now waybar.service
 
@@ -169,10 +169,10 @@
       bind = $mainMod, C, killactive, 
       bind = $mainMod, M, exit, 
       bind = $mainMod, E, exec, uwsm app -- kitty --class yazi -e fish -c 'yazi'
-      windowrulev2 = float,class:(yazi)
-      windowrulev2 = size 900 600,class:(yazi)
-      windowrulev2 = move 20 70,class:(yazi)
-      windowrulev2 = xray 0,class:(yazi)
+      windowrule = float,class:(yazi)
+      windowrule = size 900 600,class:(yazi)
+      windowrule = move 20 70,class:(yazi)
+      windowrule = xray 0,class:(yazi)
 
       bind = $mainMod, F, togglefloating, 
       bind = $mainMod ALT, F, fullscreen 
@@ -243,10 +243,10 @@
 
       # Clipboard
       exec-once = uwsm app -- clipse -listen
-      windowrulev2 = float,class:(clipse)
-      windowrulev2 = size 700 800,class:(clipse)
-      windowrulev2 = move 20 70,class:(clipse)
-      windowrulev2 = xray 0,class:(clipse)
+      windowrule = float,class:(clipse)
+      windowrule = size 700 800,class:(clipse)
+      windowrule = move 20 70,class:(clipse)
+      windowrule = xray 0,class:(clipse)
       bind = $mainMod, V, exec, uwsm app -- kitty --class clipse -e fish -c 'clipse'
       layerrule = animation popin, launcher
       layerrule = animation slide top, waybar

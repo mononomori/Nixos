@@ -2,12 +2,14 @@
 
 {
   imports = [
-    ./desktop/hyprlock.nix
-    ./kitty.nix
     ./desktop/hyprland.nix
     ./desktop/hypridle.nix
+    ./desktop/hyprlock.nix
     ./fuzzel.nix
+    ./kitty.nix
+    ./media/mpv.nix
     ./yazi.nix
+
   ];
   
   # Home Manager needs a bit of information about you and the paths it should
