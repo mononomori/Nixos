@@ -106,11 +106,13 @@ in
     isNormalUser = true;
     description = "_2b";
     extraGroups = [ "networkmanager" "wheel" ];
+    group = "_2b";
     packages = with pkgs; [
       firefox
     ];
     shell = pkgs.fish;
   };
+  users.groups."_2b" = {};
 
 
   home-manager = {
@@ -166,6 +168,7 @@ in
     postgresql
     zig
     fwupd
+    nodejs
     
     #### Desktop:
     asciiquarium-transparent
@@ -214,6 +217,7 @@ in
     steam
     ttyper
     vitetris
+    pokete
 
     #### Terminal:
     fish
@@ -231,10 +235,14 @@ in
     helix
     nano
     neovim
+    micro
     obsidian
     patchedlogseq
     vim
     emacs
+    pokemonsay
+    cowsay
+    fortune
 
     #### Printing:
     gutenprint
