@@ -41,23 +41,12 @@
 
     yazi.url = "github:sxyazi/yazi";
 
-
-
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, hyprland, swww, ... }@inputs:
     let
       # ---- System Settings ---- #
       system = "x86_64-linux";
-      hostname = "YoRNix";
-      username = "_2b";
-      diskusers = [ "_2b" ];
-      gitusers = [
-        { 
-          name = "monomori"; 
-          email = "miguel.a.cannuli@gmail.com";
-        }
-      ];
 
       permittedInsecure = [
         "electron-27.3.11"
@@ -81,52 +70,34 @@
 
     in
     {
-      nixosConfigurations.YoRNix = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit hostname;
-          inherit inputs;
-          inherit system;
-          inherit username;
-          inherit diskusers;
-          inherit gitusers;
-
-        };
-        modules = [ 
-          {
-            nixpkgs = {
-              config = {
-                allowUnfree = true;
-                permittedInsecurePackages = permittedInsecure;
+      nixosConfigurations = {
+        YoRNix = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit inputs;
+            hostname = "YoRNix";
+            diskusers = [ "_2b" ];
+            gitusers = [ 
+              {
+                name = "monomori";
+                email = "miguel.a.cannuli@gmail.com";
+              }
+            ];
+          };
+          modules = [ 
+            {
+              nixpkgs = {
+                config = {
+                  allowUnfree = true;
+                  permittedInsecurePackages = permittedInsecure;
+                };
+                overlays = [ overlays.stable-packages ];
               };
-              overlays = [ overlays.stable-packages ];
-            };
-          }
-          ./system/audio/blueman.nix
-          ./system/audio/pipewire.nix
-          ./system/fonts/fonts.nix
-          ./system/hyprland.nix
-          nixos-hardware.nixosModules.framework-13-7040-amd
-          ./configuration.nix
-          home-manager.nixosModules.default
-          hyprland.nixosModules.default
-          ./system/login-manager.nix
-          ./system/git.nix
-          ./system/power-management.nix
-          ./system/networking.nix
-          ./system/security.nix
-          ./system/disk/disk-utils.nix
-          ./system/disk/swap.nix
-          ./system/disk/file-systems.nix
-          ./system/disk/snapper.nix
-        ];
-      };
-      homeConfigurations = {
-        "_2b@YoRNix" = home-manager.lib.homeManagerConfiguration {
-          inherit hostname;
-          inherit system;
-          inherit inputs;
-          modules = [
-            ./user/home.nix
+            }
+            ./hosts/YoRNix/configuration.nix
+            nixos-hardware.nixosModules.framework-13-7040-amd
+            home-manager.nixosModules.default
+            hyprland.nixosModules.default
           ];
         };
       };
