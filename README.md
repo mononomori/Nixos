@@ -2,6 +2,7 @@
 
 ## Configuration Structure:
 
+```
 .
 ├── flake.nix
 ├── flake.lock
@@ -28,5 +29,5 @@
 │   │       ├── user1.nix
 │   │       └── ...
 │   └── ...
-
+```
 
