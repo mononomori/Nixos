@@ -2,13 +2,13 @@
 
 {
   imports = [
-    ../../modules/home-manager/desktop/hyprland.nix
-    ../../modules/home-manager/desktop/hypridle.nix
-    ../../modules/home-manager/desktop/hyprlock.nix
-    ../../modules/home-manager/fuzzel.nix
-    ../../modules/home-manager/kitty.nix
-    ../../modules/home-manager/media/mpv.nix
-    ../../modules/home-manager/yazi.nix
+    ../../../modules/home-manager/desktop/hyprland.nix
+    ../../../modules/home-manager/desktop/hypridle.nix
+    ../../../modules/home-manager/desktop/hyprlock.nix
+    ../../../modules/home-manager/fuzzel.nix
+    ../../../modules/home-manager/kitty.nix
+    ../../../modules/home-manager/media/mpv.nix
+    ../../../modules/home-manager/yazi.nix
   ];
   
   # Home Manager needs a bit of information about you and the paths it should

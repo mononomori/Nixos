@@ -130,7 +130,7 @@ in
     };
     backupFileExtension = "backup";
     users = {
-      "_2b" = import ./home.nix;
+      "_2b" = import ./users/_2b.nix;
     };
   };
  
