@@ -1,29 +1,32 @@
-Nixos Configuration Files
+# Nixos Configuration Files
+
+## Configuration Structure:
+
+.
+├── flake.nix
+├── flake.lock
+├── modules
+│   ├── home-manager
+│   │   ├── home-module1.nix
+│   │   ├── home-module2.nix
+│   │   └── ...
+│   └── nixos
+│       ├── system-module1.nix
+│       ├── system-module2.nix
+│       └── ...
+├── hosts
+│   ├── host1
+│   │   ├── configuration.nix
+│   │   ├── hardware-configuration.nix
+│   │   └── users
+│   │       ├── user1.nix
+│   │       └── ...
+│   ├── host2
+│   │   ├── configuration.nix
+│   │   ├── hardware-configuration.nix
+│   │   └── users
+│   │       ├── user1.nix
+│   │       └── ...
+│   └── ...
 
 
-```mermaid
-graph TD
-  FLAKE[flake.nix]
-  LOCK[flake.lock]
-
-  FLAKE --> ETCNIXOS[/etc/nixos/]
-  ETCNIXOS --> MODULES[modules]
-  ETCNIXOS --> HOSTS[hosts]
-
-  MODULES --> HM[home-manager]
-  HM --> HM_DESKTOP[desktop]
-  HM_DESKTOP --> HYPR[hyprland.nix]
-  HM_DESKTOP --> FUZZEL[fuzzel.nix]
-  HM_DESKTOP --> KITTY[kitty.nix]
-  
-  MODULES --> NIXOS[nixos]
-  NIXOS --> STEAM[steam.nix]
-  NIXOS --> LOGIN[login-manager.nix]
-  NIXOS --> NETWORK[networking.nix]
-
-  HOSTS --> YORNIX[YoRNix]
-  YORNIX --> CONF[configuration.nix]
-  YORNIX --> HARD[hardware-configuration.nix]
-  YORNIX --> USERS[users]
-  USERS --> USER2B[_2b.nix]
-```
