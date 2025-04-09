@@ -1,11 +1,5 @@
-{ config, pkgs, lib, inputs, diskusers, ...}:
+{ config, pkgs, lib, inputs, ...}:
 {
-
-  users = {
-    users = lib.genAttrs diskusers (name: {
-      extraGroups = [ "disk" ];
-    });
-  };
 
   environment.systemPackages = with pkgs; [
     #### Disk Management Tools:
