@@ -22,17 +22,6 @@
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
-  # Environment Session Variables:
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_CURRENT_SESSION = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    GDK_SCALE = "1";
-    GDP_DPI_SCALE = "1";
-
-  };
-
   # Enable DBus and XDG portals
   services.dbus.enable = true;
 
@@ -40,22 +29,15 @@
     autostart.enable = true;
     portal = {
       enable = true;
+      xdgOpenUsePortal = true;
       config = {
-        common = {
-          default = [ "hyprland" ];
-        };
-        hyprland = {
-          default = [
-            "gtk"
-            "hyprland"
-          ];
-        };
+        common.default = [ "hyprland" "gtk" ];
+        hyprland.defaul= [ "hyprland" "gtk" ];
       };
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
         inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       ];
-      xdgOpenUsePortal = true;
     };
   };
 }
