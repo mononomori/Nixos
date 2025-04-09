@@ -42,15 +42,10 @@
 
       #### wallpaper
       exec-once = uwsm app -- swww-daemon 
-      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/user/lainwallpaper1.jpg
+      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/modules/home-manager/desktop/lainwallpaper1.jpg
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
-
-      # Some default env vars.
-
-      env = QT_QPA_PLATFORM,wayland
-
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
