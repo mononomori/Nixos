@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 # When hyprland is managed via uwsm, environment variables need to be setup this.
-{
+let  
+  orchis = pkgs.orchis-theme;
+in {
   xdg.configFile."uwsm/env".text = ''
     export XDG_SESSION_TYPE=wayland
     export CLUTTER_BACKEND=wayland
@@ -13,7 +15,8 @@
     export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
     export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
     export QT_STYLE_OVERRIDE=adwaita-dark
-    export GTK_THEME=Juno-mirage
+    export GTK_DATA_PREFIX=${orchis}
+    export GTK_THEME=Orchis-Pink-Dark
     export MOZ_ENABLE_WAYLAND=1
     export MOZ_USE_XINPUT2=1
     export TERMINAL=kitty

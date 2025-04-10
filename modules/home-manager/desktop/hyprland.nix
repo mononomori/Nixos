@@ -33,6 +33,7 @@
       #### hypridle
       exec-once = systemctl --user enable --now hypridle.service
       exec-once = uwsm app -- sway-audio-idle-inhibit
+      exec-once = uwsm app -- dunst
       windowrule = idleinhibit fullscreen, class:.*
 
       exec-once = systemctl --user enable --now waybar.service
