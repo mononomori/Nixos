@@ -77,6 +77,7 @@
             inherit inputs;
             hostname = "YoRNix";
             diskusers = [ "_2b" ];
+            videousers = [ "_2b" ];
             gitusers = [ 
               {
                 name = "monomori";
