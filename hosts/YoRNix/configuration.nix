@@ -10,22 +10,25 @@ let
 in
 {
   imports = [
-    # Include the results of the hardware scan.
+    # Include the results of the hardware scan:
     ./hardware-configuration.nix
+    # Modules:
     ../../modules/nixos/audio/blueman.nix
     ../../modules/nixos/audio/pipewire.nix
+    ../../modules/nixos/disk/disk-users.nix
+    ../../modules/nixos/disk/disk-utils.nix
+    ../../modules/nixos/disk/file-systems.nix
+    ../../modules/nixos/disk/swap.nix
+    ../../modules/nixos/disk/snapper.nix
     ../../modules/nixos/fonts/fonts.nix
+    ../../modules/nixos/git.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/login-manager.nix
-    ../../modules/nixos/git.nix
-    ../../modules/nixos/power-management.nix
     ../../modules/nixos/networking.nix
+    ../../modules/nixos/power-management.nix
     ../../modules/nixos/security.nix
-    ../../modules/nixos/disk/disk-utils.nix
-    ../../modules/nixos/disk/swap.nix
-    ../../modules/nixos/disk/file-systems.nix
-    ../../modules/nixos/disk/snapper.nix
     ../../modules/nixos/steam.nix
+    ../../modules/nixos/video-users.nix
     ];
   
   #### Extra Options and Flakes
@@ -111,7 +114,7 @@ in
   users.users._2b = {
     isNormalUser = true;
     description = "_2b";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = lib.mkBefore [ "networkmanager" "wheel" ];
     group = "_2b";
     packages = with pkgs; [
       firefox
@@ -119,6 +122,8 @@ in
     shell = pkgs.fish;
   };
   users.groups."_2b" = {};
+
+
 
 
   home-manager = {
@@ -211,10 +216,10 @@ in
     nnn
     unzip
     wget
-    xdragon
     zathura
     zip
     zoxide
+    foliate
 
 
 
@@ -238,6 +243,7 @@ in
     fastfetch
     nix-prefetch
     starship
+    basilk
 
     #### Text Utility:
     helix
