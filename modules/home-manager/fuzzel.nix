@@ -27,7 +27,7 @@
       };
     };
   };
-
+  # Adds my power-menu script
   xdg.desktopEntries = {
     power-menu = {
       name = "Power Menu";
