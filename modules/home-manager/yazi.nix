@@ -8,6 +8,10 @@ let
 		hash = "sha256-80mR86UWgD11XuzpVNn56fmGRkvj0af2cFaZkU8M31I=";
 	};
 in {
+  home.packages = with pkgs; [
+    dragon-drop
+  ];
+
 	programs.yazi = {
     package = inputs.yazi.packages.${pkgs.system}.default;
 
@@ -86,6 +90,18 @@ in {
 					run = "plugin chmod";
 					desc = "Chmod on selected files";
 				}
+
+          {
+            on = [ "<C-n>" ];
+            run = "shell 'dragon-drop -x -i -T \"$1\"'";
+            desc = "Drag and drop files";
+          }
+          {
+            run = "shell --confirm 'dragon-drop -t -k --print-path | grep -v \"^$\" | xargs -I{} sh -c \"cp -v \\\"{}\\\" . && notify-send \\\"Copied: {} → $(pwd)/\\\"\"'";
+            on = "<C-t>";
+            desc = "Drop and copy file into current directory with notification";
+          }
+
 			];
 		};
 	};
