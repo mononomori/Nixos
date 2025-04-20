@@ -31,16 +31,12 @@ in {
         sort_sensitive = true;
         sort_reverse = false;
         sort_dir_first = true;
-        linemode = "none";
         show_hidden = true;
         show_symlink = true;
 			};
 			preview = {
         image_filter = "lanczos3";
         image_quality = 90;
-        tab_size = 1;
-        max_width = 1000;
-        max_height = 1000;
         cache_dir = "";
         ueberzug_scale = 0;
         ueberzug_offset = [
@@ -78,31 +74,29 @@ in {
 		initLua = ''
 			require("starship"):setup()
 		'';
-    keymap = {
-			manager.prepend_keymap = [
-				{
-					on = "T";
-					run = "plugin toggle-pane max-preview";
-					desc = "Maximize or restore the preview pane";
-				}
-				{
-					on = ["c" "m"];
-					run = "plugin chmod";
-					desc = "Chmod on selected files";
-				}
-
-          {
-            on = [ "<C-n>" ];
-            run = "shell 'dragon-drop -x -i -T \"$1\"'";
-            desc = "Drag and drop files";
-          }
-          {
-            run = "shell --confirm 'dragon-drop -t -k --print-path | grep -v \"^$\" | xargs -I{} sh -c \"cp -v \\\"{}\\\" . && notify-send \\\"Copied: {} → $(pwd)/\\\"\"'";
-            on = "<C-t>";
-            desc = "Drop and copy file into current directory with notification";
-          }
-
-			];
-		};
+    keymap.manager = {
+      prepend_keymap = [
+        {
+          on = "T";
+          run = "plugin toggle-pane max-preview";
+          desc = "Maximize or restore the preview pane";
+        }
+        {
+          on = [ "c" "m" ];
+          run = "plugin chmod";
+          desc = "Chmod on selected files";
+        }
+        {
+          on = [ "<C-n>" ];
+          run = "shell 'dragon-drop -x -i -T \"$1\"'";
+          desc = "Drag and drop files";
+        }
+        {
+          on = [ "<C-t>" ];
+          run = "shell --confirm 'dragon-drop -t -k --print-path | grep -v \"^$\" | xargs -I{} sh -c \"cp -v \\\"{}\\\" . && notify-send \\\"Copied: {} → $(pwd)/\\\"\"'";
+          desc = "Drop and copy file into current directory with notification";
+        }
+      ];
+    };
 	};
 }
