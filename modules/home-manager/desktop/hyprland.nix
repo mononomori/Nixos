@@ -164,7 +164,7 @@
       bind = $mainMod ALT, T, exec, [float; move 700 850; size 700 100] uwsm app -- kitty
       bind = $mainMod, C, killactive, 
       bind = $mainMod, M, exit, 
-      bind = $mainMod, E, exec, uwsm app -- kitty --class yazi -e fish -c 'yazi'
+      bind = $mainMod, E, exec, uwsm app -- kitty --class yazi -e fish -i -c 'y; exec fish'
       windowrule = float,class:(yazi)
       windowrule = size 900 600,class:(yazi)
       windowrule = move 20 70,class:(yazi)
