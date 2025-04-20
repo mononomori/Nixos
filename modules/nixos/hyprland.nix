@@ -1,7 +1,6 @@
 { config, pkgs, lib, inputs, ...}:
 {
 
-
   # Enable hyprland window manager
   programs.hyprland = {
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
