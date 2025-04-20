@@ -39,7 +39,9 @@
         flake = false; # This repo doesn't contain a flake.nix
     };
 
-    yazi.url = "github:sxyazi/yazi";
+    yazi = {
+      url = "github:sxyazi/yazi";
+    } ;
 
   };
 

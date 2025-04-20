@@ -710,11 +710,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1743786211,
-        "narHash": "sha256-WW/qwf6wVFWNJGMRbmDT4l/K8KMlX7+69jwd7mBHgwc=",
+        "lastModified": 1745075591,
+        "narHash": "sha256-UZQF9iRqQGi3324fVMv8sgusWmqahS1bd4w+eLH1tZA=",
         "owner": "sxyazi",
         "repo": "yazi",
-        "rev": "75fad253c0948a06bcfed57b99ca60ecca39a0c3",
+        "rev": "88bbbac7dd3f7a712bb720cf4ebeea1fc44fe4ed",
         "type": "github"
       },
       "original": {
@@ -726,11 +726,11 @@
     "yazi-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1743766384,
-        "narHash": "sha256-Lx+TliqMuaXpjaUtjdUac7ODg2yc3yrd1mSWJo9Mz2Q=",
+        "lastModified": 1744507001,
+        "narHash": "sha256-LWN0riaUazQl3llTNNUMktG+7GLAHaG/IxNj1gFhDRE=",
         "owner": "yazi-rs",
         "repo": "plugins",
-        "rev": "9a095057d698aaaedc4dd23d638285bd3fd647e9",
+        "rev": "b12a9ab085a8c2fe2b921e1547ee667b714185f9",
         "type": "github"
       },
       "original": {
