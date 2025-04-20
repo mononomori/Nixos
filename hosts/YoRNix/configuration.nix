@@ -184,6 +184,8 @@ in
     zig
     fwupd
     nodejs
+    comma
+    nix-index
     
     #### Desktop:
     asciiquarium-transparent
@@ -205,6 +207,9 @@ in
     vscode-fhs    
     staruml
     unityhub    
+    blender
+    quickemu
+    spice
     
     #### File Utility:
     fd
@@ -220,9 +225,6 @@ in
     zip
     zoxide
     foliate
-
-
-
 
     #### Gaming:
     rebels-in-the-sky
