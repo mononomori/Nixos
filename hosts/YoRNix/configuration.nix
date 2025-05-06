@@ -3,11 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, inputs, system, hostname, ... }:
-let
-  patchedlogseq = pkgs.stable.logseq.override {
-    electron_27 = pkgs.electron_34;
-  };
-in
+
 {
   imports = [
     # Include the results of the hardware scan:
@@ -36,7 +32,7 @@ in
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than +7";
+      options = "--delete-older-than 14d";
     };
     optimise = {
       automatic = true;
@@ -219,6 +215,8 @@ in
     gnome-terminal
     nemo
     nnn
+    p7zip
+    unrar
     unzip
     wget
     zathura
@@ -253,7 +251,7 @@ in
     neovim
     micro
     obsidian
-    patchedlogseq
+    logseq
     vim
     emacs
     pokemonsay
