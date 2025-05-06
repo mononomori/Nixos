@@ -89,12 +89,12 @@ in {
         {
           on = [ "<C-n>" ];
           run = "shell 'dragon-drop -x -i -T \"$1\"'";
-          desc = "Drag and drop files";
+          desc = "Drag files from yazi";
         }
         {
           on = [ "<C-t>" ];
-          run = "shell --confirm 'dragon-drop -t -k --print-path | grep -v \"^$\" | xargs -I{} sh -c \"cp -v \\\"{}\\\" . && notify-send \\\"Copied: {} → $(pwd)/\\\"\"'";
-          desc = "Drop and copy file into current directory with notification";
+          run = "shell ${./scripts/yazi-drop-handler.sh}";
+          desc = "Drop file into yazi)";
         }
       ];
     };
