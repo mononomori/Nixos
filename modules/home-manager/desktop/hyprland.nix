@@ -43,7 +43,7 @@
 
       #### wallpaper
       exec-once = uwsm app -- swww-daemon 
-      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/modules/home-manager/desktop/lainwallpaper1.jpg
+      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/modules/home-manager/desktop/laindance.png
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -177,7 +177,8 @@
 
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-      bind = $mainMod, L, exec, uwsm app -- hyprlock
+      bind = $mainMod, L, exec, loginctl lock-session
+
 
       # Change focused window
       bind = $mainMod, left, movefocus, l
