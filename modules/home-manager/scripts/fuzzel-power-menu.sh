@@ -8,8 +8,10 @@ FUZZEL_OPTIONS="--anchor center --width 40 --x-margin 200 -l 4"
 
 # Waybar launcher location (top-right)
 if [[ "$1" == "--waybar" ]]; then
-    FUZZEL_OPTIONS="--anchor top-right --width 40 -l 4"
+    read -r X Y < <(hyprctl cursorpos | sed 's/,//')
+    FUZZEL_OPTIONS="--anchor top-left --width 40 -l 4"
 fi
+
 
 SELECTION="$(printf "1 - Lock\n2 - Suspend\n3 - Reboot\n4 - Shutdown" | fuzzel --dmenu -p "Power Menu: " $FUZZEL_OPTIONS)"
 
