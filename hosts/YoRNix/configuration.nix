@@ -237,6 +237,7 @@
   
     #### Terminal Utilities:
     cbonsai
+    calcurse
     htop
     neofetch
     wev
@@ -244,6 +245,8 @@
     nix-prefetch
     starship
     basilk
+    cava
+    wttrbar
 
     #### Text Utility:
     helix

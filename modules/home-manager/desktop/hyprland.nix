@@ -260,6 +260,10 @@
       layerrule = noanim, hyprpicker
       layerrule = noanim, selection
 
+      windowrule = float, class:^(calcurse)$
+      windowrule = size 9504 700, class:^(calcurse)$
+      windowrule = move 10 50,class:^(calcurse)$
+
     '';
   };
 }
