@@ -33,7 +33,7 @@
 
       label = [
         {
-          text = ''cmd[update:100] echo "<span font-family='Fira Code' foreground='##e4c9af'>$(date +'%H: %M %S')</span>"'';
+          text = ''cmd[update:100] echo "<span font-family='Fira Code' foreground='##e4c9af'>$(date +'%H:%M:%S')</span>"'';
           color = "rgba(228,201,175,1.0)";
           font_size = 95;
           font_family = "JetBrains Mono";
