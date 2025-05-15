@@ -6,10 +6,12 @@
     ../../../modules/home-manager/desktop/hyprland-env.nix
     ../../../modules/home-manager/desktop/hypridle.nix
     ../../../modules/home-manager/desktop/hyprlock.nix
+    ../../../modules/home-manager/desktop/waybar.nix
     ../../../modules/home-manager/fish.nix
     ../../../modules/home-manager/fuzzel.nix
     ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/media/mpv.nix
+
     ../../../modules/home-manager/yazi.nix
   ];
   

@@ -6,7 +6,7 @@
     hyprshot
     hyprpicker
     hyprcursor
-    waybar
+
   ];
   wayland.windowManager.hyprland = {
     enable = true;
