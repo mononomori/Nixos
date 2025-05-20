@@ -2,12 +2,14 @@
 {
   # Add your nerd font package as needed for icons:
   # fonts.packages = with pkgs.nerd-fonts; [ jetbrains-mono ];
-  home.packages = with pkgs; [
-    waybar
-  ];
+  
 
   programs.waybar = {
     enable = true;
+    systemd = {
+      enable = true;
+      target = "graphical-session.target"; # or another target if you want
+  };
     settings = [
       # --- Main Top Bar ---
       {
