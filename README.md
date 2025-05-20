@@ -1,6 +1,6 @@
 # Nixos Configuration Files
 
-# Desktop Example:
+## Desktop Example:
 
 ![alt text](desktop-example.png)
 
