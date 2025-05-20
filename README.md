@@ -1,5 +1,9 @@
 # Nixos Configuration Files
 
+# Desktop Example:
+
+![alt text](desktop-example.png)
+
 ## Configuration Structure:
 
 ```
