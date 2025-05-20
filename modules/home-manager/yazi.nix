@@ -8,10 +8,11 @@ let
 		hash = "sha256-80mR86UWgD11XuzpVNn56fmGRkvj0af2cFaZkU8M31I=";
 	};
 in {
-  home.packages = with pkgs; [
-    dragon-drop
-  ];
-
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      dragon-drop
+    ;
+  };
 	programs.yazi = {
     package = inputs.yazi.packages.${pkgs.system}.default;
 

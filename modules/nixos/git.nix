@@ -1,7 +1,11 @@
 { config, lib, pkgs, inputs, gitusers, ... }:
 
 {
-  environment.systemPackages = [ pkgs.gitFull ];
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      gitFull
+    ;
+  };
 
   programs.git = {
     enable = true;

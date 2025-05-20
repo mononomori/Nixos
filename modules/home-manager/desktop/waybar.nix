@@ -1,8 +1,5 @@
 { config, pkgs, lib, inputs, ... }: 
 {
-  # Add your nerd font package as needed for icons:
-  # fonts.packages = with pkgs.nerd-fonts; [ jetbrains-mono ];
-  
 
   programs.waybar = {
     enable = true;

@@ -1,9 +1,12 @@
 { config, pkgs, lib, inputs, ...}:
 {
-  environment.systemPackages = with pkgs; [
-    networkmanager
-    networkmanager_dmenu
-  ];
+  
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      networkmanager
+      networkmanager_dmenu
+    ;
+  };
 
   # Enable wireless driver in bootloader.
   boot = {

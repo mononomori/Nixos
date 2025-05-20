@@ -2,9 +2,11 @@
 
 {
   
-  home.packages = with pkgs; [
-    kitty
-  ];
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      kitty
+    ;
+  };
   programs.kitty = {
     enable = true;
     extraConfig = ''

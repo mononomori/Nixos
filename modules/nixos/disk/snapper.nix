@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
+{
 
 # Snapper service configuration for automatic snapshots
-{
   services.snapper = {
     configs."root" = {
       SUBVOLUME = "/";  
@@ -14,4 +14,5 @@
       ALLOW_USERS = ["_2b"];
     };
   };
+  
 }

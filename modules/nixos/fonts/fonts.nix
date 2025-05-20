@@ -7,23 +7,27 @@ let
   ocr = pkgs.callPackage ./ocr-fonts/ocr.nix { };
 in
 {
-  fonts.packages = with pkgs; [
-    iosevka
-    iosevka-aile
-    iosevka-b
-    iosevka-etoile
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    monaspace
-    ocr
-    dina-font
-    proggyfonts
-
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = builtins.attrValues {
+    inherit (pkgs)
+      iosevka
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      monaspace
+      dina-font
+      proggyfonts
+    ;
+      mplus-outline-fonts-githubRelease = pkgs.mplus-outline-fonts.githubRelease;
+      # custom fonts
+      iosevka-aile = iosevka-aile;
+      iosevka-b = iosevka-b;
+      iosevka-etoile = iosevka-etoile;
+      ocr = ocr;
+    }
+    # include all nerd fonts
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
 }

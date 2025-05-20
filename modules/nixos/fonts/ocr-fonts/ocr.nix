@@ -1,5 +1,6 @@
 { pkgs }:
-#OCR-F fonts, which are a modernized version of OCR-B fonts.
+
+#OCR-F fonts
 pkgs.stdenv.mkDerivation {
   pname = "ocr-font";
   version = "1.0";

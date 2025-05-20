@@ -1,7 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 
 # Enable tuigreet display manager
-
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
 in

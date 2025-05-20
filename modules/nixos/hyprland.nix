@@ -11,9 +11,11 @@
   };
 
   # Required for xdg-open, xdg-mime, etc.
-  environment.systemPackages = with pkgs; [
-    xdg-utils
-  ];
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      xdg-utils
+    ;
+  };
 
   # Enable hyprland cache for faster builds
   nix.settings = {

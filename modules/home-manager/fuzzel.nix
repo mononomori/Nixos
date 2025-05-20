@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
-
 {
+
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -45,4 +45,5 @@
       type = "Application";
     };
   };
+  
 }

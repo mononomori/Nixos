@@ -1,10 +1,12 @@
 { config, pkgs, lib, inputs, ... }:
-
 {
-  home.packages = with pkgs; [
-    hypridle
-    sway-audio-idle-inhibit  # inhibits idle when any audio is playing.
-  ];
+
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      hypridle
+      sway-audio-idle-inhibit
+    ;
+  };
   services.hypridle = {
     enable = true;
     settings = {
@@ -46,4 +48,5 @@
       ];
     };
   };
+  
 }

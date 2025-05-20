@@ -1,11 +1,12 @@
 { config, pkgs, lib, inputs, ... }:
-
 {
 
-  home.packages = with pkgs; [ 
-    yt-dlp # for youtube/streaming support
+  home.packages = builtins.attrValues {
+    inherit (pkgs) 
+      yt-dlp
+    ;
+  };
 
-  ];
   programs.mpv = {
     enable = true;
 
@@ -28,8 +29,5 @@
     cache-default = 4000000;
   };
 };
-
-
-
 
 }

@@ -1,13 +1,14 @@
 { config, pkgs, lib, inputs, swww, ... }:
-
-
 {
-  home.packages = with pkgs; [
-    hyprshot
-    hyprpicker
-    hyprcursor
 
-  ];
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      hyprshot
+      hyprpicker
+      hyprcursor
+    ;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
@@ -266,4 +267,5 @@
 
     '';
   };
+  
 }

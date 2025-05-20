@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 {
+
   programs.fish = {
 
     enable = true;
@@ -26,4 +27,5 @@
       return $exit_code
     '';
   };
+  
 }

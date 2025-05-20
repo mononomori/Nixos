@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, lib, pkgs, inputs, system, hostname, ... }:
 
 {
@@ -25,7 +21,7 @@
     ../../modules/nixos/security.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/video-users.nix
-    ];
+  ];
   
   #### Extra Options and Flakes
   nix = {
@@ -58,15 +54,11 @@
     initrd.supportedFilesystems = [ "btrfs" ];
   };
 
-
-  
-
   # Firmware updates.
   hardware.firmware = [ pkgs.linux-firmware ];
   services.fwupd.enable = true;
 
   # Set your time zone.
-
   time.timeZone = "America/Vancouver";
 
   # Select internationalisation properties.
@@ -77,7 +69,6 @@
 
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.desktopManager.plasma5.enable = true;
-
 
   environment.localBinInPath = true;
 
@@ -112,15 +103,12 @@
     description = "_2b";
     extraGroups = lib.mkBefore [ "networkmanager" "wheel" ];
     group = "_2b";
-    packages = with pkgs; [
-      firefox
-    ];
+    packages = builtins.attrValues {
+      inherit (pkgs) firefox;
+    };
     shell = pkgs.fish;
   };
   users.groups."_2b" = {};
-
-
-
 
   home-manager = {
     # also pass inputs to home-manager modules
@@ -135,135 +123,136 @@
     };
   };
  
-  
-  environment.systemPackages = with pkgs; [
-    #### Browser:
-    (google-chrome.override {
-       commandLineArgs = [
-          "--enable-features-UseOzonePlatform"
-          "--ozone-platform=wayland"
-	      ];
-    })
-    chromium
-    adobe-reader
-    inputs.zen-browser.packages."${system}".default # beta
-    inputs.zen-browser.packages."${system}".beta
-    inputs.zen-browser.packages."${system}".twilight
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      # ==== Browsers ====
+      chromium
 
-    #### Communication:
-    caprine-bin
-    discord
-    webcord
-    zoom-us 
+      # ==== Communication ====
+      caprine-bin
+      discord
+      webcord
+      zoom-us
 
+      # ==== Compilation ====
+      bash
+      bc
+      cachix
+      clang
+      dotnet-sdk_7
+      dotnet-sdk
+      dotnet-sdk_8
+      dotnet-runtime
+      dotnet-runtime_7
+      dotnet-runtime_8
+      python3
+      gcc
+      glib
+      glibc
+      gnumake
+      inklecate
+      killall
+      openjdk
+      postgresql
+      zig
+      fwupd
+      nodejs
+      comma
+      nix-index
 
-    #### Compilation:
-    bash
-    bc
-    cachix
-    clang
-    dotnet-sdk_7
-    dotnet-sdk
-    dotnet-sdk_8
-    dotnet-runtime
-    dotnet-runtime_7
-    dotnet-runtime_8
-    python3
-    gcc
-    glib
-    glibc
-    gnumake
-    inklecate
-    killall
-    openjdk
-    postgresql
-    zig
-    fwupd
-    nodejs
-    comma
-    nix-index
-    
-    #### Desktop:
-    asciiquarium-transparent
-    brightnessctl
-    catppuccin-cursors
-    clipse
-    dunst
-    gtk2
-    gtk3
-    gtk4
-    libnotify
-    neo
-    swww
-    wl-clipboard
+      # ==== Desktop ====
+      asciiquarium-transparent
+      brightnessctl
+      catppuccin-cursors
+      clipse
+      dunst
+      gtk2
+      gtk3
+      gtk4
+      libnotify
+      neo
+      swww
+      wl-clipboard
 
-    #### Developer Tools:
-    fontforge
-    inkscape
-    vscode-fhs    
-    staruml
-    unityhub    
-    blender
-    quickemu
-    spice
-    
-    #### File Utility:
-    fd
-    flatpak
-    fzf
-    gh
-    gnome-terminal
-    nemo
-    nnn
-    p7zip
-    unrar
-    unzip
-    wget
-    zathura
-    zip
-    zoxide
-    foliate
+      # ==== Developer Tools ====
+      fontforge
+      inkscape
+      vscode-fhs    
+      staruml
+      unityhub    
+      blender
+      quickemu
+      spice
 
-    #### Gaming:
-    rebels-in-the-sky
-    bolt-launcher
-    freesweep
-    ttyper
-    vitetris
-    pokete
+      # ==== File Utility ====
+      adobe-reader
+      fd
+      flatpak
+      fzf
+      gh
+      gnome-terminal
+      nemo
+      nnn
+      p7zip
+      unrar
+      unzip
+      wget
+      zathura
+      zip
+      zoxide
+      foliate
 
-    #### Terminal:
-    fish
-  
-    #### Terminal Utilities:
-    cbonsai
-    calcurse
-    htop
-    neofetch
-    wev
-    fastfetch
-    nix-prefetch
-    starship
-    basilk
-    cava
-    wttrbar
+      # ==== Gaming ====
+      bolt-launcher
+      freesweep
+      ttyper
+      vitetris
 
-    #### Text Utility:
-    helix
-    nano
-    neovim
-    micro
-    obsidian
-    logseq
-    vim
-    emacs
-    pokemonsay
-    cowsay
-    fortune
+      # ==== Terminal ====
+      fish
 
-    #### Printing:
-    gutenprint
-  ];
+      # ==== Terminal Utilities ====
+      cbonsai
+      calcurse
+      htop
+      neofetch
+      wev
+      fastfetch
+      nix-prefetch
+      starship
+      basilk
+      cava
+      wttrbar
+
+      # ==== Text Utility ====
+      helix
+      nano
+      neovim
+      micro
+      obsidian
+      logseq
+      vim
+      emacs
+      pokemonsay
+      cowsay
+      fortune
+
+      # ==== Printing ====
+      gutenprint
+    ;
+
+    # ==== Browsers: Custom/Inputs ====
+    google-chrome = pkgs.google-chrome.override {
+      commandLineArgs = [
+        "--enable-features-UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+    };
+
+    zen-browser-default = inputs.zen-browser.packages.${system}.default;
+    zen-browser-beta = inputs.zen-browser.packages.${system}.beta;
+    zen-browser-twilight = inputs.zen-browser.packages.${system}.twilight;
+  };
 
   services.flatpak.enable = true;
 

@@ -1,11 +1,14 @@
 { config, pkgs, lib, inputs, ...}:
 # Steam requires some system level privileges for full functionality
 {
-  environment.systemPackages = with pkgs; [
-    gamescope
-    gamemode
-    steam
-  ];
+
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      gamescope
+      gamemode
+      steam
+    ;
+  };
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -25,6 +28,7 @@
       enable = true;
     };
   };
+  
 }
 
 

@@ -1,10 +1,13 @@
 { config, pkgs, lib, inputs, ...}:
 {
-  environment.systemPackages = with pkgs; [
-    blueman
-    bluez
-    bluez-tools
-  ];
+
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)    
+      blueman
+      bluez
+      bluez-tools
+    ;
+  };
 
   # Enable bluetooth with blueman.
   hardware.bluetooth = {
@@ -12,4 +15,5 @@
     powerOnBoot = true;
   };
   services.blueman.enable = true;
+  
 }

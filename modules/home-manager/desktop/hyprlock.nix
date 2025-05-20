@@ -1,11 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
-
-
-
 {
-  home.packages = with pkgs; [
-    hyprlock
-  ];
+
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      hyprlock
+    ;
+  };
 
   programs.hyprlock = {
     enable = true;
