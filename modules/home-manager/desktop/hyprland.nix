@@ -44,7 +44,7 @@
 
       #### wallpaper
       exec-once = uwsm app -- swww-daemon 
-      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/modules/home-manager/desktop//wallpapers/laindance.png
+      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/modules/home-manager/desktop/wallpapers/laindance.png
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -267,5 +267,5 @@
 
     '';
   };
-  
+
 }
