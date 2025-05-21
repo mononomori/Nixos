@@ -249,7 +249,7 @@
           color: #d2738a;
       }
       #workspaces button.active {
-          animation: fade-in-out 1.2s infinite alternate cubic-bezier(0.37, 0, 0.63, 1);
+          animation: fade-in-out 1s infinite alternate cubic-bezier(0.37, 0, 0.63, 1);
       }
       @keyframes fade-in-out {
           from { opacity: 1; }

@@ -183,6 +183,7 @@
       blender
       quickemu
       spice
+      poetry
 
       # ==== File Utility ====
       adobe-reader
