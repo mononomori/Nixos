@@ -157,7 +157,6 @@
       zig
       fwupd
       nodejs
-      comma
       nix-index
 
       # ==== Desktop ====
@@ -224,6 +223,7 @@
       basilk
       cava
       wttrbar
+      
 
       # ==== Text Utility ====
       helix

@@ -6,16 +6,19 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Used in overlays where you are defaulting to stable
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
-
-
-    # Hardware pkgs
-    nixos-hardware = {
-      url = "github:NixOs/nixos-hardware/master";
-    };
-    # Enable home-manager
+    # Enable Home-Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Used for package database in things like comma
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Used for hardware specific optimization
+    nixos-hardware = {
+      url = "github:NixOs/nixos-hardware/master";
     };
     # Latest version of Hyprland
     hyprland = {
@@ -45,7 +48,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, hyprland, swww, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-index-database, nixos-hardware, hyprland, swww, ... }@inputs:
     let
       # ---- System Settings ---- #
       system = "x86_64-linux";
@@ -96,6 +99,10 @@
             nixos-hardware.nixosModules.framework-13-7040-amd
             home-manager.nixosModules.default
             hyprland.nixosModules.default
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+
+
           ];
         };
       };
