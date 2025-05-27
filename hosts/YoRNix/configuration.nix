@@ -51,7 +51,10 @@
         configurationLimit = 7;
       };
     };
-    initrd.supportedFilesystems = [ "btrfs" ];
+    initrd = {
+      kernelModules = [ "amdgpu" ];
+      supportedFilesystems = [ "btrfs" ];
+    };
   };
 
   # Firmware updates.
@@ -88,6 +91,25 @@
     ];
   };
 
+  # ==== AMD Graphics ====
+
+  hardware = {
+    graphics = {
+        enable = true;
+        enable32Bit = true;
+    };
+
+    amdgpu.amdvlk = {
+        enable = true;
+        support32Bit.enable = true;
+    };
+  };
+  environment.variables.AMD_VULKAN_ICD = "RADV";  
+
+
+  # ==== Firewall =====
+
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -122,7 +144,7 @@
       "_2b" = import ./users/_2b.nix;
     };
   };
- 
+  # ==== Packages ====
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       # ==== Browsers ====
