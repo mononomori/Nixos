@@ -1,6 +1,10 @@
 { config, pkgs, lib, inputs, ... }:
 {
-
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      bemoji
+    ;
+  };
   programs.fuzzel = {
     enable = true;
     settings = {
