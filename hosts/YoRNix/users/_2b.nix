@@ -11,7 +11,7 @@
     ../../../modules/home-manager/fuzzel.nix
     ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/media/mpv.nix
-
+    ../../../modules/home-manager/media/rmpc.nix
     ../../../modules/home-manager/yazi.nix
   ];
   
@@ -30,9 +30,11 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  home.packages = [
-
-  ];
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      wf-recorder
+    ;
+  };
 
   home.file = {
     # Symlink my power menu script so it's runnable as a command and shows up in dmenu/fuzzel
