@@ -205,6 +205,7 @@
       quickemu
       spice
       poetry
+      ffmpeg
 
       # ==== File Utility ====
       adobe-reader
