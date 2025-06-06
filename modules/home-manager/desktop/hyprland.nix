@@ -35,7 +35,7 @@
       exec-once = systemctl --user enable --now hypridle.service
       exec-once = uwsm app -- sway-audio-idle-inhibit
       exec-once = uwsm app -- dunst
-      windowrule = idleinhibit fullscreen, class:.*
+
 
       exec-once = systemctl --user enable --now waybar.service
 
@@ -102,9 +102,6 @@
           blur:passes = 2
           blur:new_optimizations = true
           blur:xray = false
-          layerrule = blur, waybar
-          layerrule = blur, rofi
-          layerrule = blur, launcher
 
       }
 
@@ -166,10 +163,7 @@
       bind = $mainMod, C, killactive, 
       bind = $mainMod, M, exit, 
       bind = $mainMod, E, exec, uwsm app -- kitty --class yazi -e fish -i -c 'y; exec fish'
-      windowrule = float,class:(yazi)
-      windowrule = size 900 600,class:(yazi)
-      windowrule = move 20 70,class:(yazi)
-      windowrule = xray 0,class:(yazi)
+
 
       bind = $mainMod, F, togglefloating, 
       bind = $mainMod ALT, F, fullscreen 
@@ -241,14 +235,8 @@
 
       # Clipboard
       exec-once = uwsm app -- clipse -listen
-      windowrule = float,class:(clipse)
-      windowrule = size 700 800,class:(clipse)
-      windowrule = move 20 70,class:(clipse)
-      windowrule = xray 0,class:(clipse)
-      bind = $mainMod, V, exec, uwsm app -- kitty --class clipse -e fish -c 'clipse'
-      layerrule = animation popin, launcher
-      layerrule = animation slide top, waybar
 
+      bind = $mainMod, V, exec, uwsm app -- kitty --class clipse -e fish -c 'clipse'
 
       # Screenshots
       bind = , print, exec, uwsm app -- hyprshot --freeze -m output -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
@@ -258,12 +246,50 @@
       bind = CTRL, print, exec,uwsm app -- hyprshot --freeze -m region -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
       bind = SHIFT CTRL, print, exec, uwsm app -- hyprshot --freeze -m region --clipboard-only
 
-      layerrule = noanim, hyprpicker
-      layerrule = noanim, selection
 
+      #### Windowrules
+
+      # Calcurse
       windowrule = float, class:^(calcurse)$
       windowrule = size 950 700, class:^(calcurse)$
       windowrule = move 10 50,class:^(calcurse)$
+
+      # Clipse
+      windowrule = float,class:(clipse)
+      windowrule = size 700 800,class:(clipse)
+      windowrule = move 20 70,class:(clipse)
+      windowrule = xray 0,class:(clipse)
+
+      # Idle-inhibit
+      windowrule = idleinhibit fullscreen, class:.*
+
+      # Picture-in-Picture
+      windowrule = float, title:^Picture-in-picture$
+      windowrule = noanim, title:^Picture-in-picture$
+      windowrule = size 480 270, title:^Picture-in-picture$
+      windowrule = move 100%-w-20, title:^Picture-in-picture$
+
+      # Yazi
+      windowrule = float,class:(yazi)
+      windowrule = size 900 600,class:(yazi)
+      windowrule = move 20 70,class:(yazi)
+      windowrule = xray 0,class:(yazi)
+
+      #### Layerrules
+
+      # Launcher
+      layerrule = animation popin, launcher
+      layerrule = blur, launcher
+      layerrule = blur, rofi
+
+      # Screenshot
+      layerrule = noanim, hyprpicker
+      layerrule = noanim, selection
+
+      # Waybar
+      layerrule = animation slide top, waybar
+      layerrule = blur, waybar
+
 
     '';
   };
