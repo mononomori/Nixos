@@ -275,6 +275,10 @@
       windowrule = move 20 70,class:(yazi)
       windowrule = xray 0,class:(yazi)
 
+      # Steam Settings:
+      windowrule = float, class:^(steam)$, title:negative:^Steam$
+
+
       #### Layerrules
 
       # Launcher
