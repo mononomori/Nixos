@@ -269,14 +269,20 @@
       windowrule = size 480 270, title:^Picture-in-picture$
       windowrule = move 100%-w-20, title:^Picture-in-picture$
 
+      # Steam Settings
+      windowrule = float, class:^(steam)$, title:negative:^Steam$
+      
+      # xdg-desktop-portal-gtk windows
+      windowrule = float, class:^(xdg-desktop-portal-gtk)$
+      windowrule = size 900 600, class:^(xdg-desktop-portal-gtk)$
+      windowrule = move 20 70, class:^(xdg-desktop-portal-gtk)$
+      windowrule = xray 0, class:^(xdg-desktop-portal-gtk)$
+
       # Yazi
       windowrule = float,class:(yazi)
       windowrule = size 900 600,class:(yazi)
       windowrule = move 20 70,class:(yazi)
       windowrule = xray 0,class:(yazi)
-
-      # Steam Settings:
-      windowrule = float, class:^(steam)$, title:negative:^Steam$
 
 
       #### Layerrules
