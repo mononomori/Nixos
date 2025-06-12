@@ -23,7 +23,8 @@
       # # # # # # #
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      monitor=,2880x1920@120,auto,2.0
+      monitor = eDP-1, 2880x1920@120, 0x0, 2.0
+      monitor = DP-4, 2560x1440@59.95, -540x-1440, 1.0
 
       exec-once = hyprctl setcursor Bibata-Modern-Classic 16
 
@@ -262,6 +263,12 @@
 
       # Idle-inhibit
       windowrule = idleinhibit fullscreen, class:.*
+
+      # Nemo
+      windowrule = float, class:^(nemo)$
+      windowrule = size 900 600, class:^(nemo)$
+      windowrule = move 20 70, class:^(nemo)$
+      windowrule = move xray 0, class:^(nemo)$
 
       # Picture-in-Picture
       windowrule = float, title:^Picture-in-picture$

@@ -12,6 +12,7 @@
       {
         layer = "top";
         position = "top";
+        output = "eDP-1";
         height = 32;
         width = 1440;
         "margin-right" = 10;
