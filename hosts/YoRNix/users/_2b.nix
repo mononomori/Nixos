@@ -35,6 +35,8 @@
       wf-recorder
       pastel
       astroterm
+      darktable
+      gimp
     ;
   };
 

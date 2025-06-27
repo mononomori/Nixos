@@ -16,6 +16,7 @@
   services = {
     gvfs.enable = true;
     udisks2.enable = true;
+    devmon.enable = true;
     fstrim = {
       enable = true;
       interval = "weekly";

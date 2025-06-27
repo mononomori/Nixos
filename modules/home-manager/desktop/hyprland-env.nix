@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
-# When hyprland is managed via uwsm, environment variables need to be setup this.
+# When hyprland is managed via uwsm, environment variables need to be setup this way.
 let  
   orchis = pkgs.orchis-theme;
 in {

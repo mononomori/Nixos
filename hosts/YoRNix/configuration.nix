@@ -98,13 +98,7 @@
         enable = true;
         enable32Bit = true;
     };
-
-    amdgpu.amdvlk = {
-        enable = true;
-        support32Bit.enable = true;
-    };
   };
-  environment.variables.AMD_VULKAN_ICD = "RADV";  
 
 
   # ==== Firewall =====
