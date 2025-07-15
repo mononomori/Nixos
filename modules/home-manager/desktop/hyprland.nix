@@ -24,7 +24,7 @@
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor = eDP-1, 2880x1920@120, 0x0, 2.0
-      monitor = DP-4, 2560x1440@59.95, -540x-1440, 1.0
+      #  monitor = DP-4, 2560x1440@59.95, -540x-1440, 1.0
 
       exec-once = hyprctl setcursor Bibata-Modern-Classic 16
 
@@ -62,9 +62,15 @@
 
           touchpad {
               natural_scroll = no
+              disable_while_typing = false
+
           }
 
           sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+      }
+
+      misc {
+        middle_click_paste = false
       }
 
 
@@ -147,6 +153,7 @@
       gestures {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
           workspace_swipe = true
+          workspace_swipe_fingers = 4
       }
 
       # Example per-device config
