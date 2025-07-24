@@ -208,7 +208,7 @@
         tray = {
           "show-passive-items" = false;
           spacing = 12;
-          "icon-size" = 13;
+          "icon-size" = 15;
         };
       }
     ];

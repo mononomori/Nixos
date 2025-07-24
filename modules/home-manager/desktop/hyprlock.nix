@@ -12,12 +12,22 @@
     settings = {
       general = [
         {
-
           disable_loading_bar = true;
-          hide_cursor = true;
+          hide_cursor = false;
+          immediate_render = true;
           grace = 1;
         }
       ];
+      animations = [
+        {
+          enabled = true;
+          bezier = "linear, 1, 1, 0, 0";
+          animation = [
+            "fadeOut, 1, 1, linear"
+          ];
+        }
+      ];
+
       background = [
         {
           path = "screenshot";

@@ -57,8 +57,11 @@
     };
   };
 
-  # Firmware updates.
-  hardware.firmware = [ pkgs.linux-firmware ];
+  # Firmware
+  hardware = {
+    firmware = [ pkgs.linux-firmware ];
+    enableRedistributableFirmware = true;
+  };
   services.fwupd.enable = true;
 
   # Set your time zone.
@@ -134,6 +137,8 @@
       inherit system;
     };
     backupFileExtension = "backup";
+    useGlobalPkgs = true;
+    useUserPackages = true;
     users = {
       "_2b" = import ./users/_2b.nix;
     };
@@ -202,7 +207,6 @@
       ffmpeg
 
       # ==== File Utility ====
-      adobe-reader
       fd
       flatpak
       fzf

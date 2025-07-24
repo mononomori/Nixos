@@ -30,13 +30,15 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+
   home.packages = builtins.attrValues {
     inherit (pkgs)
       wf-recorder
       pastel
       astroterm
-      darktable
-      gimp
+      gimp3
+      libreoffice
+      # darktable (wait for fix in unstable)
     ;
   };
 

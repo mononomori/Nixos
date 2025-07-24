@@ -1,13 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 
-let
-	yazi-plugins = pkgs.fetchFromGitHub {
-		owner = "yazi-rs";
-		repo = "plugins";
-		rev = "273019910c1111a388dd20e057606016f4bd0d17";
-		hash = "sha256-80mR86UWgD11XuzpVNn56fmGRkvj0af2cFaZkU8M31I=";
-	};
-in {
+{
   home.packages = builtins.attrValues {
     inherit (pkgs)
       dragon-drop
@@ -54,28 +47,14 @@ in {
     };
 		};
 		plugins = {
-      chmod = pkgs.runCommandLocal "chmod.yazi" { } ''
-        mkdir -p $out
-        cp -r ${inputs.yazi-plugins}/chmod.yazi/* $out/
-        cp $out/main.lua $out/init.lua
-      '';
-      toggle-pane = pkgs.runCommandLocal "toggle-pane.yazi" { } ''
-        mkdir -p $out
-        cp -r ${inputs.yazi-plugins}/toggle-pane.yazi/* $out/
-        cp $out/main.lua $out/init.lua
-      '';
-
-			starship = pkgs.fetchFromGitHub {
-				owner = "Rolv-Apneseth";
-				repo = "starship.yazi";
-				rev = "6c639b474aabb17f5fecce18a4c97bf90b016512";
-        sha256 = "sha256-bhLUziCDnF4QDCyysRn7Az35RAy8ibZIVUzoPgyEO1A=";
-		  };
+      chmod = pkgs.yaziPlugins.chmod;
+			starship = pkgs.yaziPlugins.starship;
+      toggle-pane = pkgs.yaziPlugins.toggle-pane;
 		};
 		initLua = ''
 			require("starship"):setup()
 		'';
-    keymap.manager = {
+    keymap.mgr = {
       prepend_keymap = [
         {
           on = "T";
@@ -88,14 +67,19 @@ in {
           desc = "Chmod on selected files";
         }
         {
-          on = [ "<C-n>" ];
-          run = "shell 'dragon-drop -x -i -T \"$1\"'";
-          desc = "Drag files from yazi";
+          on = ["<C-n>"];
+          run = "shell -- 'dragon-drop -x -i -T \"$1\"'";
+          desc = "Drag and drop files";
         }
         {
           on = [ "<C-t>" ];
           run = "shell ${./scripts/yazi-drop-handler.sh}";
-          desc = "Drop file into yazi)";
+          desc = "Drop file into yazi";
+        }
+        {
+          on  = [ "y" ];
+          run = ["shell 'for path in \"$@\"; do echo \"file://$path\"; done | wl-copy -t text/uri-list' --confirm" "yank"];
+          desc = "Copy file paths to system clipboard as URI list and copy file to yazi's built in clipboard";
         }
       ];
     };

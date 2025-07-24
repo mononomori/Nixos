@@ -12,7 +12,6 @@
   powerManagement = {
     enable = true;
     powertop.enable = true;
-    cpuFreqGovernor = "schedutil";
   };
   services.power-profiles-daemon.enable = true;
 

@@ -33,6 +33,8 @@
       # Cursor colors
       cursor                  #FFB8B8
       cursor_text_color       #1C1C28
+      cursor_trail 3
+      cursor_trail_decay 0.1 0.4
 
       # URL underline color when hovering with mouse
       url_color               #F5B6DC
