@@ -38,6 +38,7 @@
       astroterm
       gimp3
       libreoffice
+      vesktop
       # darktable (wait for fix in unstable)
     ;
   };

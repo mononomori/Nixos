@@ -11,9 +11,10 @@
     enable = true;
     extraConfig = ''
       confirm_os_window_close 0
-      shell_integration enabled
-      font_family Iosevka Aile Iaso
-      font_size 14.0
+      shell_integration enabled no-cursor
+      font_family IosevkaB
+      font_size 15.0
+      disable_ligatures always
       bold_font auto
       italic_font auto
       bold_italic_font auto
@@ -33,8 +34,11 @@
       # Cursor colors
       cursor                  #FFB8B8
       cursor_text_color       #1C1C28
+      cursor_shape block
+      cursor_shape_unfocused hollow
       cursor_trail 3
-      cursor_trail_decay 0.1 0.4
+      cursor_trail_start_threshold 2
+      cursor_trail_decay 0.1 0.2
 
       # URL underline color when hovering with mouse
       url_color               #F5B6DC

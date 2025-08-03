@@ -73,8 +73,6 @@
   # Shell
   programs.fish.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.desktopManager.plasma5.enable = true;
 
   environment.localBinInPath = true;
 
@@ -233,6 +231,7 @@
       fish
 
       # ==== Terminal Utilities ====
+      btop
       cbonsai
       calcurse
       htop
