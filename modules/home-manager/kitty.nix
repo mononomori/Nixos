@@ -34,7 +34,7 @@
       # Cursor colors
       cursor                  #FFB8B8
       cursor_text_color       #1C1C28
-      cursor_shape block
+      cursor_shape underline
       cursor_shape_unfocused hollow
       cursor_trail 3
       cursor_trail_start_threshold 2
