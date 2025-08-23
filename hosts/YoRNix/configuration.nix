@@ -25,11 +25,6 @@
   
   #### Extra Options and Flakes
   nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
     optimise = {
       automatic = true;
     };
@@ -55,6 +50,17 @@
       kernelModules = [ "amdgpu" ];
       supportedFilesystems = [ "btrfs" ];
     };
+  };
+
+  # Garbage Collection
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep 5";
+    };
+    flake = "/etc/nixos";
   };
 
   # Firmware
@@ -238,6 +244,7 @@
       neofetch
       wev
       fastfetch
+      nix-output-monitor
       nix-prefetch
       starship
       basilk
@@ -274,6 +281,8 @@
     zen-browser-beta = inputs.zen-browser.packages.${system}.beta;
     zen-browser-twilight = inputs.zen-browser.packages.${system}.twilight;
   };
+
+  virtualisation.waydroid.enable = true;
 
   services.flatpak.enable = true;
 

@@ -63,7 +63,7 @@
           touchpad {
               natural_scroll = no
               disable_while_typing = false
-              drag_lock = 1
+              drag_lock = 0
 
           }
 

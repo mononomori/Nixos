@@ -55,11 +55,12 @@
       system = "x86_64-linux";
 
       permittedInsecure = [
-        "electron-27.3.11"
-        "electron-28.2.10"
         "adobe-reader-9.5.5"
         "dotnet-sdk-7.0.410"
         "dotnet-runtime-7.0.20"
+        "electron-27.3.11"
+        "electron-28.2.10"
+        "libxml2-2.13.8"
       ];
 
       overlays = {

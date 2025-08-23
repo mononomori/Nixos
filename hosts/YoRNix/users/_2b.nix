@@ -41,7 +41,11 @@
       vesktop
       # darktable (wait for fix in unstable)
     ;
+    inherit (pkgs.stable)
+      slipstream
+    ;
   };
+
 
   home.file = {
     # Symlink my power menu script so it's runnable as a command and shows up in dmenu/fuzzel
