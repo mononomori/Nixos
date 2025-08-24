@@ -48,14 +48,6 @@
       terminal = false;
       type = "Application";
     };
-
-    unityhub = {
-      name = "Unity Hub";
-      exec = "/run/current-system/sw/bin/unityhub --your-argument-here";
-      icon = "unityhub";
-      terminal = false;
-      type = "Application";
-    };
   };
   
 }

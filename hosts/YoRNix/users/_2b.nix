@@ -12,6 +12,7 @@
     ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/media/mpv.nix
     ../../../modules/home-manager/media/rmpc.nix
+    ../../../modules/home-manager/vscode.nix
     ../../../modules/home-manager/yazi.nix
   ];
   
@@ -39,12 +40,15 @@
       gimp3
       libreoffice
       vesktop
+      unityhub
       # darktable (wait for fix in unstable)
     ;
     inherit (pkgs.stable)
       slipstream
     ;
   };
+
+
 
 
   home.file = {

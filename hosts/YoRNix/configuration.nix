@@ -164,12 +164,8 @@
       bc
       cachix
       clang
-      dotnet-sdk_7
-      dotnet-sdk
-      dotnet-sdk_8
-      dotnet-runtime
-      dotnet-runtime_7
-      dotnet-runtime_8
+      dotnet-sdk_9
+      dotnet-runtime_9
       python3
       gcc
       glib
@@ -200,10 +196,8 @@
 
       # ==== Developer Tools ====
       fontforge
-      inkscape
-      vscode-fhs    
+      inkscape   
       staruml
-      unityhub    
       blender
       quickemu
       spice
