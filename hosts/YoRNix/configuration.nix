@@ -12,6 +12,7 @@
     ../../modules/nixos/disk/file-systems.nix
     ../../modules/nixos/disk/swap.nix
     ../../modules/nixos/disk/snapper.nix
+    ../../modules/nixos/docker.nix
     ../../modules/nixos/fonts/fonts.nix
     ../../modules/nixos/git.nix
     ../../modules/nixos/hyprland.nix
@@ -124,7 +125,7 @@
   users.users._2b = {
     isNormalUser = true;
     description = "_2b";
-    extraGroups = lib.mkBefore [ "networkmanager" "wheel" ];
+    extraGroups = lib.mkBefore [ "networkmanager" "wheel" "docker" ];
     group = "_2b";
     packages = builtins.attrValues {
       inherit (pkgs) firefox;
