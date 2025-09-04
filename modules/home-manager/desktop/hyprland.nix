@@ -258,6 +258,11 @@
 
       #### Windowrules
 
+      # Blueman
+      windowrule = float, class:^(.blueman-manager-wrapped)$
+      windowrule = size 950 700, class:^(.blueman-manager-wrapped)$
+      windowrule = move 100%-w-20 50, class:^(.blueman-manager-wrapped)$
+
       # Calcurse
       windowrule = float, class:^(calcurse)$
       windowrule = size 950 700, class:^(calcurse)$
