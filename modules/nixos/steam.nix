@@ -30,7 +30,8 @@
       enable = true;
     };
   };
-  
+  # Enable usage of nintendo joycons and pro controllers
+  services.joycond.enable = true;
 }
 
 
