@@ -79,7 +79,7 @@
 
       # green
       color2  #9ED3A3
-      color10 #9ED3A3
+      color10 #F287A3
 
       # yellow
       color3  #F2D6AF
