@@ -84,7 +84,7 @@
             videousers = [ "_2b" ];
             gitusers = [ 
               {
-                name = "monomori";
+                name = "mononomori";
                 email = "miguel.a.cannuli@gmail.com";
               }
             ];
