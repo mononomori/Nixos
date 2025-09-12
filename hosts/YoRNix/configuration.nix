@@ -7,6 +7,7 @@
     # Modules:
     ../../modules/nixos/audio/blueman.nix
     ../../modules/nixos/audio/pipewire.nix
+    ../../modules/nixos/boot.nix
     ../../modules/nixos/disk/disk-users.nix
     ../../modules/nixos/disk/disk-utils.nix
     ../../modules/nixos/disk/file-systems.nix
@@ -36,22 +37,6 @@
     };
   };   
 
-  # Bootloader
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        memtest86.enable = true;
-        configurationLimit = 7;
-      };
-    };
-    initrd = {
-      kernelModules = [ "amdgpu" ];
-      supportedFilesystems = [ "btrfs" ];
-    };
-  };
 
   # Garbage Collection
 
@@ -108,18 +93,6 @@
     };
   };
 
-
-  # ==== Firewall =====
-
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define user’.
   users.users._2b = {
