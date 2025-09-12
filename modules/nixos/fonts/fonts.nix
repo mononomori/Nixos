@@ -9,6 +9,9 @@ in
 {
   fonts.packages = builtins.attrValues {
     inherit (pkgs)
+      # font tools    
+      fontforge
+      # nixpkg fonts
       iosevka
       noto-fonts
       noto-fonts-cjk-sans

@@ -169,7 +169,7 @@
       wl-clipboard
 
       # ==== Developer Tools ====
-      fontforge
+
       inkscape   
       staruml
       blender
