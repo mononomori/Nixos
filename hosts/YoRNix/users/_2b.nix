@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ../../../modules/home-manager/desktop/hyprland.nix
-    ../../../modules/home-manager/desktop/hyprland-env.nix
-    ../../../modules/home-manager/desktop/hypridle.nix
-    ../../../modules/home-manager/desktop/hyprlock.nix
-    ../../../modules/home-manager/desktop/waybar.nix
+    ../../../modules/home-manager/hypr/hyprland.nix
+    ../../../modules/home-manager/hypr/hyprland-env.nix
+    ../../../modules/home-manager/hypr/hypridle.nix
+    ../../../modules/home-manager/hypr/hyprlock.nix
+    ../../../modules/home-manager/hypr/waybar.nix
     ../../../modules/home-manager/fish.nix
     ../../../modules/home-manager/fuzzel.nix
     ../../../modules/home-manager/kitty.nix
