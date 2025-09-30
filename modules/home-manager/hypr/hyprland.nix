@@ -145,6 +145,8 @@
           bezier = liner, 1, 1, 1, 1
           bezier = decel, 0.05, 0.7, 0.1, 1
           bezier = accel, 0.1, 0, 0.8, 0.15
+          bezier = smoothOut, 0.5, 0, 0.99, 0.99
+          bezier = smoothIn, 0.1, -0.5, 0.1, 1.3
           animation = windows, 1, 6, wind, slide
           animation = windowsIn, 1, 6, winIn, slide
           animation = windowsOut, 1, 3, accel, popin 60%
@@ -152,7 +154,9 @@
           animation = windowsMove, 1, 5, wind, slide
           animation = border, 1, 1, liner
           # animation = borderangle, 1, 30, liner, loop
-          animation = fade, 1, 10, default
+          animation = fade, 1, 3, smoothOut
+          animation = fadeSwitch, 1, 3, smoothIn
+          animation = fadeShadow, 1, 3, smoothIn
           animation = workspaces, 1, 5, wind
           animation = layersIn, 1, 3, decel, popin 60%
           animation = layersOut, 1, 3, accel, popin 60%
