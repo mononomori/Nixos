@@ -177,7 +177,7 @@
           "on-scroll-down" = "brightnessctl set 1%-";
           "smooth-scrolling-threshold" = "2400";
           "tooltip-format" = "Brightness {percent}%";
-          "on-click" = "/etc/nixos/modules/home-manager/desktop/scripts/waybar-toggle-backlight.sh";
+          "on-click" = "/etc/nixos/modules/home-manager/hypr/scripts/waybar-toggle-backlight.sh";
         };
 
         network = {
