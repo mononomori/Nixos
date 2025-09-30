@@ -275,8 +275,8 @@
           padding-right: 12px;
           border: 2px solid #d2738a;
           border-right-color: transparent;
-          border-bottom-left-radius: 7px;
-          border-top-left-radius: 7px;
+          border-bottom-left-radius: 6px;
+          border-top-left-radius: 6px;
       }
       #battery,
       #network,
@@ -286,8 +286,8 @@
           padding-right: 12px;
           border: 2px solid #e4c9af;
           border-right-color: transparent;
-          border-bottom-left-radius: 7px;
-          border-top-left-radius: 7px;
+          border-bottom-left-radius: 6px;
+          border-top-left-radius: 6px;
       }
       #temperature,
       #memory,
@@ -298,8 +298,8 @@
           padding-right: 12px;
           border: 2px solid #d2738a;
           border-left-color: transparent;
-          border-bottom-right-radius: 7px;
-          border-top-right-radius: 7px;
+          border-bottom-right-radius: 6px;
+          border-top-right-radius: 6px;
       }
       #custom-weather,
       #cpu,
@@ -309,8 +309,8 @@
           padding-right: 12px;
           border: 2px solid #e4c9af;
           border-left-color: transparent;
-          border-bottom-right-radius: 7px;
-          border-top-right-radius: 7px;
+          border-bottom-right-radius: 6px;
+          border-top-right-radius: 6px;
       }
     '';
   };

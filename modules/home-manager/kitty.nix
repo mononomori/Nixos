@@ -22,13 +22,13 @@
       bold_text  #CDD6F4
       italic_text #CDD6F4
       bold_italic_text #CDD6F4
-     
-      background_opacity 0.7
+      background_opacity 0.8
+    
 
       # The basic colors
       foreground              #CED6F6
-      background              #1C1C28
-      selection_foreground    #1C1C28
+      background              #000000
+      selection_foreground    #000000
       selection_background    #E9E1D7
 
       # Cursor colors
@@ -100,6 +100,7 @@
       # white
       color7  #A8AEC4
       color15 #99A4B8
+      map ctrl+f2 detach_window
       
     '';
   };

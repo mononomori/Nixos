@@ -79,37 +79,55 @@
       general {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-          gaps_in = 5
-          gaps_out = 5
+          gaps_in = 3,3,3,3
+          gaps_out = 6,6,6,6
           border_size = 2
-          col.active_border = rgba(d2738aff) rgba(ba667aff) 45deg
-          col.inactive_border = rgba(d2738a99)
+          col.active_border = rgb(ce7688)
+          col.inactive_border = rgb(ba6a7b)
           no_border_on_floating = false
           layout = dwindle
           resize_on_border = true
+          no_focus_fallback = false
       }
 
       decoration {
+        rounding = 6
+        rounding_power = 4.0
+        active_opacity = 1.0
+        inactive_opacity = 0.8
+        fullscreen_opacity = 1.0
+        dim_inactive = true
+        dim_strength = 0.3
+        dim_special = 0.6
+        dim_around = 0.6
 
         shadow {
-        enabled = true
-        ignore_window = true
-        render_power = 5
-        range = 10
-        offset = 1 2
-        color = 0x66404040
+          enabled = true
+          ignore_window = true
+          render_power = 4
+          sharp = false
+          range = 100
+          offset = 0, 0
+          scale = 1.0
+          color = rgba(ce768830)
+          color_inactive = rgba(00000000)
         }
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-          rounding = 6
-          active_opacity = 1.0
-          inactive_opacity = 0.9
-          fullscreen_opacity = 1.0
-          blur:enabled = true
-          blur:size = 7
-          blur:passes = 2
-          blur:new_optimizations = true
-          blur:xray = false
+
+        blur {
+          enabled = true
+          size = 10
+          passes = 1
+          noise = 0.1
+          contrast = 0.5
+          brightness = 1.5
+          vibrancy = 1.0
+          vibrancy_darkness = 1.0
+          new_optimizations = true
+          ignore_opacity = false
+          xray = false
+
+        }
 
       }
 
@@ -273,6 +291,9 @@
       windowrule = size 700 800,class:(clipse)
       windowrule = move 20 70,class:(clipse)
       windowrule = xray 0,class:(clipse)
+
+      # Floating
+      windowrule = noshadow 1,floating:0
 
       # Idle-inhibit
       windowrule = idleinhibit fullscreen, class:.*

@@ -14,7 +14,13 @@
     ../../../modules/home-manager/media/rmpc.nix
     ../../../modules/home-manager/vscode.nix
     ../../../modules/home-manager/yazi.nix
+    inputs.wayland-pipewire-idle-inhibit.homeModules.default
+    inputs.vicinae.homeManagerModules.default
   ];
+
+  services.vicinae = {
+    enable = true;
+  };
   
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "_2b";
@@ -37,6 +43,7 @@
       wf-recorder
       pastel
       astroterm
+      scanmem
       gimp3
       libreoffice
       vesktop

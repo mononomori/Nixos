@@ -33,9 +33,15 @@
       url = "github:LGFae/swww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-        url = "github:0xc000022070/zen-browser-flake";
-        inputs.nixpkgs.follows = "nixpkgs";
+
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wayland-pipewire-idle-inhibit = {
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     yazi-plugins = {
@@ -46,7 +52,10 @@
     yazi = {
       url = "github:sxyazi/yazi";
     } ;
-
+    zen-browser = {
+        url = "github:0xc000022070/zen-browser-flake";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-index-database, nixos-hardware, hyprland, swww, ... }@inputs:

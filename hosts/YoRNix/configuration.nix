@@ -170,7 +170,7 @@
       wl-clipboard
 
       # ==== Developer Tools ====
-
+      cgdb
       inkscape   
       staruml
       blender
