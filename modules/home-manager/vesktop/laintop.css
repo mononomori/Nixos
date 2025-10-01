@@ -118,6 +118,8 @@ body {
 [class*="pill_"] span[class*="item__"] {
     background-color: var(--highprimary) !important;
 }
+
+
 /* color options */
 :root {
 	--colors: on;
@@ -276,4 +278,33 @@ body {
 	--purple-3: oklch(65% 0.12 310);
 	--purple-4: oklch(60% 0.12 310);
 	--purple-5: oklch(55% 0.12 310);
+}
+
+/* overriding system24 loader logo with ascii wired */
+@container body style(--ascii-loader: system24) {
+    .text_a2f514 {
+        display: none !important;
+    }
+    
+    .content_a2f514::before {
+        content: '\A\A\A                                                                                                    \A                                                                                                    \A                                                .::.                                                \A                                              :!!!!!!:                                              \A                                       ..::^^^!777777!~^^:::.                                       \A                                  .:^~~!!!!!!!7777777!!!!!!!!~~^:.                                  \A                              .:^~!!!!!!!!!!7777777777777!!!!!!!!!~^:.                              \A                            :~!!!!!!!77777777???????????77777777!!!!!!~:.                           \A                         .^!!!!!77777???????JJJJJJJJJJJ???????7777777!!!!^.                         \A                       .^!!!77777????JJJYYYY555555555555YYYJJJJ???777777!7!^.                       \A                     .:!77???????JJJYY555PPPPPPGGGGGGPPPPPP555YYJJ???7????77!^.                     \A                   :~7?7???JJJ?JJYY55PPPPGGPP5YJJ???JY5PPGGPPPP55YJJJ?JJJ????77!^.                  \A                .^!7?????JJJJJJY55PPPPGP5?!^:.        ..^!?YPGPPPP5YYYJJJJJ???7777!^.               \A             .^!7777??????JJYYY5PPPPG57^                    :75GGPPP55YJJJ??J???77777~:.            \A          .:~!77777777???JJYY5PPPPG5!.                        .!5GPPPP5YYJJ??77??777777!^.          \A        .^~!7777777777?JJJYY5PPPPG?.             ..             .?PPPPP5YYJJJ?7777777777!!^.        \A       ^!!!!777~~777???JYYY5PPPPP7         ..::::::::::..         !PPPPP5YYYJ???777!~7777!!!^       \A     .~!!!!77!: !777??JYYY5PPPPG?         ::::::::::::::::.        7GPPPP5YYYJ???77!..~777!!!~.     \A    .~!!!!77:  :777??JYYYY5PPPP5.       .::::::::::::::::::.       .5PPPPPYYYYJ???77:  :!7!!!!~:    \A    ~!!!!!7:   ^77???JYYY5PPPPG?        ::::::::::::::::::::        7GPPPP5YYYJ???77~   :77!!!!~    \A   .~!!!!7!.   ^77??JJYYY5PPPPG7        ::::::::::::::::::::        !GPPPP5YYYJJ??7?~    !7!!!!~.   \A    ^!!!!77^   ^77??JYYYY5PPPPGJ        ::::::::::::::::::::        ?GPPPP5YYYJJ??7?^   ^77!!!!~    \A    .~!!7777~. .77??JYYYY5PPPPPP^        ::::::::::::::::::        :PPPPPP5YYYJJ??7?: .~777!!!!.    \A     .~!777777^.!7??JJYYY55PPPPGY.        .::::::::::::::.        .JGPPPP55YYYJJ??7!.^777777!~.     \A       :!7777??77???JJYYY555PPPPGY.         ..::::::::..         .JGPPPPP55YYYJJ??777??7777!:       \A         :!77????JJJJJYYYY555PPPPG5~                            ~5GPPPPP55YYYYJJJJJJ???77!^.        \A           :~7???JJJYYYYYYY555PPPPGPJ^.                       ^JPGPPPP555YYYYYYYYJJJ??7~:           \A             .^!?JJJYYYY5555555PPPPPGP57^.                .^7YPGPPPPP555YY5YYYYYJJJ?!^.             \A       .^^~~^.  .^!?YYYYY55555555PPPPPGGP5J7~^        :~7J5PGGPPPPP55555555YYYYYJ7~.  :^~~^:.       \A      .!!!7777:    .^!JYY555555555PPPPPPPPGGGY        JGGGPPPPPPPP555555555YYJ7^.    ^7777!!~.      \A      :!!!!!77~       .7JYYY55YY55555PPPPPPPGJ        JGPPPPPPP55555YYY5YYYJ7:       ~777!!!!:      \A       :~!!!!^          :7JJYYYYYY55555PPPPPGJ        JGPPPPP55555YYYYYYJJ7^         .^!!!!~:       \A         ...              :!?YYYYYY5555PPPPPGJ        JGPPPPP555YYYYYYYJ!:              ...         \A                            .^7JYYYYYY55PPPPGJ        JGPPPP5YYYYYYYJ7~.                            \A                               .^!?YYY55PPPPGJ        JGPPPP5YYYY?!^.                               \A                                   .^~7J5555PJ        ?P5555?7~^:                                   \A                       .:::.           !5Y555?        ?555Y5!           .:::.                       \A                      ^!7777:          !YYYYY?        7YYYYY~          .7777!^                      \A                     .!!!777~          !JJJJY7        7YJJJJ7          ~7777!!:                     \A                     :!!!!!7!         :??????7        !J?????:         !7!!!!!:                     \A                     .~!!!!!!^.    ..^77777??~        ~??77777^..    .^!!!!!!~.                     \A                      .~!!!!!!!~~~!!!7777777!.        .!77777777!!~~!!!!!!!!~:                      \A                       .^~!!!!!!!!!!!!!!77!^            ^!77!!!!!!!!!!!!!!~^.                       \A                         .:^~~!!!!!!!!~~^:                :^~~!!!!!!!!~~^:.                         \A                             .........                        ...:.....                             \A                                                                                                    \A                                                                                                    \A\A\A and you don\'t seem to understand...\A\A\A' !important;
+        
+        font-size: 10px !important;
+        background: linear-gradient(
+            to right,
+            var(--foreprimary) 0%,
+            var(--foresecondary) 14%,
+            var(--foretertiary) 28%,
+            var(--forequaternary) 42%,
+            var(--forequinary) 56%,
+            var(--forequaternary) 70%,
+            var(--foretertiary) 84%,
+            var(--foresecondary) 92%,
+            var(--foreprimary) 100%
+        ) !important;
+        background-clip: text !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-size: 200% auto !important;
+    }
 }
