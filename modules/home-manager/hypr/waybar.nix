@@ -219,7 +219,7 @@
       }
       window#waybar {
           color: #d2738a;
-          background-color: #000000;
+          background-color: rgba(0,0,0,0);
       }
       tooltip * {
           color: #d2738a;
@@ -271,6 +271,7 @@
       #backlight,
       #idle_inhibitor {
           color: #d2738a;
+          background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
           border: 2px solid #d2738a;
@@ -282,6 +283,7 @@
       #network,
       #tray {
           color: #e4c9af;
+          background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
           border: 2px solid #e4c9af;
@@ -294,6 +296,7 @@
       #clock
        {
           color: #d2738a;
+          background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
           border: 2px solid #d2738a;
@@ -305,6 +308,7 @@
       #cpu,
       #clock.time {
           color: #e4c9af;
+          background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
           border: 2px solid #e4c9af;
