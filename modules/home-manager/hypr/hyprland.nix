@@ -126,6 +126,10 @@
           new_optimizations = true
           ignore_opacity = false
           xray = false
+          special = false
+          popups_ignorealpha = 0.2
+          input_methods = false
+          input_methods_ignorealpha = 0.2
 
         }
 

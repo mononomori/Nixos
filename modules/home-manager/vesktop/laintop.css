@@ -2,6 +2,7 @@
 
 @import url("https://refact0r.github.io/system24/build/system24.css");
 
+
 body {
 	/* font, change to '' for default discord font */
 	--font: "IosevkaB";
@@ -114,6 +115,9 @@ body {
 	/* font weight of labels */
 }
 
+[class*="pill_"] span[class*="item__"] {
+    background-color: var(--highprimary) !important;
+}
 /* color options */
 :root {
 	--colors: on;
@@ -165,7 +169,7 @@ body {
 	/* other normally white text */
 	--text-2: var(--foresecondary);
 	/* headings and important text */
-	--text-3: var(--foretertiary);
+	--text-3: var(--highprimary);
 	/* normal text */
 	--text-4: var(--forequaternary);
 	/* icon buttons and channels */
