@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, iosevka-iaso, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports = [
@@ -12,6 +12,7 @@
     ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/media/mpv.nix
     ../../../modules/home-manager/media/rmpc.nix
+    ../../../modules/home-manager/vesktop/vesktop.nix
     ../../../modules/home-manager/vscode.nix
     ../../../modules/home-manager/yazi.nix
     inputs.wayland-pipewire-idle-inhibit.homeModules.default
@@ -46,7 +47,7 @@
       scanmem
       gimp3
       libreoffice
-      vesktop
+      
       unityhub
       # darktable (wait for fix in unstable)
     ;
