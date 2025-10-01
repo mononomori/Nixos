@@ -80,7 +80,7 @@
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
           gaps_in = 3,3,3,3
-          gaps_out = 6,6,6,6
+          gaps_out = 8,3,3,3
           border_size = 2
           col.active_border = rgb(ce7688)
           col.inactive_border = rgb(ba6a7b)
@@ -347,7 +347,7 @@
 
       # Waybar
       layerrule = animation slide top, waybar
-      layerrule = blur, waybar
+      # layerrule = blur, waybar
 
 
     '';
