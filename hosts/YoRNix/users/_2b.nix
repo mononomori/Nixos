@@ -47,13 +47,15 @@
       scanmem
       gimp3
       libreoffice
-      
       unityhub
+      winetricks
+      zotero
       # darktable (wait for fix in unstable)
     ;
     inherit (pkgs.stable)
       slipstream
     ;
+    wine = pkgs.wineWowPackages.waylandFull;
   };
 
 
