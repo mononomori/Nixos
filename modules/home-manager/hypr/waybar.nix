@@ -107,7 +107,7 @@
           format = "{}°";
           tooltip = true;
           interval = 3600;
-          exec = "wttrbar --nerd";
+          exec = "wttrbar --nerd --location Vancouver";
           "return-type" = "json";
         };
 
