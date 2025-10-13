@@ -34,10 +34,9 @@
       experimental-features = [ "nix-command" "flakes"];
       warn-dirty = false;
       auto-optimise-store = true;
+      download-buffer-size = 524288000; # 500 MiB
     };
-  };   
-
-
+  };
   # Garbage Collection
 
   programs.nh = {

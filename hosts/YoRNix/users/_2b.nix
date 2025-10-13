@@ -16,12 +16,13 @@
     ../../../modules/home-manager/vscode.nix
     ../../../modules/home-manager/yazi.nix
     inputs.wayland-pipewire-idle-inhibit.homeModules.default
-    inputs.vicinae.homeManagerModules.default
+    # inputs.vicinae.homeManagerModules.default (wait for fix)
   ];
 
-  services.vicinae = {
-    enable = true;
-  };
+  # services.vicinae = {
+  #   enable = true;
+  # };
+  # (wait for fix)
   
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "_2b";
@@ -43,10 +44,11 @@
     inherit (pkgs)
       wf-recorder
       pastel
-      astroterm
+      # astroterm (wait for fix in unstable)
       scanmem
       gimp3
       libreoffice
+      prismlauncher
       unityhub
       winetricks
       zotero

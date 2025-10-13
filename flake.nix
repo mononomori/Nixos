@@ -34,10 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vicinae = {
-      url = "github:vicinaehq/vicinae";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # vicinae = {
+    #   url = "github:vicinaehq/vicinae";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # Wait for fix
 
     wayland-pipewire-idle-inhibit = {
       url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";

@@ -177,11 +177,6 @@
           new_status = slave
       }
 
-      gestures {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-          workspace_swipe = true
-          workspace_swipe_fingers = 4
-      }
 
       # Example per-device config
       # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
@@ -280,6 +275,9 @@
       bind = SHIFT $mainMod, print, exec, uwsm app -- hyprshot --freeze  -m window --clipboard-only
       bind = CTRL, print, exec,uwsm app -- hyprshot --freeze -m region -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
       bind = SHIFT CTRL, print, exec, uwsm app -- hyprshot --freeze -m region --clipboard-only
+
+      # Gestures
+      gesture = 4, horizontal, workspace
 
 
       #### Windowrules
