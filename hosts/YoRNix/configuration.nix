@@ -122,8 +122,6 @@
 
       # ==== Communication ====
       caprine-bin
-      discord
-      webcord
       zoom-us
 
       # ==== Compilation ====
