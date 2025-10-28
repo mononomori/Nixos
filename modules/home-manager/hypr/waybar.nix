@@ -97,7 +97,7 @@
 
         temperature = {
           interval = 10;
-          "hwmon-path" = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input";
+          "hwmon-path" = "/sys/class/hwmon/hwmon6/temp1_input";
           "critical-threshold" = 100;
           "format-critical" = " {temperatureC}";
           format = " {temperatureC}°";
