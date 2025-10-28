@@ -14,6 +14,7 @@
       cups-filters
       cups-browsed
       hplip
+      hplipWithPlugin
     ];
   };
 }
