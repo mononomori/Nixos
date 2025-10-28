@@ -42,9 +42,12 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
+      aseprite
+      astroterm
+      hollywood
       wf-recorder
       pastel
-      # astroterm (wait for fix in unstable)
+
       scanmem
       gimp3
       libreoffice

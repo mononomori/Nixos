@@ -20,6 +20,7 @@
     ../../modules/nixos/login-manager.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/power-management.nix
+    ../../modules/nixos/printing.nix
     ../../modules/nixos/security.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/video-users.nix
@@ -73,15 +74,7 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing = {
-    enable = true;
-    drivers = [
-      pkgs.gutenprint
-      pkgs.hplip
-      pkgs.hplipWithPlugin
-    ];
-  };
+
 
   # ==== AMD Graphics ====
 
@@ -233,8 +226,6 @@
       cowsay
       fortune
 
-      # ==== Printing ====
-      gutenprint
     ;
 
     # ==== Browsers: Custom/Inputs ====
@@ -249,8 +240,6 @@
     zen-browser-beta = inputs.zen-browser.packages.${system}.beta;
     zen-browser-twilight = inputs.zen-browser.packages.${system}.twilight;
   };
-
-  virtualisation.waydroid.enable = true;
 
   services.flatpak.enable = true;
 
