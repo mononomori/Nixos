@@ -64,7 +64,7 @@
     wine = pkgs.wineWowPackages.waylandFull;
   };
 
-
+  xdg.mimeApps.enable = true;
 
 
   home.file = {
