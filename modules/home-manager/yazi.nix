@@ -7,7 +7,7 @@
     ;
   };
 	programs.yazi = {
-    package = inputs.yazi.packages.${pkgs.system}.default;
+    package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
 		enable = true;
 		enableFishIntegration = true;

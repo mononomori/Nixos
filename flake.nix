@@ -73,6 +73,7 @@
         "electron-27.3.11"
         "electron-28.2.10"
         "libxml2-2.13.8"
+        "openssl-1.1.1w"
       ];
 
       overlays = {
@@ -122,3 +123,7 @@
       };
     };
 }
+
+
+
+

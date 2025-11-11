@@ -15,7 +15,7 @@ in
       iosevka
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       liberation_ttf
       fira-code
       fira-code-symbols

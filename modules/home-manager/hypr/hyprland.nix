@@ -316,6 +316,10 @@
       windowrule = size 480 270, title:^Picture-in-picture$
       windowrule = move 100%-w-20, title:^Picture-in-picture$
 
+      # RuneLite
+      windowrule = float, title:RuneLite$
+      windowrule = size 1038 720, title:RuneLite$
+
       # Steam Settings
       windowrule = float, class:^(steam)$, title:negative:^Steam$
       

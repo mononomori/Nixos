@@ -15,6 +15,7 @@
     ../../../modules/home-manager/vesktop/vesktop.nix
     ../../../modules/home-manager/vscode.nix
     ../../../modules/home-manager/yazi.nix
+    ../../../modules/home-manager/zen-browser.nix
     inputs.wayland-pipewire-idle-inhibit.homeModules.default
     # inputs.vicinae.homeManagerModules.default (wait for fix)
   ];
@@ -47,7 +48,7 @@
       hollywood
       wf-recorder
       pastel
-
+      profanity
       scanmem
       gimp3
       libreoffice

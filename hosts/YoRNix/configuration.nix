@@ -233,10 +233,6 @@
         "--ozone-platform=wayland"
       ];
     };
-
-    zen-browser-default = inputs.zen-browser.packages.${system}.default;
-    zen-browser-beta = inputs.zen-browser.packages.${system}.beta;
-    zen-browser-twilight = inputs.zen-browser.packages.${system}.twilight;
   };
 
   services.flatpak.enable = true;
