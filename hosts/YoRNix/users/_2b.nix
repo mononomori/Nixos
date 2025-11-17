@@ -46,6 +46,7 @@
       aseprite
       astroterm
       hollywood
+      fluent-reader
       wf-recorder
       pastel
       profanity
