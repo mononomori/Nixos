@@ -224,6 +224,7 @@
       cowsay
       fortune
 
+      live-server
     ;
 
     # ==== Browsers: Custom/Inputs ====

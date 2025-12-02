@@ -3,7 +3,7 @@
   boot = {
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
-    kernelParams = [ "amd_pstate=guided" ];
+    kernelParams = [ "amd_pstate=active" ];
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = true;
