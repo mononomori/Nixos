@@ -137,8 +137,7 @@
             warning = 30;
             critical = 15;
           };
-          "on-click" =
-            "current=$(powerprofilesctl get); if [ \"$current\" = 'performance' ]; then new='power-saver'; elif [ \"$current\" = 'power-saver' ]; then new='balanced'; else new='performance'; fi; powerprofilesctl set \"$new\" && notify-send \"Power Profile\" \"Switched to: $new\"";
+          "on-click" = "/etc/nixos/modules/home-manager/hypr/scripts/tuned-profile-toggle.sh";
           format = "{icon} {capacity}%";
           "format-full" = "{icon} {capacity}%";
           "format-charging" = "󰂄 {capacity}%";

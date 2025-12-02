@@ -24,7 +24,7 @@
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor = eDP-1, 2880x1920@120, 0x0, 2.0
-      #  monitor = DP-4, 2560x1440@59.95, -540x-1440, 1.0
+      # monitor = DP-4, 2560x1440@59.95, -540x-1440, 1.0
 
       exec-once = hyprctl setcursor Bibata-Modern-Classic 16
 
