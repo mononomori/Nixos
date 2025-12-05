@@ -12,11 +12,9 @@
       {
         layer = "top";
         position = "top";
-        output = "eDP-1";
         height = 32;
-        width = 1440;
-        "margin-right" = 10;
-        "margin-left" = 10;
+        "margin-right" = 0;
+        "margin-left" = 0;
         "margin-top" = 0;
         "margin-bottom" = 0;
         "fixed-center" = true;
@@ -97,10 +95,11 @@
 
         temperature = {
           interval = 10;
-          "hwmon-path" = "/sys/class/hwmon/hwmon6/temp1_input";
+          "hwmon-path" = "/sys/class/hwmon/hwmon7/temp1_input";
           "critical-threshold" = 100;
           "format-critical" = " {temperatureC}";
           format = " {temperatureC}°";
+          "tooltip-format" = "{temperatureF}°F";
         };
 
         "custom/weather" = {
