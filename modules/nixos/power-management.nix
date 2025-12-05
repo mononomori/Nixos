@@ -18,12 +18,15 @@
     tuned = {
       enable = true;
       settings = {
-        dynamic_tuning = true;
+        
       };
 
       ppdSettings = {
-        # Automatically change profile based on battery charging state
-        main.battery_detection = true;
+        main = {
+          default = "balanced";
+          # Automatically change profile based on battery charging state
+          battery_detection = true;
+        };
 
         # Mapping of TuneD battery states to power-profiles-daemon battery states
         battery = {
