@@ -214,7 +214,6 @@
       # ==== Text Utility ====
       helix
       nano
-      neovim
       micro
       obsidian
       logseq

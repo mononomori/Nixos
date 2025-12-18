@@ -34,6 +34,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tidalcycles = {
+      url = "github:mitchmindtree/tidalcycles.nix";
+    };
+
     # vicinae = {
     #   url = "github:vicinaehq/vicinae";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -107,7 +111,10 @@
                   allowUnfree = true;
                   permittedInsecurePackages = permittedInsecure;
                 };
-                overlays = [ overlays.stable-packages ];
+                overlays = [ 
+                  overlays.stable-packages
+                  inputs.tidalcycles.overlays.default
+                ];
               };
             }
             ./hosts/YoRNix/configuration.nix
