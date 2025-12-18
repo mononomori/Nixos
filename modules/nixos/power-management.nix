@@ -3,15 +3,13 @@
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
-      powertop
       tuned
     ;
   };
 
-  # Enable powerManagement and powertop
+  # Enable powerManagement
   powerManagement = {
     enable = true;
-    powertop.enable = true;
   };
 
   services = {
