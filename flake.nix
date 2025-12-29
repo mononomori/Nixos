@@ -38,6 +38,12 @@
       url = "github:mitchmindtree/tidalcycles.nix";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
     # vicinae = {
     #   url = "github:vicinaehq/vicinae";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -63,7 +69,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-index-database, nixos-hardware, hyprland, swww, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-index-database, nixos-hardware, hyprland, swww, agenix, ... }@inputs:
     let
       # ---- System Settings ---- #
       system = "x86_64-linux";
@@ -123,8 +129,10 @@
             hyprland.nixosModules.default
             nix-index-database.nixosModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
-
-
+            agenix.nixosModules.default
+            {
+              environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
+            }
           ];
         };
       };

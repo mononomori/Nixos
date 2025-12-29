@@ -9,8 +9,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --time --time-format '%a, %d %b %Y • %T' --greeting  '[Become \n              Visible]' --asterisks --remember --cmd 'uwsm start hyprland-uwsm.desktop' --theme 'border=lightred;title=gray;greet=gray;text=gray;prompt=lightred;time=gray;action=gray;button=gray;container=black;input=gray'";
-        user = "greeter";
+      command = "${tuigreet} --time --time-format '%a, %d %b %Y • %T' --greeting  '[Become \n              Visible]' --asterisks --remember --cmd 'uwsm start hyprland-uwsm.desktop' --theme 'border=lightred;title=gray;greet=gray;text=gray;prompt=lightred;time=gray;action=gray;button=gray;container=black;input=gray'";        user = "greeter";
       };
     };
   };

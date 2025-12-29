@@ -51,6 +51,7 @@
       wf-recorder
       pastel
       profanity
+      samira
       scanmem
       gimp3
       libreoffice

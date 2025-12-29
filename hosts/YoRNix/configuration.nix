@@ -23,6 +23,7 @@
     ../../modules/nixos/printing.nix
     ../../modules/nixos/security.nix
     ../../modules/nixos/steam.nix
+    ../../modules/nixos/services/yamtrack.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/video-users.nix
   ];
@@ -118,6 +119,7 @@
   # ==== Packages ====
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
+
       # ==== Browsers ====
       chromium
 

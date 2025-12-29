@@ -85,7 +85,6 @@
           border_size = 2
           col.active_border = rgb(ce7688)
           col.inactive_border = rgb(ba6a7b)
-          no_border_on_floating = false
           layout = dwindle
           resize_on_border = true
           no_focus_fallback = false
@@ -145,8 +144,8 @@
 
           enabled = true
           bezier = wind, 0.05, 0.9, 0.1, 1.05
-          bezier = winIn, 0.1, 1.1, 0.1, 1.1
-          bezier = winOut, 0.1, 1.1, 0.1, 1.1
+          bezier = winIn, 0.1, 1.1, 0.1, 1.05
+          bezier = winOut, 0.1, 1.1, 0.1, 1.05
           bezier = liner, 1, 1, 1, 1
           bezier = decel, 0.05, 0.7, 0.1, 1
           bezier = accel, 0.1, 0, 0.8, 0.15
@@ -284,72 +283,72 @@
       #### Windowrules
 
       # Blueman
-      windowrule = float, class:^(.blueman-manager-wrapped)$
-      windowrule = size 950 700, class:^(.blueman-manager-wrapped)$
-      windowrule = move 100%-w-20 50, class:^(.blueman-manager-wrapped)$
+      windowrule = float on, match:class blueman-manager-wrapped
+      windowrule = size 950 700, match:class blueman-manager-wrapped
+      windowrule = move 100%-w-20 50, match:class blueman-manager-wrapped
 
       # Calcurse
-      windowrule = float, class:^(calcurse)$
-      windowrule = size 950 700, class:^(calcurse)$
-      windowrule = move 10 50,class:^(calcurse)$
+      windowrule = float on, match:class calcurse
+      windowrule = size 950 700, match:class calcurse
+      windowrule = move 10 50, match:class calcurse
 
       # Clipse
-      windowrule = float,class:(clipse)
-      windowrule = size 700 800,class:(clipse)
-      windowrule = move 20 70,class:(clipse)
-      windowrule = xray 0,class:(clipse)
+      windowrule = float on, match:class clipse
+      windowrule = size 700 800, match:class clipse
+      windowrule = move 20 70, match:class clipse
+      windowrule = xray 0, match:class clipse
 
       # Floating
-      windowrule = noshadow 1,floating:0
+      windowrule = no_shadow 1, match:float 0
 
       # Idle-inhibit
-      windowrule = idleinhibit fullscreen, class:.*
+      windowrule = idle_inhibit fullscreen, match:class .*
 
       # Nemo
-      windowrule = float, class:^(nemo)$
-      windowrule = size 900 600, class:^(nemo)$
-      windowrule = move 20 70, class:^(nemo)$
-      windowrule = move xray 0, class:^(nemo)$
+      windowrule = float on, match:class nemo
+      windowrule = size 900 600, match:class nemo
+      windowrule = move 20 70, match:class nemo
+      windowrule = move xray 0, match:class nemo
 
       # Picture-in-Picture
-      windowrule = float, title:^Picture-in-picture$
-      windowrule = noanim, title:^Picture-in-picture$
-      windowrule = size 480 270, title:^Picture-in-picture$
-      windowrule = move 100%-w-20, title:^Picture-in-picture$
+      windowrule = float on, match:title Picture-in-picture
+      windowrule = no_anim on, match:title Picture-in-picture
+      windowrule = size 480 270, match:title Picture-in-picture
+      windowrule = move 100%-w-20, match:title Picture-in-picture
 
       # RuneLite
-      windowrule = float, title:RuneLite$
-      windowrule = size 1038 720, title:RuneLite$
+      windowrule = float on, match:title RuneLite
+      windowrule = size 1038 720, match:title RuneLite
 
       # Steam Settings
-      windowrule = float, class:^(steam)$, title:negative:^Steam$
+      windowrule = float on, match:class steam match:title negative:Steam
       
       # xdg-desktop-portal-gtk windows
-      windowrule = float, class:^(xdg-desktop-portal-gtk)$
-      windowrule = size 900 600, class:^(xdg-desktop-portal-gtk)$
-      windowrule = move 20 70, class:^(xdg-desktop-portal-gtk)$
-      windowrule = xray 0, class:^(xdg-desktop-portal-gtk)$
+      windowrule = float on, match:class xdg-desktop-portal-gtk
+      windowrule = size 900 600, match:class xdg-desktop-portal-gtk
+      windowrule = move 20 70, match:class xdg-desktop-portal-gtk
+      windowrule = xray 0, match:class xdg-desktop-portal-gtk
 
       # Yazi
-      windowrule = float,class:(yazi)
-      windowrule = size 900 600,class:(yazi)
-      windowrule = move 20 70,class:(yazi)
-      windowrule = xray 0,class:(yazi)
+      windowrule = float on, match:class yazi
+      windowrule = size 900 600, match:class yazi
+      windowrule = move 20 70, match:class yazi
+      windowrule = xray 0, match:class yazi
 
 
       #### Layerrules
 
       # Launcher
-      layerrule = animation popin, launcher
-      layerrule = blur, launcher
-      layerrule = blur, rofi
+      layerrule = animation popin, match:namespace launcher
+      layerrule = blur on, match:namespace launcher
+      layerrule = blur on, match:namespace rofi
 
       # Screenshot
-      layerrule = noanim, hyprpicker
-      layerrule = noanim, selection
+      layerrule = no_anim on, match:namespace hyprpicker
+      layerrule = no_anim on, match:namespace selection
 
       # Waybar
-      layerrule = animation slide top, waybar
+      layerrule = animation slide top, match:namespace waybar
       # layerrule = blur, waybar
 
 

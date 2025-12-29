@@ -24,7 +24,10 @@
   };
 
   # Enable DBus and XDG portals
-  services.dbus.enable = true;
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
+  };
 
   xdg = {
     autostart.enable = true;
