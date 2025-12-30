@@ -286,9 +286,9 @@
       #### Windowrules
 
       # Blueman
-      windowrule = float on, match:class blueman-manager-wrapped
-      windowrule = size 950 700, match:class blueman-manager-wrapped
-      windowrule = move 100%-w-20 50, match:class blueman-manager-wrapped
+      windowrule = float on, match:class .blueman-manager-wrapped
+      windowrule = size 950 700, match:class .blueman-manager-wrapped
+      windowrule = move 100%-w-20 50, match:class .blueman-manager-wrapped
 
       # Calcurse
       windowrule = float on, match:class calcurse

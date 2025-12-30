@@ -10,7 +10,7 @@
     settings = [
       # --- Main Top Bar ---
       {
-        layer = "top";
+        layer = "bottom";
         position = "top";
         height = 32;
         "margin-right" = 0;
