@@ -9,9 +9,12 @@
     ;
   };
 
+
   wayland.windowManager.hyprland = {
+    package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     enable = true;
-    systemd.enable = false;
+    systemd.enable = true;
 
 
     extraConfig = ''
@@ -35,18 +38,18 @@
 
       #### hypridle
       exec-once = systemctl --user enable --now hypridle.service
-      exec-once = uwsm app -- sway-audio-idle-inhibit
-      exec-once = uwsm app -- dunst
+      exec-once = systemctl --user enable --now sway-audio-idle-inhibit.service
+      exec-once = dunst
 
 
       exec-once = systemctl --user enable --now waybar.service
 
       exec-once = systemctl --user enable --now hyprpaper.service
-      exec-once = uwsm app -- blueman-applet
+      exec-once = blueman-applet
 
       #### wallpaper
-      exec-once = uwsm app -- swww-daemon 
-      exec-once = sleep 2 && uwsm app -- swww img /etc/nixos/modules/home-manager/hypr/wallpapers/laindance.png
+      exec-once = swww-daemon 
+      exec-once = sleep 2 && swww img /etc/nixos/modules/home-manager/hypr/wallpapers/laindance.png
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -188,17 +191,17 @@
       $mainMod = SUPER
 
 
-      bind = $mainMod, T, exec, uwsm app -- kitty
-      bind = $mainMod ALT, T, exec, [float; move 700 850; size 700 100] uwsm app -- kitty
+      bind = $mainMod, T, exec, kitty
+      bind = $mainMod ALT, T, exec, [float; move 700 850; size 700 100] kitty
       bind = $mainMod, C, killactive, 
       bind = $mainMod, M, exit, 
-      bind = $mainMod, E, exec, uwsm app -- kitty --class yazi -e fish -i -c 'y; exec fish'
+      bind = $mainMod, E, exec, kitty --class yazi -e fish -i -c 'y; exec fish'
 
 
       bind = $mainMod, F, togglefloating, 
       bind = $mainMod ALT, F, fullscreen 
-      bind = $mainMod, R, exec, uwsm app -- fuzzel --launch-prefix="uwsm app -- "
-      bind = $mainMod, B, exec, uwsm app -- pkill waybar || uwsm app -- waybar
+      bind = $mainMod, R, exec, fuzzel
+      bind = $mainMod, B, exec, pkill waybar || waybar
 
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
@@ -264,17 +267,17 @@
       binde =, xf86monbrightnessdown, exec, brightnessctl set 10%-
 
       # Clipboard
-      exec-once = uwsm app -- clipse -listen
+      exec-once = clipse -listen
 
-      bind = $mainMod, V, exec, uwsm app -- kitty --class clipse -e fish -c 'clipse'
+      bind = $mainMod, V, exec, kitty --class clipse -e fish -c 'clipse'
 
       # Screenshots
-      bind = , print, exec, uwsm app -- hyprshot --freeze -m output -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT, print, exec, uwsm app -- hyprshot --freeze -m output  --clipboard-only
-      bind = $mainMod, print, exec, uwsm app -- hyprshot --freeze -m window -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT $mainMod, print, exec, uwsm app -- hyprshot --freeze  -m window --clipboard-only
-      bind = CTRL, print, exec,uwsm app -- hyprshot --freeze -m region -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-      bind = SHIFT CTRL, print, exec, uwsm app -- hyprshot --freeze -m region --clipboard-only
+      bind = , print, exec, hyprshot --freeze -m output -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT, print, exec, hyprshot --freeze -m output  --clipboard-only
+      bind = $mainMod, print, exec, hyprshot --freeze -m window -o $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT $mainMod, print, exec, hyprshot --freeze  -m window --clipboard-only
+      bind = CTRL, print, exec, hyprshot --freeze -m region -o  $HOME/Pictures/Screenshots/ -f $(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+      bind = SHIFT CTRL, print, exec, hyprshot --freeze -m region --clipboard-only
 
       # Gestures
       gesture = 4, horizontal, workspace

@@ -1,32 +1,43 @@
-{ config, lib, pkgs, ... }:
-# When hyprland is managed via uwsm, environment variables need to be setup this way.
-let  
+{ lib, pkgs, ... }:
+
+let
   orchis = pkgs.orchis-theme;
 in {
-  xdg.configFile."uwsm/env".text = ''
-    export XDG_SESSION_TYPE=wayland
-    export CLUTTER_BACKEND=wayland
-    export SDL_VIDEODRIVER=wayland 
-    export GDK_BACKEND=wayland,x11,*
-    export GDK_DPI_SCALE=1
-    export GDK_SCALE=1
-    export QT_QPA_PLATFORM=wayland,xcb
-    export QT_AUTO_SCREEN_SCALE_FACTOR=1
-    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-    export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
-    export QT_STYLE_OVERRIDE=adwaita-dark
-    export GTK_DATA_PREFIX=${orchis}
-    export GTK_THEME=Orchis-Pink-Dark
-    export MOZ_ENABLE_WAYLAND=1
-    export MOZ_USE_XINPUT2=1
-    export TERMINAL=kitty
-    export XCURSOR_SIZE=16
-    export XCURSOR_THEME=Bibata-Modern-Classic
-    export NIXOS_OZONE_WL=1
-  '';
+  # Inject these *before* the rest of your Hyprland config.
+  # lib.mkBefore ensures they land at the top of the merged extraConfig.
+  wayland.windowManager.hyprland.extraConfig = lib.mkBefore ''
 
-  xdg.configFile."uwsm/env-hyprland".text = ''
-    export XDG_CURRENT_DESKTOP=Hyprland
-    export XDG_SESSION_DESKTOP=Hyprland
+    # XDG specifications
+    env = XDG_CURRENT_DESKTOP,Hyprland
+    env = XDG_SESSION_TYPE,wayland
+    env = XDG_SESSION_DESKTOP,Hyprland
+
+    # Toolkit backend variables
+    env = GDK_BACKEND,wayland,x11,*
+    env = SDL_VIDEODRIVER,wayland
+    env = CLUTTER_BACKEND,wayland
+
+    # Qt variables
+    env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+    env = QT_QPA_PLATFORM,wayland;xcb
+    env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+    env = QT_QPA_PLATFORMTHEME,qt5ct:qt6ct
+    env = QT_STYLE_OVERRIDE,adwaita-dark
+
+    # Theming related variables (Orchis)
+    env = GTK_DATA_PREFIX,${orchis}
+    env = GTK_THEME,Orchis-Pink-Dark
+
+    # Cursor
+    env = XCURSOR_SIZE,16
+    env = XCURSOR_THEME,Bibata-Modern-Classic
+
+    # Browsers / Electron
+    env = MOZ_ENABLE_WAYLAND,1
+    env = MOZ_USE_XINPUT2,1
+    env = NIXOS_OZONE_WL,1
+
+    # Misc
+    env = TERMINAL,kitty
   '';
 }
