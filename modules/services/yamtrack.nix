@@ -6,7 +6,7 @@
 
   #### Import secret
   age.secrets.yamtrack-secret = {
-    file = ../../../secrets/yamtrack-secret.age;
+    file = ../../secrets/yamtrack-secret.age;
   };
 
 
