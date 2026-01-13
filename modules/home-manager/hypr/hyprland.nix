@@ -285,20 +285,26 @@
 
       #### Windowrules
 
+      # Audio
+      
+      windowrule = float on, match:class org.pulseaudio.pavucontrol
+      windowrule = size 950 700, match:class org.pulseaudio.pavucontrol
+      windowrule = move (monitor_w)-(975) (monitor_h*0.06), match:class org.pulseaudio.pavucontrol
+
       # Blueman
       windowrule = float on, match:class .blueman-manager-wrapped
       windowrule = size 950 700, match:class .blueman-manager-wrapped
-      windowrule = move 100%-w-20 50, match:class .blueman-manager-wrapped
+      windowrule = move (monitor_w)-(975) (monitor_h*0.06), match:class .blueman-manager-wrapped
 
       # Calcurse
       windowrule = float on, match:class calcurse
       windowrule = size 950 700, match:class calcurse
-      windowrule = move 10 50, match:class calcurse
+      windowrule = move (monitor_w*0.02) (monitor_h*0.06), match:class calcurse
 
       # Clipse
       windowrule = float on, match:class clipse
       windowrule = size 700 800, match:class clipse
-      windowrule = move 20 70, match:class clipse
+      windowrule = move (monitor_w*0.02) (monitor_h*0.06), match:class clipse
       windowrule = xray 0, match:class clipse
 
       # Floating
@@ -309,15 +315,15 @@
 
       # Nemo
       windowrule = float on, match:class nemo
-      windowrule = size 900 600, match:class nemo
-      windowrule = move 20 70, match:class nemo
-      windowrule = move xray 0, match:class nemo
+      windowrule = size 950 750, match:class nemo
+      windowrule = move (monitor_w*0.02) (monitor_h*0.06), match:class nemo
+      windowrule = xray 0, match:class nemo
 
       # Picture-in-Picture
       windowrule = float on, match:title Picture-in-picture
       windowrule = no_anim on, match:title Picture-in-picture
       windowrule = size 480 270, match:title Picture-in-picture
-      windowrule = move 100%-w-20, match:title Picture-in-picture
+      windowrule = move (monitor_w)-(500) (monitor_h*0.06), match:title Picture-in-picture
 
       # RuneLite
       windowrule = float on, match:title RuneLite
@@ -328,14 +334,14 @@
       
       # xdg-desktop-portal-gtk windows
       windowrule = float on, match:class xdg-desktop-portal-gtk
-      windowrule = size 900 600, match:class xdg-desktop-portal-gtk
-      windowrule = move 20 70, match:class xdg-desktop-portal-gtk
+      windowrule = size 950 750, match:class xdg-desktop-portal-gtk
+      windowrule = move (monitor_w*0.02) (monitor_h*0.06), match:class xdg-desktop-portal-gtk
       windowrule = xray 0, match:class xdg-desktop-portal-gtk
 
       # Yazi
       windowrule = float on, match:class yazi
-      windowrule = size 900 600, match:class yazi
-      windowrule = move 20 70, match:class yazi
+      windowrule = size 950 750, match:class yazi
+      windowrule = move (monitor_w*0.02) (monitor_h*0.06), match:class yazi
       windowrule = xray 0, match:class yazi
 
 

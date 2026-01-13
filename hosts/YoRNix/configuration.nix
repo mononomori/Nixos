@@ -23,7 +23,7 @@
     ../../modules/nixos/printing.nix
     ../../modules/nixos/security.nix
     ../../modules/nixos/steam.nix
-    ../../modules/nixos/services/yamtrack.nix
+    ../../modules/services/yamtrack.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/video-users.nix
   ];
