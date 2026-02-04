@@ -12,6 +12,18 @@ alphas=(
     "80" "4d" "99" "cc" "b3" "e6" "ff" "d9" "4d" "00"
 )
 
+# Pre-computed sine wave for breathing effect (61 frames, 0x00 to 0xff)
+# Formula: alpha = ((sin(2π * frame / 61) + 1) / 2) * 255
+sine_wave=(
+    "80" "8d" "9a" "a7" "b4" "c0" "ca" "d4" "dd" "e6"
+    "ed" "f3" "f8" "fc" "fe" "ff" "ff" "fe" "fc" "f8"
+    "f3" "ed" "e6" "dd" "d4" "ca" "c0" "b4" "a7" "9a"
+    "8d" "80" "72" "65" "58" "4b" "3f" "35" "2b" "22"
+    "19" "12" "0c" "07" "03" "01" "00" "00" "01" "03"
+    "07" "0c" "12" "19" "22" "2b" "35" "3f" "4b" "58"
+    "72"
+)
+
 cache_file="/tmp/flicker_random_cache"
 cache_duration=2  # Duration in seconds to retain random values
 visible_color="#d2738a"
@@ -20,7 +32,6 @@ flicker_chance=13  # Chance to trigger alpha channel flickering (1 in N)
 flip_chance=17  # Chance to flip text for min-max frames (1 in N)
 flip_min=3 
 flip_max=7 
-pulse_duration=60  # Total frames for one alpha breathing cycle
 
 current_time=$(date +%s)
 
@@ -33,29 +44,21 @@ else
     read -r _ visible_random_value invisible_random_value < "$cache_file"
 fi
 
-# Calculate frame index
+# Calculate frame indices
+# 80 and 61 are coprime, meaning their cycles only align every 4880 frames (122 seconds at 25ms per frame)
 frame=$(( ($(date +%s%3N) / 25) % 80 ))
+sine_frame=$(( ($(date +%s%3N) / 25) % 61 ))
 
-# Breathing effect using sine wave
-pulse_alpha() {
-    local frame="$1"
-    local duration="$2"
-    local angle=$(echo "scale=10; 2 * 3.14159 * $frame / $duration" | bc -l)
-    local sine=$(echo "scale=10; (s($angle) + 1) / 2" | bc -l)
-    local alpha=$(printf "%02x" $(echo "$sine * 255" | bc -l | awk '{print int($1)}'))
-    echo "$alpha"
-}
-
-# Modulated alpha channel for breathing effect
-modulated_alpha=$(pulse_alpha "$frame" "$pulse_duration")
+# Combine predefined alpha with sine wave modulation
 alpha="${alphas[frame]}"
+modulated_alpha="${sine_wave[sine_frame]}"
 combined_alpha=$(printf "%02x" $(( 0x$modulated_alpha * 0x$alpha / 255 )))
 
 # Initialize output variables
 visible_output=""
 invisible_output=""
 
-# *** Flickering logic for "Become visible" ***
+# Flickering logic for "Become visible"
 if (( visible_random_value == 0 )); then
     visible_color_flicker="$visible_color$combined_alpha"
     visible_text="&#160;&#160;visible"
@@ -81,7 +84,7 @@ else
     visible_output="<span foreground='$visible_color'>[&#160;Become</span>&#10;<span foreground='$visible_color'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;visible</span><span foreground='$visible_color'>&#160;]</span>"
 fi
 
-# *** Flickering logic for "You are invisible" ***
+# Flickering logic for "You are invisible"
 if (( invisible_random_value == 0 )); then
     invisible_color_flicker="$invisible_color$combined_alpha"
     invisible_text="invisible"
