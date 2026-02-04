@@ -12,10 +12,8 @@
     settings = {
       general = [
         {
-          disable_loading_bar = true;
           hide_cursor = false;
           immediate_render = true;
-          grace = 1;
         }
       ];
       animations = [
@@ -56,7 +54,7 @@
           valign = "center";
         }
         {
-          text = ''cmd[update:1000] echo "<span font-family='Fira Code' foreground='##d2738a'>$(date +'%A, %B %d')</span>"'';
+          text = ''cmd[update:60000] echo "<span font-family='Fira Code' foreground='##d2738a'>$(date +'%A, %B %d')</span>"'';
           color = "rgba(242, 243, 244, 0.75)";
           font_size = 44;
           font_family = "JetBrains Mono";
@@ -69,7 +67,7 @@
           valign = "center";
         }
         {
-          text = ''cmd[update:50] echo "$(/etc/nixos/modules/home-manager/hypr/scripts/hyprlock-flickering-text.sh)"'';
+          text = ''cmd[update:30] echo "$(/etc/nixos/modules/home-manager/hypr/scripts/hyprlock-flickering-text.sh)"'';
           color = "rgba(242, 243, 244, 0.75)";
           font_size = 44;
           font_family = "Iosevka Term";

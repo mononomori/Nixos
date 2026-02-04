@@ -3,8 +3,7 @@
 let
   orchis = pkgs.orchis-theme;
 in {
-  # Inject these *before* the rest of your Hyprland config.
-  # lib.mkBefore ensures they land at the top of the merged extraConfig.
+  # Injected before Hyprland config located at hyprland.nix.
   wayland.windowManager.hyprland.extraConfig = lib.mkBefore ''
 
     # XDG specifications
