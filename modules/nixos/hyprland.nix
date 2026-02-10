@@ -7,7 +7,7 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     enable = true;
     xwayland.enable = true;
-    withUWSM = false;
+    withUWSM = true;
   };
 
   # Enable hyprland cache for faster builds
@@ -16,7 +16,7 @@
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
-  programs.uwsm.enable = false;
+  programs.uwsm.enable = true;
 
   # Enable DBus and XDG portals
   services.dbus = {

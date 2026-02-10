@@ -1,42 +1,45 @@
-{ lib, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   orchis = pkgs.orchis-theme;
-in {
-  # Injected before Hyprland config located at hyprland.nix.
-  wayland.windowManager.hyprland.extraConfig = lib.mkBefore ''
+in
+{
+  xdg.configFile."uwsm/env".text = ''
+    # toolkit / theming / cursor / nvidia
+    export CLUTTER_BACKEND=wayland
+    export SDL_VIDEODRIVER=wayland
+    export GDK_BACKEND=wayland,x11,*
+    export GDK_DPI_SCALE=1
+    export GDK_SCALE=1
 
-    # XDG specifications
-    env = XDG_CURRENT_DESKTOP,Hyprland
-    env = XDG_SESSION_TYPE,wayland
-    env = XDG_SESSION_DESKTOP,Hyprland
+    export QT_QPA_PLATFORM=wayland;xcb
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+    export QT_QPA_PLATFORMTHEME=qt5ct
+    export QT_QPA_PLATFORMTHEME=qt6ct
+    export QT_STYLE_OVERRIDE=adwaita-dark
 
-    # Toolkit backend variables
-    env = GDK_BACKEND,wayland,x11,*
-    env = SDL_VIDEODRIVER,wayland
-    env = CLUTTER_BACKEND,wayland
+    export GTK_DATA_PREFIX=${orchis}
+    export GTK_THEME=Orchis-Pink-Dark
 
-    # Qt variables
-    env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-    env = QT_QPA_PLATFORM,wayland;xcb
-    env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-    env = QT_QPA_PLATFORMTHEME,qt5ct:qt6ct
-    env = QT_STYLE_OVERRIDE,adwaita-dark
+    export MOZ_ENABLE_WAYLAND=1
+    export MOZ_USE_XINPUT2=1
 
-    # Theming related variables (Orchis)
-    env = GTK_DATA_PREFIX,${orchis}
-    env = GTK_THEME,Orchis-Pink-Dark
+    export TERMINAL=kitty
 
-    # Cursor
-    env = XCURSOR_SIZE,16
-    env = XCURSOR_THEME,Bibata-Modern-Classic
+    export XCURSOR_SIZE=16
+    export XCURSOR_THEME=Bibata-Modern-Classic
 
-    # Browsers / Electron
-    env = MOZ_ENABLE_WAYLAND,1
-    env = MOZ_USE_XINPUT2,1
-    env = NIXOS_OZONE_WL,1
+    export NIXOS_OZONE_WL=1
+  '';
 
-    # Misc
-    env = TERMINAL,kitty
+  xdg.configFile."uwsm/env-hyprland".text = ''
+    # hyprland-specific only
+    export XDG_CURRENT_DESKTOP=Hyprland
+    export XDG_SESSION_DESKTOP=Hyprland
+
+    # example if needed:
+    # export HYPRCURSOR_THEME=Bibata
+    # export AQ_DRM_DEVICES=/dev/dri/card0
   '';
 }

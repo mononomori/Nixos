@@ -147,6 +147,7 @@
       fwupd
       nodejs
       nix-index
+      runapp
 
       # ==== Desktop ====
       asciiquarium-transparent
