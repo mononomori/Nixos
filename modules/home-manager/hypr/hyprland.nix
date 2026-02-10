@@ -330,7 +330,7 @@
       windowrule = size 1038 720, match:title RuneLite
 
       # Steam Settings
-      windowrule = float on, match:class steam match:title negative:Steam
+      windowrule = float on, match:class steam, match:title negative:Steam
       
       # xdg-desktop-portal-gtk windows
       windowrule = float on, match:class xdg-desktop-portal-gtk
