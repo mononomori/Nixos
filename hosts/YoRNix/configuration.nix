@@ -233,7 +233,7 @@
     # ==== Browsers: Custom/Inputs ====
     google-chrome = pkgs.google-chrome.override {
       commandLineArgs = [
-        "--enable-features-UseOzonePlatform"
+        "--enable-features=UseOzonePlatform"
         "--ozone-platform=wayland"
       ];
     };

@@ -5,7 +5,7 @@
     # Default to the nixos-unstable branch
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Used in overlays where you are defaulting to stable
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     # Enable Home-Manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -89,7 +89,7 @@
       overlays = {
         stable-packages = final: _prev: {
           stable = import inputs.nixpkgs-stable {
-            inherit (final) system config;
+            inherit (final) system;
           };
         };
       };

@@ -19,7 +19,7 @@
       italic_font auto
       bold_italic_font auto
 
-      bold_text  #CDD6F4
+      bold_text #CDD6F4
       italic_text #CDD6F4
       bold_italic_text #CDD6F4
       background_opacity 0.8

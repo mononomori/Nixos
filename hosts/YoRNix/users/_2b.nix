@@ -56,14 +56,12 @@
       gimp3
       libreoffice
       prismlauncher
+      slipstream
       unityhub
       winetricks
-      zotero
-      # darktable (wait for fix in unstable)
-    ;
-    inherit (pkgs.stable)
-      slipstream
-    ;
+      zotero;
+    #   # darktable (wait for fix in unstable)
+    # ;
     wine = pkgs.wineWowPackages.waylandFull;
   };
 
