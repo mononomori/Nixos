@@ -17,6 +17,7 @@
     ../../modules/nixos/fonts/fonts.nix
     ../../modules/nixos/git.nix
     ../../modules/nixos/hyprland.nix
+    ../../modules/nixos/localsend.nix
     ../../modules/nixos/login-manager.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/power-management.nix
