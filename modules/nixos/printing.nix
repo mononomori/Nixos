@@ -21,12 +21,16 @@
   systemd.services = {
     # In case service has network timining issues and fails, try again.
     ensure-printers = {
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ]; 
       serviceConfig = {
         Restart = "on-failure";
         RestartSec = "10s";
       };
     };
-    nscd.restartIfChanged = false;
+    nscd.unitConfig = { 
+      StartLimitIntervalSec = lib.mkForce 0;
+    };
   };
 
 
