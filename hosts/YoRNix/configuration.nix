@@ -59,6 +59,7 @@
   };
   services.fwupd.enable = true;
 
+
   # Set your time zone.
   time.timeZone = "America/Vancouver";
   services.timesyncd.enable = true;

@@ -18,6 +18,19 @@
     ];
   };
 
+  systemd.services = {
+    # In case service has network timining issues and fails, try again.
+    ensure-printers = {
+      serviceConfig = {
+        Restart = "on-failure";
+        RestartSec = "10s";
+      };
+    };
+    nscd.restartIfChanged = false;
+  };
+
+
+
   hardware.printers = {
     ensureDefaultPrinter = "hp8010";
 
