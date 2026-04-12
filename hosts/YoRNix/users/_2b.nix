@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -25,7 +31,7 @@
   #   enable = true;
   # };
   # (wait for fix)
-  
+
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "_2b";
   home.homeDirectory = "/home/_2b";
@@ -40,7 +46,6 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
-
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
@@ -59,7 +64,8 @@
       slipstream
       unityhub
       winetricks
-      zotero;
+      zotero
+      ;
     #   # darktable (wait for fix in unstable)
     # ;
     wine = pkgs.wineWowPackages.waylandFull;
@@ -67,10 +73,10 @@
 
   xdg.mimeApps.enable = true;
 
-
   home.file = {
     # Symlink my power menu script so it's runnable as a command and shows up in dmenu/fuzzel
-    ".local/bin/power-menu".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/home-manager/scripts/fuzzel-power-menu.sh";
+    ".local/bin/power-menu".source =
+      config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/home-manager/scripts/fuzzel-power-menu.sh";
 
   };
 
@@ -84,7 +90,6 @@
     name = "Bibata-Modern-Classic";
     size = 16;
   };
-
 
   # GTK theming
   gtk = {
@@ -123,10 +128,9 @@
   };
 
   home.sessionVariables = {
-  
+
   };
 
   programs.home-manager.enable = true;
-
 
 }

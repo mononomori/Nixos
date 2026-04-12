@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "jnoortheen.nix-ide",
+  "files.autoSaveWhenNoErrors": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 2000
+}

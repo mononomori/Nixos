@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }: 
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   programs.waybar = {
@@ -6,7 +12,7 @@
     systemd = {
       enable = true;
       target = "graphical-session.target"; # or another target if you want
-  };
+    };
     settings = [
       # --- Main Top Bar ---
       {
@@ -64,8 +70,20 @@
           };
           "icon-size" = 14;
           "sorty-by-number" = true;
-          "persistent-workspaces" = { "*" = [ 1 2 3 4 ]; };
-          "ignore-workspaces" = [ "5" "6" "7" "8" ];
+          "persistent-workspaces" = {
+            "*" = [
+              1
+              2
+              3
+              4
+            ];
+          };
+          "ignore-workspaces" = [
+            "5"
+            "6"
+            "7"
+            "8"
+          ];
         };
 
         "hyprland/workspaces#right" = {
@@ -79,8 +97,20 @@
           };
           "icon-size" = 14;
           "sorty-by-number" = true;
-          "persistent-workspaces" = { "*" = [ 5 6 7 8 ]; };
-          "ignore-workspaces" = [ "1" "2" "3" "4" ];
+          "persistent-workspaces" = {
+            "*" = [
+              5
+              6
+              7
+              8
+            ];
+          };
+          "ignore-workspaces" = [
+            "1"
+            "2"
+            "3"
+            "4"
+          ];
         };
 
         memory = {
@@ -94,12 +124,13 @@
         };
 
         temperature = {
-          interval = 10;
-          "hwmon-path" = "/sys/class/hwmon/hwmon3/temp4_input";
+          "hwmon-path-abs" = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
+          "input-filename" = "temp1_input";
           "critical-threshold" = 100;
-          "format-critical" = " {temperatureC}";
-          format = " {temperatureC}°";
-          "tooltip-format" = "{temperatureF}°F";
+          "format-critical" = " {temperatureC}°";
+          format = " {temperatureC}°";
+          "tooltip-format" = " {temperatureF}°F";
+          interval = 10;
         };
 
         "custom/weather" = {
@@ -126,7 +157,11 @@
           format = "{icon} {volume}%";
           "format-muted" = "󰝟";
           "format-icons" = {
-            default = [ "󰕿" "󰖀" "󰕾" ];
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
           };
           "on-click" = "pavucontrol";
         };

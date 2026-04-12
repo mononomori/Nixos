@@ -151,6 +151,7 @@
       nodejs
       nix-index
       runapp
+      nixfmt-rfc-style
 
       # ==== Desktop ====
       asciiquarium-transparent

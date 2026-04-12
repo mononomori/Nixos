@@ -1,11 +1,17 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   home.packages = builtins.attrValues {
-    inherit (pkgs) 
+    inherit (pkgs)
       yt-dlp
-    ;
+      ;
   };
-  
+
   programs.mpv = {
     enable = true;
     scripts = with pkgs.mpvScripts; [
@@ -16,6 +22,8 @@
       profile = "high-quality";
       ytdl-format = "bestvideo+bestaudio";
       cache-default = 4000000;
+      vo = "gpu-next";
+      "gpu-api" = "vulkan";
     };
   };
 }

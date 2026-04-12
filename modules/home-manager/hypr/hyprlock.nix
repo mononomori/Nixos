@@ -1,10 +1,16 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
       hyprlock
-    ;
+      ;
   };
 
   programs.hyprlock = {
@@ -46,7 +52,7 @@
           font_size = 95;
           font_family = "JetBrains Mono";
           shadow_passes = 2;
-          shadow_size	= 2;
+          shadow_size = 2;
           shadow_color = "rgba(105, 57, 69, 1.0)";
           shadow_boost = 1.0;
           position = "2100, 750";
@@ -59,7 +65,7 @@
           font_size = 44;
           font_family = "JetBrains Mono";
           shadow_passes = 2;
-          shadow_size	= 2;
+          shadow_size = 2;
           shadow_color = "rgba(105, 57, 69, 1.0)";
           shadow_boost = 1.0;
           position = "2100, 650";
@@ -72,7 +78,7 @@
           font_size = 44;
           font_family = "Iosevka Term";
           shadow_passes = 2;
-          shadow_size	= 2;
+          shadow_size = 2;
           shadow_color = "rgba(105, 57, 69, 1.0)";
           shadow_boost = 1.0;
           position = "0, 50";
@@ -80,7 +86,6 @@
           valign = "center";
         }
       ];
-
 
       input-field = [
         {
@@ -98,7 +103,7 @@
           rounding = -1;
           check_color = "rgba(114, 100, 87, 1.0)";
           placeholder_text = ''<span font-family="Fira Code" foreground="##d2738a">Let's all love</span><span font-family="Fira Code" foreground="##e4c9af"> $USER!</span>'';
-          
+
           hide_input = false;
           position = "0, -200";
           halign = "center";
