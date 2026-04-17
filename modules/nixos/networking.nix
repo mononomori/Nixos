@@ -1,11 +1,17 @@
-{ config, pkgs, lib, inputs, ...}:
 {
-  
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
+
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       networkmanager
       networkmanager_dmenu
-    ;
+      ;
   };
 
   # Enable wireless driver in bootloader.
@@ -46,12 +52,21 @@
   # Enable firewall and open TCP/UDP ports.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 80 443 ];
+    allowedTCPPorts = [
+      22
+      80
+      443
+    ];
     allowedUDPPortRanges = [
-      { from = 4000; to = 4007; }
-      { from = 8000; to = 8010; }
+      {
+        from = 4000;
+        to = 4007;
+      }
+      {
+        from = 8000;
+        to = 8010;
+      }
     ];
   };
-
 
 }

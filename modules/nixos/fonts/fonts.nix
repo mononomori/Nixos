@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   iosevka-aile = pkgs.callPackage ./iosevka-aile-fonts/iosevka-aile.nix { };
@@ -7,22 +13,23 @@ let
   ocr = pkgs.callPackage ./ocr-fonts/ocr.nix { };
 in
 {
-  fonts.packages = builtins.attrValues {
-    inherit (pkgs)
-      # font tools    
-      fontforge
-      # nixpkg fonts
-      iosevka
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-      liberation_ttf
-      fira-code
-      fira-code-symbols
-      monaspace
-      dina-font
-      proggyfonts
-    ;
+  fonts.packages =
+    builtins.attrValues {
+      inherit (pkgs)
+        # font tools
+        fontforge
+        # nixpkg fonts
+        iosevka
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
+        liberation_ttf
+        fira-code
+        fira-code-symbols
+        monaspace
+        dina-font
+        proggyfonts
+        ;
       mplus-outline-fonts-githubRelease = pkgs.mplus-outline-fonts.githubRelease;
       # custom fonts
       iosevka-aile = iosevka-aile;

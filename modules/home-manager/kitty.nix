@@ -1,11 +1,17 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
-  
+
   home.packages = builtins.attrValues {
     inherit (pkgs)
       kitty
-    ;
+      ;
   };
   programs.kitty = {
     enable = true;
@@ -23,7 +29,7 @@
       italic_text #CDD6F4
       bold_italic_text #CDD6F4
       background_opacity 0.8
-    
+
 
       # The basic colors
       foreground              #CED6F6
@@ -101,7 +107,7 @@
       color7  #A8AEC4
       color15 #99A4B8
       map ctrl+f2 detach_window
-      
+
     '';
   };
 

@@ -1,4 +1,10 @@
-{config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   programs.vesktop = {
     enable = true;
@@ -14,7 +20,7 @@
     };
 
     vencord.themes.laintop = pkgs.writeText "laintop.css" (builtins.readFile ./laintop.css);
-    
+
     vencord.settings = {
       useQuickCss = false;
       enabledThemes = [ "laintop.css" ];

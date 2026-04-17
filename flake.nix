@@ -43,7 +43,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     # vicinae = {
     #   url = "github:vicinaehq/vicinae";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -56,20 +55,32 @@
     };
 
     yazi-plugins = {
-        url = "github:yazi-rs/plugins";
-        flake = false; # This repo doesn't contain a flake.nix
+      url = "github:yazi-rs/plugins";
+      flake = false; # This repo doesn't contain a flake.nix
     };
 
     yazi = {
       url = "github:sxyazi/yazi";
-    } ;
+    };
     zen-browser = {
-        url = "github:0xc000022070/zen-browser-flake";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-index-database, nixos-hardware, hyprland, swww, agenix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      nix-index-database,
+      nixos-hardware,
+      hyprland,
+      swww,
+      agenix,
+      ...
+    }@inputs:
     let
       # ---- System Settings ---- #
       system = "x86_64-linux";
@@ -103,21 +114,21 @@
             hostname = "YoRNix";
             diskusers = [ "_2b" ];
             videousers = [ "_2b" ];
-            gitusers = [ 
+            gitusers = [
               {
                 name = "mononomori";
                 email = "miguel.a.cannuli@gmail.com";
               }
             ];
           };
-          modules = [ 
+          modules = [
             {
               nixpkgs = {
                 config = {
                   allowUnfree = true;
                   permittedInsecurePackages = permittedInsecure;
                 };
-                overlays = [ 
+                overlays = [
                   overlays.stable-packages
                   inputs.tidalcycles.overlays.default
                 ];
@@ -138,7 +149,3 @@
       };
     };
 }
-
-
-
-

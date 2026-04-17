@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 # Steam requires some system level privileges for full functionality
 {
 
@@ -7,12 +13,12 @@
       gamescope
       gamemode
       steam
-    ;
+      ;
   };
 
   # ntsync emulates Windows sync primitives for better windows gaming performance.
 
-  boot.kernelModules = [ "ntsync" ]; 
+  boot.kernelModules = [ "ntsync" ];
 
   services.udev.packages = [
     (pkgs.writeTextFile {
@@ -21,7 +27,7 @@
       destination = "/etc/udev/rules.d/70-ntsync.rules";
     })
   ];
-  
+
   programs = {
     steam = {
       enable = true;
@@ -45,6 +51,3 @@
   # Enable usage of nintendo joycons and pro controllers
   services.joycond.enable = true;
 }
-
-
-

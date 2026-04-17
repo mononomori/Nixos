@@ -1,12 +1,18 @@
-{ config, pkgs, lib, inputs, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs)  
+    inherit (pkgs)
       pavucontrol
       pipewire
       wireplumber
-    ;
+      ;
   };
 
   # Enable sound with pipewire.
@@ -19,5 +25,5 @@
     jack.enable = true;
     wireplumber.enable = true;
   };
-  
+
 }

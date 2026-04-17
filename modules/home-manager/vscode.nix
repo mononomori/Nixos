@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   # Bundle SDK + runtime + aspnetcore into one ref
   dotnet-full =
@@ -11,8 +17,8 @@ let
     ];
 
   # VS Code FHS with packages visible to extensions
-  vscodeFhs =
-    pkgs.vscode.fhsWithPackages (ps: with ps; [
+  vscodeFhs = pkgs.vscode.fhsWithPackages (
+    ps: with ps; [
       dotnet-full
       mono
       msbuild
@@ -21,7 +27,8 @@ let
       pkg-config
       stdenv.cc
       cmake
-    ]);
+    ]
+  );
 in
 {
   # Make dotnet available in environment
@@ -35,7 +42,7 @@ in
 
     # Wrap the FHS build to export DOTNET_ROOT for the SDK inside the container
     package = vscodeFhs.overrideAttrs (prev: {
-      nativeBuildInputs = (prev.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
+      nativeBuildInputs = (prev.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
       postFixup = (prev.postFixup or "") + ''
         wrapProgram $out/bin/code \
           --set DOTNET_ROOT "${dotnet-full}/share/dotnet" \

@@ -1,8 +1,14 @@
-{ config, pkgs, lib, inputs, ...}:
 {
-  
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
+
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs)  
+    inherit (pkgs)
       #### Disk Management Tools:
       ntfs3g
       udisks
@@ -10,7 +16,7 @@
       usbutils
       #### CLI Utilities:
       parted
-    ;
+      ;
   };
 
   services = {

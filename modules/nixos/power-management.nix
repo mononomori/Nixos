@@ -1,10 +1,16 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       tuned
-    ;
+      ;
   };
 
   # Enable powerManagement
@@ -16,7 +22,7 @@
     tuned = {
       enable = true;
       settings = {
-        
+
       };
 
       ppdSettings = {
@@ -32,7 +38,7 @@
           performance = "balanced";
           power-saver = "powersave";
         };
-        
+
         # Mapping of TuneD to power-profiles-daemon profiles
         profiles = {
           balanced = "balanced";

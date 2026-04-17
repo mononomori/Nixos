@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   environment.systemPackages = builtins.attrValues {
@@ -11,8 +17,8 @@
   programs.localsend.enable = true;
 
   networking.firewall = {
-    allowedTCPPorts = [53317]; # 53317 is a LocalSend port
-    allowedUDPPorts = [53317]; # 53317 is a LocalSend port
+    allowedTCPPorts = [ 53317 ]; # 53317 is a LocalSend port
+    allowedUDPPorts = [ 53317 ]; # 53317 is a LocalSend port
   };
 
 }

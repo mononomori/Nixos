@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   boot = {
@@ -7,7 +13,7 @@
       systemd.enable = true;
       kernelModules = [ "lz4" ];
     };
-    kernelParams = [ 
+    kernelParams = [
       "zswap.enabled=1"
       "zswap.max_pool_percent=20"
       "zswap.compressor=lz4"

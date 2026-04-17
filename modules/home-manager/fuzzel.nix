@@ -1,9 +1,15 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   home.packages = builtins.attrValues {
     inherit (pkgs)
       bemoji
-    ;
+      ;
   };
   programs.fuzzel = {
     enable = true;
@@ -49,5 +55,5 @@
       type = "Application";
     };
   };
-  
+
 }

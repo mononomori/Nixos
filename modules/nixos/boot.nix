@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   boot = {
     kernelModules = [ "kvm-amd" ];
@@ -14,10 +20,17 @@
       };
     };
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod"  "usbhid" ];
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "thunderbolt"
+        "usb_storage"
+        "sd_mod"
+        "usbhid"
+      ];
       kernelModules = [ "amdgpu" ];
       supportedFilesystems = [ "btrfs" ];
     };
   };
-  
+
 }

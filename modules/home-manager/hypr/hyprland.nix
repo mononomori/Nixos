@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, swww, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  swww,
+  ...
+}:
 {
 
   home.packages = builtins.attrValues {
@@ -6,20 +13,19 @@
       hyprshot
       hyprpicker
       hyprcursor
-    ;
+      ;
   };
-
 
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     enable = true;
     systemd.enable = false;
 
-
     extraConfig = ''
-  
-    
+
+
 
       # # # # # # #
       # Monitors  #
@@ -286,7 +292,7 @@
       #### Windowrules
 
       # Audio
-      
+
       windowrule = float on, match:class org.pulseaudio.pavucontrol
       windowrule = size 950 700, match:class org.pulseaudio.pavucontrol
       windowrule = move (monitor_w)-(975) (monitor_h*0.06), match:class org.pulseaudio.pavucontrol
@@ -331,7 +337,7 @@
 
       # Steam Settings
       windowrule = float on, match:class steam, match:title negative:Steam
-      
+
       # xdg-desktop-portal-gtk windows
       windowrule = float on, match:class xdg-desktop-portal-gtk
       windowrule = size 950 750, match:class xdg-desktop-portal-gtk

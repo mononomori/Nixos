@@ -1,10 +1,17 @@
-{ config, pkgs, lib, inputs, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   # Enable hyprland window manager
   programs.hyprland = {
     package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     enable = true;
     xwayland.enable = true;
     withUWSM = true;
@@ -12,8 +19,8 @@
 
   # Enable hyprland cache for faster builds
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   programs.uwsm.enable = true;
@@ -30,8 +37,14 @@
       enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = [ "gtk" "hyprland" ];
-        hyprland.default = [ "gtk" "hyprland" ];
+        common.default = [
+          "gtk"
+          "hyprland"
+        ];
+        hyprland.default = [
+          "gtk"
+          "hyprland"
+        ];
       };
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk

@@ -1,9 +1,15 @@
-{ config, pkgs, lib, inputs, ... }:
 {
-    home.packages = builtins.attrValues {
-    inherit (pkgs) 
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
       puddletag
-    ;
+      ;
   };
 
   programs.rmpc = {

@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, diskusers, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  diskusers,
+  ...
+}:
 {
 
   users = {
@@ -6,5 +13,5 @@
       extraGroups = lib.mkAfter [ "disk" ];
     });
   };
-  
+
 }

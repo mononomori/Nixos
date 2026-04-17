@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   # Network printer discovery
   services.avahi = {
@@ -22,18 +28,16 @@
     # In case service has network timining issues and fails, try again.
     ensure-printers = {
       after = [ "network-online.target" ];
-      wants = [ "network-online.target" ]; 
+      wants = [ "network-online.target" ];
       serviceConfig = {
         Restart = "on-failure";
         RestartSec = "10s";
       };
     };
-    nscd.unitConfig = { 
+    nscd.unitConfig = {
       StartLimitIntervalSec = lib.mkForce 0;
     };
   };
-
-
 
   hardware.printers = {
     ensureDefaultPrinter = "hp8010";

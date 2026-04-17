@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
   nix.settings.trusted-users = [
@@ -6,12 +12,12 @@
     "@wheel"
   ];
   security = {
-    pam.services.hyprlock = {}; # Required to supress a hyprlock error... Remove later when fix is merged.
+    pam.services.hyprlock = { }; # Required to supress a hyprlock error... Remove later when fix is merged.
     sudo.wheelNeedsPassword = false;
     polkit = {
       enable = true;
       debug = true;
-    };    
+    };
   };
-  
+
 }

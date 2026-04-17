@@ -1,4 +1,12 @@
-{ config, lib, pkgs, inputs, system, hostname, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  system,
+  hostname,
+  ...
+}:
 
 {
   imports = [
@@ -28,14 +36,17 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/video-users.nix
   ];
-  
+
   #### Extra Options and Flakes
   nix = {
     optimise = {
       automatic = true;
     };
     settings = {
-      experimental-features = [ "nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
       auto-optimise-store = true;
       download-buffer-size = 524288000; # 500 MiB
@@ -59,7 +70,6 @@
   };
   services.fwupd.enable = true;
 
-
   # Set your time zone.
   time.timeZone = "America/Vancouver";
   services.timesyncd.enable = true;
@@ -70,7 +80,6 @@
   # Shell
   programs.fish.enable = true;
 
-
   environment.localBinInPath = true;
 
   # Configure keymap in X11
@@ -79,35 +88,36 @@
     variant = "";
   };
 
-
-
   # ==== AMD Graphics ====
 
   hardware = {
     graphics = {
-        enable = true;
-        enable32Bit = true;
+      enable = true;
+      enable32Bit = true;
     };
   };
   environment.variables.AMD_VULKAN_ICD = "RADV";
-
 
   # Define user’.
   users.users._2b = {
     isNormalUser = true;
     description = "_2b";
-    extraGroups = lib.mkBefore [ "networkmanager" "wheel" "docker" ];
+    extraGroups = lib.mkBefore [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     group = "_2b";
     packages = builtins.attrValues {
       inherit (pkgs) firefox;
     };
     shell = pkgs.fish;
   };
-  users.groups."_2b" = {};
+  users.groups."_2b" = { };
 
   home-manager = {
     # also pass inputs to home-manager modules
-    extraSpecialArgs = { 
+    extraSpecialArgs = {
       inherit inputs;
       inherit hostname;
       inherit system;
@@ -169,7 +179,7 @@
 
       # ==== Developer Tools ====
       cgdb
-      inkscape   
+      inkscape
       staruml
       blender
       quickemu
@@ -217,7 +227,6 @@
       basilk
       cava
       wttrbar
-      
 
       # ==== Text Utility ====
       helix
@@ -232,7 +241,7 @@
       fortune
 
       live-server
-    ;
+      ;
 
     # ==== Browsers: Custom/Inputs ====
     google-chrome = pkgs.google-chrome.override {

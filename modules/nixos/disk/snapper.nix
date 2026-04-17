@@ -1,18 +1,24 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
 
-# Snapper service configuration for automatic snapshots
+  # Snapper service configuration for automatic snapshots
   services.snapper = {
     configs."root" = {
-      SUBVOLUME = "/";  
+      SUBVOLUME = "/";
       FSTYPE = "btrfs";
-      ALLOW_USERS = ["_2b"];
+      ALLOW_USERS = [ "_2b" ];
     };
     configs."home" = {
       SUBVOLUME = "/home";
       FSTYPE = "btrfs";
-      ALLOW_USERS = ["_2b"];
+      ALLOW_USERS = [ "_2b" ];
     };
   };
-  
+
 }
