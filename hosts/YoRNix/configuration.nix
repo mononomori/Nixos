@@ -27,6 +27,7 @@
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/localsend.nix
     ../../modules/nixos/login-manager.nix
+    ../../modules/nixos/lutris.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/power-management.nix
     ../../modules/nixos/printing.nix

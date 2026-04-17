@@ -16,7 +16,6 @@
     ../../../modules/home-manager/fish.nix
     ../../../modules/home-manager/fuzzel.nix
     ../../../modules/home-manager/kitty.nix
-    ../../../modules/home-manager/lutris.nix
     ../../../modules/home-manager/media/mpv.nix
     ../../../modules/home-manager/media/rmpc.nix
     ../../../modules/home-manager/neovim.nix
