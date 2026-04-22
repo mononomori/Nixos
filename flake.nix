@@ -29,8 +29,8 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    swww = {
-      url = "github:LGFae/swww";
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -77,7 +77,7 @@
       nix-index-database,
       nixos-hardware,
       hyprland,
-      swww,
+      awww,
       agenix,
       ...
     }@inputs:

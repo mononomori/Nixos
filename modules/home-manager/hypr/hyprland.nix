@@ -3,7 +3,7 @@
   pkgs,
   lib,
   inputs,
-  swww,
+  awww,
   ...
 }:
 {
@@ -54,8 +54,8 @@
       exec-once = uwsm-app -- blueman-applet
 
       #### wallpaper
-      exec-once = uwsm-app -- swww-daemon 
-      exec-once = sleep 2 && uwsm-app -- swww img /etc/nixos/modules/home-manager/hypr/wallpapers/laindance.png
+      exec-once = uwsm-app -- awww-daemon 
+      exec-once = sleep 2 && uwsm-app -- awww img /etc/nixos/modules/home-manager/hypr/wallpapers/laindance.png
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -112,7 +112,6 @@
 
         shadow {
           enabled = true
-          ignore_window = true
           render_power = 4
           sharp = false
           range = 100
@@ -208,9 +207,7 @@
       bind = $mainMod ALT, F, fullscreen 
       bind = $mainMod, R, exec, uwsm-app -- fuzzel --launch-prefix="uwsm-app -- "
       bind = $mainMod, B, exec, pkill waybar || uwsm-app -- waybar
-
       bind = $mainMod, P, pseudo, # dwindle
-      bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, L, exec, loginctl lock-session
 
 

@@ -219,7 +219,6 @@
       cbonsai
       calcurse
       htop
-      neofetch
       wev
       fastfetch
       nix-output-monitor

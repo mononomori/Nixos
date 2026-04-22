@@ -17,12 +17,7 @@
 
   xdg.mimeApps =
     let
-      value =
-        let
-          zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight;
-        in
-        zen-browser.meta.desktopFileName;
-
+      value = "zen-twilight.desktop";
       associations = builtins.listToAttrs (
         map
           (name: {
