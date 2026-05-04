@@ -19,7 +19,7 @@
       general = [
         {
           hide_cursor = false;
-          immediate_render = true;
+          immediate_render = false;
         }
       ];
       animations = [

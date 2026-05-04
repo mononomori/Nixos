@@ -26,6 +26,7 @@
     settings = {
       general = [
         {
+          inhibit_sleep = 2;
           ignore_dbus_inhibit = false;
           ignore_systemd_inhibit = false;
           ignore_wayland_inhibit = false;

@@ -347,7 +347,6 @@
       windowrule = move (monitor_w*0.02) (monitor_h*0.06), match:class yazi
       windowrule = xray 0, match:class yazi
 
-
       #### Layerrules
 
       # Launcher
