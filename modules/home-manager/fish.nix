@@ -10,6 +10,7 @@
     enable = true;
     shellAliases = {
       rm = "rm -i";
+      launch = "systemd-run --user";
     };
     functions.y = ''
       set tmp (mktemp -t "yazi-cwd.XXXXXX")
