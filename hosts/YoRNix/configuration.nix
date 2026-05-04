@@ -13,6 +13,7 @@
     # Include the results of the hardware scan:
     ./hardware-configuration.nix
     # Modules:
+    ../../modules/nixos/amethyst.nix
     ../../modules/nixos/audio/blueman.nix
     ../../modules/nixos/audio/pipewire.nix
     ../../modules/nixos/boot.nix
@@ -123,7 +124,7 @@
       inherit hostname;
       inherit system;
     };
-    backupFileExtension = "backup";
+    backupFileExtension = "backup-$(date +%Y%m%d)";
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {
@@ -175,7 +176,7 @@
       gtk4
       libnotify
       neo
-      swww
+      awww
       wl-clipboard
 
       # ==== Developer Tools ====
