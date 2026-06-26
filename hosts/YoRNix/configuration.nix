@@ -13,7 +13,7 @@
     # Include the results of the hardware scan:
     ./hardware-configuration.nix
     # Modules:
-    ../../modules/nixos/amethyst.nix
+
     ../../modules/nixos/audio/blueman.nix
     ../../modules/nixos/audio/pipewire.nix
     ../../modules/nixos/boot.nix
@@ -24,16 +24,18 @@
     ../../modules/nixos/disk/snapper.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/fonts/fonts.nix
+    ../../modules/nixos/gaming/amethyst.nix
+    ../../modules/nixos/gaming/lutris.nix
+    ../../modules/nixos/gaming/r2modman.nix
+    ../../modules/nixos/gaming/steam.nix
     ../../modules/nixos/git.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/localsend.nix
     ../../modules/nixos/login-manager.nix
-    ../../modules/nixos/lutris.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/power-management.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/security.nix
-    ../../modules/nixos/steam.nix
     ../../modules/services/yamtrack.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/video-users.nix
@@ -134,6 +136,8 @@
   # ==== Packages ====
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
+
+      qbittorrent
 
       # ==== Browsers ====
       chromium
