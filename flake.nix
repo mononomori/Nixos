@@ -93,6 +93,7 @@
         "dotnet-runtime-7.0.20"
         "electron-27.3.11"
         "electron-28.2.10"
+        "electron-39.8.10"
         "libxml2-2.13.8"
         "openssl-1.1.1w"
       ];

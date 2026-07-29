@@ -15,7 +15,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --time --time-format '%a, %d %b %Y • %T' --greeting  '[Become \n              Visible]' --asterisks --theme 'border=lightred;title=gray;greet=gray;text=gray;prompt=lightred;time=gray;action=gray;button=gray;container=black;input=gray' --cmd 'uwsm start -eD Hyprland hyprland.desktop'";
+        command = "${tuigreet} --time --time-format '%a, %d %b %Y • %T' --greeting '[Become Visible]' --asterisks --theme 'border=lightred;title=gray;greet=gray;text=gray;prompt=lightred;time=gray;action=gray;button=gray;container=black;input=gray' --cmd 'uwsm start -eD Hyprland hyprland.desktop'";
         user = "greeter";
       };
     };

@@ -69,7 +69,7 @@
       ;
     #   # darktable (wait for fix in unstable)
     # ;
-    wine = pkgs.wineWowPackages.waylandFull;
+    wine = pkgs.wineWow64Packages.waylandFull;
   };
 
   xdg.mimeApps.enable = true;
@@ -85,6 +85,7 @@
 
   # Cursor
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.bibata-cursors;
@@ -121,14 +122,24 @@
       "gtk-cursor-theme-name" = "Bibata-Modern-Classic";
     };
 
-    gtk4.extraConfig = {
-      "gtk-application-prefer-dark-theme" = "1";
-      "gtk-cursor-theme-name" = "Bibata-Modern-Classic";
+    gtk4 = {
+      theme = config.gtk.theme;
+      extraConfig = {
+        "gtk-application-prefer-dark-theme" = "1";
+        "gtk-cursor-theme-name" = "Bibata-Modern-Classic";
+      };
     };
 
   };
 
   home.sessionVariables = {
+
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    NIXOS_XDG_OPEN_USE_PORTAL = "1";
+    
+    
+
 
   };
 

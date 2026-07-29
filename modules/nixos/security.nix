@@ -16,8 +16,11 @@
     sudo.wheelNeedsPassword = false;
     polkit = {
       enable = true;
-      debug = true;
     };
   };
+
+  # Needed setuid to create network namespaces (used to isolate vesktop from
+  # tailscale0, see modules/home-manager/vesktop/vesktop.nix).
+  programs.firejail.enable = true;
 
 }

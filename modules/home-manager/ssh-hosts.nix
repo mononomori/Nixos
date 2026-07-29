@@ -9,8 +9,7 @@
 {
   programs.ssh = {
     enable = true;
-
-    matchBlocks = {
+    settings = {
       asn1 = {
         hostname = "34.53.7.102";
         user = "alex_croft_cannuli";

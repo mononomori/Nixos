@@ -24,7 +24,7 @@
         fi
       }
       set_prop persist.waydroid.fake_touch '*'
-      set_prop persist.waydroid.width 1440
+      set_prop persist.waydroid.width 1280
       set_prop persist.waydroid.height 900
     '')
   ];

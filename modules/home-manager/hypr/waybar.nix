@@ -11,7 +11,7 @@
     enable = true;
     systemd = {
       enable = true;
-      target = "graphical-session.target"; # or another target if you want
+      targets = [ "graphical-session.target" ]; # or another target if you want
     };
     settings = [
       # --- Main Top Bar ---

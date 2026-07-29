@@ -15,6 +15,7 @@
     enable = true;
     xwayland.enable = true;
     withUWSM = true;
+
   };
 
   # Enable hyprland cache for faster builds

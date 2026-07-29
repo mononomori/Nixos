@@ -23,6 +23,7 @@
     ../../modules/nixos/disk/swap.nix
     ../../modules/nixos/disk/snapper.nix
     ../../modules/nixos/docker.nix
+    ../../modules/nixos/dotool.nix
     ../../modules/nixos/fonts/fonts.nix
     ../../modules/nixos/gaming/amethyst.nix
     ../../modules/nixos/gaming/lutris.nix
@@ -39,6 +40,7 @@
     ../../modules/services/yamtrack.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/video-users.nix
+    ../../modules/nixos/waydroid.nix
   ];
 
   #### Extra Options and Flakes
@@ -110,6 +112,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "input"
     ];
     group = "_2b";
     packages = builtins.attrValues {
@@ -167,7 +170,7 @@
       nodejs
       nix-index
       runapp
-      nixfmt-rfc-style
+      nixfmt
 
       # ==== Desktop ====
       asciiquarium-transparent
