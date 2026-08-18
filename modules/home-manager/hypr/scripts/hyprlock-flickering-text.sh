@@ -30,8 +30,47 @@ visible_color="#d2738a"
 invisible_color="#e4c9af"
 flicker_chance=13  # Chance to trigger alpha channel flickering (1 in N)
 flip_chance=17  # Chance to flip text for min-max frames (1 in N)
-flip_min=3 
-flip_max=7 
+flip_min=3
+flip_max=7
+
+# Decide the displayed text + color for one flickering word.
+# $1/$2: names of the caller's output variables (text, color)
+# $3: this word's cached random value (0 == eligible to flicker this cycle)
+# $4/$5: default/alternate text  $6/$7: default/alternate color
+flicker_word() {
+    local -n _text=$1 _color=$2
+    local random_value=$3 default_text=$4 alt_text=$5 default_color=$6 alt_color=$7
+    local flip_counter=0
+
+    if (( random_value != 0 )); then
+        _text=$default_text
+        _color=$default_color
+        return
+    fi
+
+    _text=$default_text
+    _color="$default_color$combined_alpha"
+
+    if (( frame >= 50 && frame <= 70 )); then
+        _text=$alt_text
+        _color="$alt_color$combined_alpha"
+    fi
+
+    # Introduce random flips during flickering
+    if (( RANDOM % flip_chance == 0 )); then
+        flip_counter=$(( RANDOM % (flip_max - flip_min + 1) + flip_min ))
+    fi
+
+    if (( flip_counter > 0 )); then
+        if [[ $_text == "$default_text" ]]; then
+            _text=$alt_text
+            _color="$alt_color$combined_alpha"
+        else
+            _text=$default_text
+            _color="$default_color$combined_alpha"
+        fi
+    fi
+}
 
 now_ms=$(date +%s%3N)
 current_time=$(( now_ms / 1000 ))
@@ -57,71 +96,13 @@ alpha="${alphas[frame]}"
 modulated_alpha="${sine_wave[sine_frame]}"
 combined_alpha=$(printf "%02x" $(( 0x$modulated_alpha * 0x$alpha / 255 )))
 
-# Initialize output variables
-visible_output=""
-invisible_output=""
+flicker_word visible_text visible_color_flicker \
+    "$visible_random_value" "&#160;&#160;visible" "invisible" "$visible_color" "$invisible_color"
+visible_output="<span foreground='$visible_color'>[&#160;Become</span>&#10;<span foreground='$visible_color_flicker'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$visible_text</span><span foreground='$visible_color'>&#160;]</span>"
 
-# Flickering logic for "Become visible"
-if (( visible_random_value == 0 )); then
-    visible_color_flicker="$visible_color$combined_alpha"
-    visible_text="&#160;&#160;visible"
-
-    if (( frame >= 50 && frame <= 70 )); then
-        visible_color_flicker="$invisible_color$combined_alpha"
-        visible_text="invisible"
-    fi
-
-    # Introduce random flips during flickering
-    if (( RANDOM % flip_chance == 0 )); then
-        visible_flip_counter=$(( RANDOM % (flip_max - flip_min + 1) + flip_min ))
-    fi
-
-    if (( visible_flip_counter > 0 )); then
-        visible_flip_counter=$(( visible_flip_counter - 1 ))
-        if [[ $visible_text == "&#160;&#160;visible" ]]; then
-            visible_text="invisible"
-            visible_color_flicker="$invisible_color$combined_alpha"
-        else
-            visible_text="&#160;&#160;visible"
-            visible_color_flicker="$visible_color$combined_alpha"
-        fi
-    fi
-
-    visible_output="<span foreground='$visible_color'>[&#160;Become</span>&#10;<span foreground='$visible_color_flicker'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$visible_text</span><span foreground='$visible_color'>&#160;]</span>"
-else
-    visible_output="<span foreground='$visible_color'>[&#160;Become</span>&#10;<span foreground='$visible_color'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;visible</span><span foreground='$visible_color'>&#160;]</span>"
-fi
-
-# Flickering logic for "You are invisible"
-if (( invisible_random_value == 0 )); then
-    invisible_color_flicker="$invisible_color$combined_alpha"
-    invisible_text="invisible"
-
-    if (( frame >= 50 && frame <= 70 )); then
-        invisible_color_flicker="$visible_color$combined_alpha"
-        invisible_text="visible"
-    fi
-
-    # Introduce random flips during flickering
-    if (( RANDOM % flip_chance == 0 )); then
-        invisible_flip_counter=$(( RANDOM % (flip_max - flip_min + 1) + flip_min ))
-    fi
-
-    if (( invisible_flip_counter > 0 )); then
-        invisible_flip_counter=$(( invisible_flip_counter - 1 ))
-        if [[ $invisible_text == "invisible" ]]; then
-            invisible_text="visible"
-            invisible_color_flicker="$visible_color$combined_alpha"
-        else
-            invisible_text="invisible"
-            invisible_color_flicker="$invisible_color$combined_alpha"
-        fi
-    fi
-
-    invisible_output="<span foreground='$invisible_color'>You are </span><span foreground='$invisible_color_flicker'>$invisible_text</span>"
-else
-    invisible_output="<span foreground='$invisible_color'>You are </span><span foreground='$invisible_color'>invisible</span>"
-fi
+flicker_word invisible_text invisible_color_flicker \
+    "$invisible_random_value" "invisible" "visible" "$invisible_color" "$visible_color"
+invisible_output="<span foreground='$invisible_color'>You are </span><span foreground='$invisible_color_flicker'>$invisible_text</span>"
 
 # Combined output
 echo "<span font-family='Fira Code'>&#160;$invisible_output&#10;&#10;$visible_output</span>"
