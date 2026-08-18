@@ -7,4 +7,9 @@ in
     system
     user
   ];
+  "ssh-hosts.age".publicKeys = [
+    system
+    user
+  ];
+
 }
