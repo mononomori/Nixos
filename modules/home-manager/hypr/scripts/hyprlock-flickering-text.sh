@@ -33,21 +33,24 @@ flip_chance=17  # Chance to flip text for min-max frames (1 in N)
 flip_min=3 
 flip_max=7 
 
-current_time=$(date +%s)
+now_ms=$(date +%s%3N)
+current_time=$(( now_ms / 1000 ))
 
 # Retrieve or generate cached random values
-if [[ ! -f "$cache_file" ]] || (( current_time - $(awk '{print $1}' "$cache_file") >= cache_duration )); then
+cached_time=-1
+if [[ -f "$cache_file" ]]; then
+    read -r cached_time visible_random_value invisible_random_value < "$cache_file"
+fi
+if (( current_time - cached_time >= cache_duration )); then
     visible_random_value=$(( (RANDOM + current_time) % flicker_chance ))
     invisible_random_value=$(( (RANDOM + current_time + 17) % flicker_chance ))
     echo "$current_time $visible_random_value $invisible_random_value" > "$cache_file"
-else
-    read -r _ visible_random_value invisible_random_value < "$cache_file"
 fi
 
 # Calculate frame indices
 # 80 and 61 are coprime, meaning their cycles only align every 4880 frames (122 seconds at 25ms per frame)
-frame=$(( ($(date +%s%3N) / 25) % 80 ))
-sine_frame=$(( ($(date +%s%3N) / 25) % 61 ))
+frame=$(( (now_ms / 25) % 80 ))
+sine_frame=$(( (now_ms / 25) % 61 ))
 
 # Combine predefined alpha with sine wave modulation
 alpha="${alphas[frame]}"
@@ -75,8 +78,13 @@ if (( visible_random_value == 0 )); then
 
     if (( visible_flip_counter > 0 )); then
         visible_flip_counter=$(( visible_flip_counter - 1 ))
-        visible_text=$([[ $visible_text == "&#160;&#160;visible" ]] && echo "invisible" || echo "&#160;&#160;visible")
-        visible_color_flicker=$([[ $visible_text == "&#160;&#160;visible" ]] && echo "$visible_color$combined_alpha" || echo "$invisible_color$combined_alpha")
+        if [[ $visible_text == "&#160;&#160;visible" ]]; then
+            visible_text="invisible"
+            visible_color_flicker="$invisible_color$combined_alpha"
+        else
+            visible_text="&#160;&#160;visible"
+            visible_color_flicker="$visible_color$combined_alpha"
+        fi
     fi
 
     visible_output="<span foreground='$visible_color'>[&#160;Become</span>&#10;<span foreground='$visible_color_flicker'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$visible_text</span><span foreground='$visible_color'>&#160;]</span>"
@@ -101,8 +109,13 @@ if (( invisible_random_value == 0 )); then
 
     if (( invisible_flip_counter > 0 )); then
         invisible_flip_counter=$(( invisible_flip_counter - 1 ))
-        invisible_text=$([[ $invisible_text == "invisible" ]] && echo "visible" || echo "invisible")
-        invisible_color_flicker=$([[ $invisible_text == "invisible" ]] && echo "$invisible_color$combined_alpha" || echo "$visible_color$combined_alpha")
+        if [[ $invisible_text == "invisible" ]]; then
+            invisible_text="visible"
+            invisible_color_flicker="$visible_color$combined_alpha"
+        else
+            invisible_text="invisible"
+            invisible_color_flicker="$invisible_color$combined_alpha"
+        fi
     fi
 
     invisible_output="<span foreground='$invisible_color'>You are </span><span foreground='$invisible_color_flicker'>$invisible_text</span>"
