@@ -129,6 +129,7 @@
       inherit hostname;
       inherit system;
     };
+    sharedModules = [ inputs.agenix.homeManagerModules.default ];
     backupFileExtension = "backup-$(date +%Y%m%d)";
     useGlobalPkgs = true;
     useUserPackages = true;

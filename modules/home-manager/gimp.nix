@@ -43,7 +43,8 @@ in
       marker="$gimpConfig/.photogimp-installed"
       if [ ! -e "$marker" ]; then
         run mkdir -p "$gimpConfig"
-        run cp -a --no-preserve=mode,ownership "${photogimp}/.config/GIMP/$gimpDataVersion/." "$gimpConfig/"
+        run chmod -R u+w "$gimpConfig"
+        run cp -af --no-preserve=mode,ownership "${photogimp}/.config/GIMP/$gimpDataVersion/." "$gimpConfig/"
         run chmod -R u+w "$gimpConfig"
         run touch "$marker"
       fi

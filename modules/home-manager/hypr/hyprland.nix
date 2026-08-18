@@ -294,6 +294,15 @@
         })
       end
 
+      -- Shared shape for "do not steal focus from parent window" rules
+      local function noFocusRule(opts)
+        hl.window_rule({
+          name = opts.name,
+          match = opts.match,
+          no_focus = true,
+        })
+      end
+
       -- Audio
       floatRule({
         name = "pavucontrol",
@@ -364,6 +373,10 @@
         name = "runelite",
         match = { title = "RuneLite" },
         size = "1038 720",
+      })
+      noFocusRule({
+        name = "runelite-canvas-no-focus",
+        match = { class = "net-runelite-client-RuneLite", title = "win0" },
       })
 
       -- Steam Settings

@@ -15,6 +15,7 @@
     ../../../modules/home-manager/hypr/waybar.nix
     ../../../modules/home-manager/fish.nix
     ../../../modules/home-manager/fuzzel.nix
+    ../../../modules/home-manager/gimp.nix
     ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/media/mpv.nix
     ../../../modules/home-manager/media/rmpc.nix
@@ -34,19 +35,22 @@
   # (wait for fix)
 
   # Home Manager needs a bit of information about you and the paths it should manage.
-  home.username = "_2b";
-  home.homeDirectory = "/home/_2b";
-  home.sessionPath = [
-  ];
+  home = {
+    username = "_2b";
+    homeDirectory = "/home/_2b";
+    sessionPath = [ ];
+  };
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  #---------------------------------------------------------------------
+  # Secrets
+  #---------------------------------------------------------------------
+
+  # Identity used to decrypt agenix secrets in this home-manager config
+  age.identityPaths = [ "/home/_2b/.ssh/id_ed25519_agenix" ];
+
+  #---------------------------------------------------------------------
+  # Packages
+  #---------------------------------------------------------------------
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
@@ -59,18 +63,21 @@
       profanity
       samira
       scanmem
-      gimp3
       libreoffice
       prismlauncher
       slipstream
       unityhub
       winetricks
       zotero
+      darktable
       ;
-    #   # darktable (wait for fix in unstable)
-    # ;
+
     wine = pkgs.wineWow64Packages.waylandFull;
   };
+
+  #---------------------------------------------------------------------
+  # Files
+  #---------------------------------------------------------------------
 
   xdg.mimeApps.enable = true;
 
@@ -78,12 +85,12 @@
     # Symlink my power menu script so it's runnable as a command and shows up in dmenu/fuzzel
     ".local/bin/power-menu".source =
       config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/home-manager/scripts/fuzzel-power-menu.sh";
-
   };
 
-  # Configure user specific desktop settings
+  #---------------------------------------------------------------------
+  # Desktop appearance
+  #---------------------------------------------------------------------
 
-  # Cursor
   home.pointerCursor = {
     enable = true;
     gtk.enable = true;
@@ -93,7 +100,6 @@
     size = 16;
   };
 
-  # GTK theming
   gtk = {
     enable = true;
 
@@ -129,20 +135,21 @@
         "gtk-cursor-theme-name" = "Bibata-Modern-Classic";
       };
     };
-
   };
 
-  home.sessionVariables = {
+  #---------------------------------------------------------------------
+  # Session variables
+  #---------------------------------------------------------------------
 
+  home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
-    
-    
-
-
   };
 
   programs.home-manager.enable = true;
 
+  # Please read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  # Before changing this value, as it may break your configuration if you set it incorrectly.
+  home.stateVersion = "23.11";
 }

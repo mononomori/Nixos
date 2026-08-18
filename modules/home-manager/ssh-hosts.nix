@@ -7,15 +7,10 @@
 }:
 
 {
+  age.secrets.ssh-hosts.file = ../../secrets/ssh-hosts.age;
+
   programs.ssh = {
     enable = true;
-    settings = {
-      asn1 = {
-        hostname = "34.53.7.102";
-        user = "alex_croft_cannuli";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-    };
+    includes = [ config.age.secrets.ssh-hosts.path ];
   };
 }
