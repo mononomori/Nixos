@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -60,6 +59,7 @@
       fluent-reader
       wf-recorder
       pastel
+      nixd
       profanity
       samira
       scanmem
@@ -70,10 +70,15 @@
       winetricks
       zotero
       darktable
+      posting
+      rhythmbox
+      pureref
       ;
 
     wine = pkgs.wineWow64Packages.waylandFull;
   };
+
+  programs.direnv.enable = true;
 
   #---------------------------------------------------------------------
   # Files

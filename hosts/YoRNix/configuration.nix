@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   inputs,
@@ -184,7 +183,6 @@
       gtk4
       libnotify
       neo
-      awww
       wl-clipboard
 
       # ==== Developer Tools ====
