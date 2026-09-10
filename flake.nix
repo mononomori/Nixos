@@ -11,27 +11,27 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # Used for package database in things like comma
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # Used for hardware specific optimization
     nixos-hardware = {
       url = "github:NixOs/nixos-hardware/master";
     };
+
     # Latest version of Hyprland
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
-    };
-    awww = {
-      url = "git+https://codeberg.org/LGFae/awww";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     tidalcycles = {
@@ -77,7 +77,6 @@
       nix-index-database,
       nixos-hardware,
       hyprland,
-      awww,
       agenix,
       ...
     }@inputs:
