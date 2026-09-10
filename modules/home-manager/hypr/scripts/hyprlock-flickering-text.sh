@@ -25,11 +25,11 @@ sine_wave=(
 )
 
 cache_file="/tmp/flicker_random_cache"
-cache_duration=2  # Duration in seconds to retain random values
+cache_duration=1  # Duration in seconds to retain random values
 visible_color="#d2738a"
 invisible_color="#e4c9af"
-flicker_chance=13  # Chance to trigger alpha channel flickering (1 in N)
-flip_chance=17  # Chance to flip text for min-max frames (1 in N)
+flicker_chance=7  # Chance to trigger alpha channel flickering (1 in N)
+flip_chance=13  # Chance to flip text for min-max frames (1 in N)
 flip_min=3
 flip_max=7
 
@@ -72,7 +72,8 @@ flicker_word() {
     fi
 }
 
-now_ms=$(date +%s%3N)
+# EPOCHREALTIME is a bash builtin (secs.microsecs), avoids forking date
+now_ms=$(( ${EPOCHREALTIME/[.,]/} / 1000 ))
 current_time=$(( now_ms / 1000 ))
 
 # Retrieve or generate cached random values

@@ -27,9 +27,9 @@
           ignore_dbus_inhibit = false;
           ignore_systemd_inhibit = false;
           ignore_wayland_inhibit = false;
-          lock_cmd = "pgrep hyprlock --grace 5 || hyprlock --grace 5"; # avoids starting multiple hyprlock instances.
+          lock_cmd = "pidof hyprlock || hyprlock --grace 5"; # avoids starting multiple hyprlock instances.
           before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
-          after_sleep_cmd = "hyprctl dispatch 'hl.dsp.dpms(\"on\")'"; # to avoid having to press a key twice to turn on the display.
+          after_sleep_cmd = "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })'"; # to avoid having to press a key twice to turn on the display.
         }
       ];
       # set monitor backlight to minimum when timeout has passed, restore monitor backlight when activity detected.
@@ -53,8 +53,8 @@
         # screen off when timeout has passed, screen on when activity detected.
         {
           timeout = 360;
-          on-timeout = "hyprctl dispatch 'hl.dsp.dpms(\"off\")'";
-          on-resume = "hyprctl dispatch 'hl.dsp.dpms(\"on\")'";
+          on-timeout = "hyprctl dispatch 'hl.dsp.dpms({ action = \"disable\" })'";
+          on-resume = "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })' && brightnessctl -r";
         }
         {
           timeout = 1800;

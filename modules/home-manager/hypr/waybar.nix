@@ -1,8 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
-  inputs,
   ...
 }:
 {
@@ -260,12 +256,12 @@
       .modules-left,
       .modules-center,
       .modules-right {
-          font-size: 14px;
+          font-size: 12px;
       }
       #custom-nixos {
           padding-left: 15px;
           padding-right: 15px;
-          font-size: 24px;
+          font-size: 22px;
           color: #d2738a;
       }
       #custom-nixos:hover {
@@ -275,7 +271,7 @@
       #workspaces button {
           color: #e4c9af;
           border: 2px solid transparent;
-          font-size: 14px;
+          font-size: 12px;
           padding-right: 12px;
           padding-left: 12px;
       }
@@ -307,10 +303,11 @@
           background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
+          margin-left: 2px;
           border: 2px solid #d2738a;
           border-right-color: transparent;
-          border-bottom-left-radius: 6px;
-          border-top-left-radius: 6px;
+          border-bottom-left-radius: 0px;
+          border-top-left-radius: 0px;
       }
       #battery,
       #network,
@@ -319,10 +316,11 @@
           background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
+          margin-left: 2px;
           border: 2px solid #e4c9af;
           border-right-color: transparent;
-          border-bottom-left-radius: 6px;
-          border-top-left-radius: 6px;
+          border-bottom-left-radius: 0px;
+          border-top-left-radius: 0px;
       }
       #temperature,
       #memory,
@@ -332,10 +330,11 @@
           background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
+          margin-right: 2px;
           border: 2px solid #d2738a;
           border-left-color: transparent;
-          border-bottom-right-radius: 6px;
-          border-top-right-radius: 6px;
+          border-bottom-right-radius: 0px;
+          border-top-right-radius: 0px;
       }
       #custom-weather,
       #cpu,
@@ -344,10 +343,11 @@
           background-color: rgb(0,0,0);
           padding-left: 12px;
           padding-right: 12px;
+          margin-right: 2px;
           border: 2px solid #e4c9af;
           border-left-color: transparent;
-          border-bottom-right-radius: 6px;
-          border-top-right-radius: 6px;
+          border-bottom-right-radius: 0px;
+          border-top-right-radius: 0px;
       }
     '';
   };

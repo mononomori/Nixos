@@ -104,8 +104,8 @@
         },
 
         decoration = {
-          rounding = 6,
-          rounding_power = 4.0,
+          rounding = 0,
+          rounding_power = 2.0,
           active_opacity = 1.0,
           inactive_opacity = 0.8,
           fullscreen_opacity = 1.0,
@@ -118,11 +118,11 @@
             enabled = true,
             render_power = 4,
             sharp = false,
-            range = 50,
+            range = 36,
             offset = { 0, 0 },
-            scale = 1,
-            color = "rgba(ce768830)",
-            color_inactive = "rgba(00000000)",
+            scale = 1.0,
+            color = "rgba(ce768820)",
+            color_inactive = "rgba(000000BF)",
           },
 
           blur = {
@@ -138,9 +138,14 @@
             ignore_opacity = false,
             xray = false,
             special = false,
+            popups = false,
             popups_ignorealpha = 0.2,
             input_methods = false,
             input_methods_ignorealpha = 0.2,
+          },
+          glow = {
+            enabled = true,
+            color = "rgba(ce768830)",
           },
         },
 

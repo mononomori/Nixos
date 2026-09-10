@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
-  inputs,
   ...
 }:
 {
@@ -47,7 +44,7 @@
 
       label = [
         {
-          text = ''cmd[update:100] echo "<span font-family='Fira Code' foreground='##e4c9af'>$(date +'%H:%M:%S')</span>"'';
+          text = ''cmd[update:1000] echo "<span font-family='Fira Code' foreground='##e4c9af'>$(date +'%H:%M:%S')</span>"'';
           color = "rgba(228,201,175,1.0)";
           font_size = 95;
           font_family = "JetBrains Mono";
@@ -60,9 +57,9 @@
           valign = "center";
         }
         {
-          text = ''cmd[update:60000] echo "<span font-family='Fira Code' foreground='##d2738a'>$(date +'%A, %B %d')</span>"'';
+          text = ''cmd[update:60000] echo "<span font-family='Fira Code' foreground='##d2738a'>$(date +'%a, %b %d')</span>"'';
           color = "rgba(242, 243, 244, 0.75)";
-          font_size = 44;
+          font_size = 55;
           font_family = "JetBrains Mono";
           shadow_passes = 2;
           shadow_size = 2;
@@ -73,7 +70,7 @@
           valign = "center";
         }
         {
-          text = ''cmd[update:30] echo "$(/etc/nixos/modules/home-manager/hypr/scripts/hyprlock-flickering-text.sh)"'';
+          text = "cmd[update:30] /etc/nixos/modules/home-manager/hypr/scripts/hyprlock-flickering-text.sh";
           color = "rgba(242, 243, 244, 0.75)";
           font_size = 44;
           font_family = "Iosevka Term";
