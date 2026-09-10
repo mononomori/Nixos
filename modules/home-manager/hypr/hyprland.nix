@@ -1,15 +1,13 @@
 {
-  config,
   pkgs,
-  lib,
   inputs,
-  awww,
   ...
 }:
 {
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
+      awww
       hyprshot
       hyprpicker
       hyprcursor
